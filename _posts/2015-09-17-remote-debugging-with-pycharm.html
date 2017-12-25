@@ -1,0 +1,81 @@
+---
+layout: post
+title: Remote Debugging with PyCharm
+date: 2015-09-17 20:15:19.000000000 +03:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags:
+- debugging
+- development
+- how-to
+- ide
+- pycharm
+- python
+- remote
+- software
+- technology
+- tutorial
+meta:
+  geo_public: '0'
+  _edit_last: '10080708'
+  _wpcom_is_markdown: '1'
+  _publicize_job_id: '14892955525'
+author:
+  login: wswld
+  email: seva17@gmail.com
+  display_name: wswld
+  first_name: ''
+  last_name: ''
+---
+<p>I'm working in a project now, that requires a certain (server) environment to run, hence it is developed on my local machine and then gets deployed on remote server. I thought I'm gonna say bye bye to my favorite PyCharm feature, namely the debugger, but to my surprise remote debugging has been supported for years now. It took some time to figure out (tutorials online are a bit ambiguous), so here is a short report on my findings.</p>
+<p>For the sake of this tutorial let's assume the following:</p>
+<ul>
+<li>Remote host: <tt>foo_host.io</tt></li>
+<li>Remote user: <tt>foo_usr</tt> (<tt>/home/foo_usr/</tt>)</li>
+<li>Local user: <tt>bar_usr</tt> (<tt>/home/bar_usr/</tt>)</li>
+<li>Path to the project on the local machine: <tt>/home/bar_usr/proj</tt></li>
+</ul>
+<p>Here goes the step-by-step how-to:</p>
+<ol>
+<li>First we need to set up remote deploy, if you haven't done so already. Go to <tt>Tools → Deployment → Configuration</tt>. And set up access to your remote server via SSH. I'd use:
+<ul>
+<li><em>Type:</em> SFTP</li>
+<li><em>SFTP host:</em> <tt>foo_host.io</tt> (don't forget to test the connection before applying)</li>
+<li><em>Port:</em> 22 (obvously)</li>
+<li><em>Root path:</em> <tt>/home/foo_usr</tt></li>
+<li><em>User name:</em> <tt>foo_usr</tt></li>
+<li><em>Auth type:</em> Key pair (OpenSSH or PyTTY)</li>
+<li><em>Private key file:</em> <tt>/home/bar_usr/.ssh/id_rsa</tt> (you'd need to generate the key and ssh-copy-id it to the remote machine, which is outside of the scope of this tutorial).</li>
+</ul>
+</li>
+<li>Go to Mappings tab and add Deployment path on server (pehaps, the name of your project)</li>
+<li>Now under <tt>Tools → Deployment</tt> you have an option to deploy your code to remote server. These first three steps could be replaced with simple Git repository on the side of the server, however I sometimes prefer this way.</li>
+<li>Now when you have the deployment set up you can go <tt>Tools → Deployment → Upload to ...</tt>, note however, that it deploys only the file you have opened or the directory you selected in the project view, so if you need to sync the whole project just select your project root.</li>
+<li>I use virtualenv, so at this step I need to ssh into the remote machine and set up virtualenv in your project directory (/home/foo_usr/test/.env), which is outside of the scope of this tutorial. If you're planning on using the global Pyhton interpreter, just skip this step.</li>
+<li>Now let's go <tt>File → Settings → Project ... → Project Interpreter</tt>. Using gear button select <tt>Add Remote</tt>. The following dialog window would let you set up a remote interpreter over SSH (including remote <tt>.env</tt>), Vagrant or using deployment configuration you have set up previously. For the sake of this tutorial I'm going to put something like that there (using SSH of course):
+<ul>
+<li>Host: foo_host.io</li>
+<li>Port: 22 (which is there by default)</li>
+<li>User name: foo_usr</li>
+<li>Auth type: Key pair (OpenSSH or PyTTY)</li>
+<li>Private key file: /home/bar_usr/.ssh/id_rsa</li>
+<li>Python interpreter path: /home/foo_usr/proj/.env/bin/python</li>
+</ul>
+</li>
+<li>If you set up everything correctly, it should list all the packages installed in your remote environment (if any) and select this interpreter for your project.</li>
+<li>Now let's do the last, but the most important step: configure debugging. Go to Edit Configurations... menu and set things up accordingly. For our hypothetical project I will use the following:
+<ul>
+<li>Script: <tt>proj/run.py</tt> (or something along these lines)</li>
+<li>Python interpreter: just select the remote interpreter you have set up earlier.</li>
+<li>Working directory: <tt>/home/bar_usr/proj/</tt> (note that this is working directory on local machine)</li>
+<li>Path mapping: create a mapping along the lines of <tt>/home/bar_usr/proj = /home/foo_usr/proj</tt> (although this seems pretty easy, it may get tricky sometimes, when you forget about mappings and move the projects around, be careful).</li>
+</ul>
+</li>
+</ol>
+<div>That's it. Now we should have a more or less working configuration that you could use both for debugging and running your project. Don't forget to update/redeploy your project before running as the versions may get async and PyCharm would get all whiny about missing files.</div>
+<div></div>
+<p></p>

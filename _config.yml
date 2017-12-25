@@ -7,7 +7,7 @@ tagline:             Running behind the schedule since 1989.
 url:                 http://getpoole.com
 paginate:            5
 baseurl:             ""
-
+exlude:              ["ololo/"]
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.

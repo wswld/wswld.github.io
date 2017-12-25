@@ -4,7 +4,7 @@
  <title>וסוולוד</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-10-30T18:25:53+03:00</updated>
+ <updated>2017-12-25T19:44:50+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
@@ -64,6 +64,824 @@ somewhere in the area of realizing our finitness and creating a short feedback c
 perspective of the time we still have. Making every day the first day of the rest of your life. But there is still no 
 clear methodology, that would help you avoid being lulled into the mundane, the comfort zone of seemingly endless life, 
 full of mindless routine and the ensuing procrastination. Until we are there, let’s Beemind our way through.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Aspiring Photographers are Quitting Instagram en Masse and Here's Why</title>
+   <link href="http://localhost:4000/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/"/>
+   <updated>2017-03-06T00:00:00+03:00</updated>
+   <id>http://localhost:4000/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why</id>
+   <content type="html">&lt;p&gt;Full disclaimer: the title is a total clickbait. Still I’m very concerned about 
+the current state of Instagram and the direction the site has taken. Here are 
+some of my grievances:&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;b&gt;I haven't seen anyone but bots in a while&lt;/b&gt;. Sure, that's a gross 
+    exaggeration, but it certainly feels like actual people are in the minority 
+    on the site. Most accounts that like or follow me are 
+    &lt;a href=&quot;http://www.huffingtonpost.com/2015/07/02/instagram-spambot_n_7708550.html&quot;&gt;spambots&lt;/a&gt; or some low-tier SMM guys from developing world.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;My major grievance is &lt;a href=&quot;https://www.quora.com/Why-doesnt-Instagram-allow-3rd-party-applications-to-upload-photos-through-its-API/answer/Il-Vaila&quot;&gt;lack of posting&lt;/a&gt; in official API&lt;/b&gt;. Sure, there are unofficial private API wrappers, but why should users jump through the hoops? Limiting access to CRUD operations in public API is walled garden approach at its finest.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;No links&lt;/b&gt;. Instagram prohibits adding clickable links and copying in both descriptions and comments. I understand they're doing it to minimize spam, but it's like getting rid of intestines to avoid diarrhea. Also, see the first point. How much should it take before ineffectiveness of this approach is evident? In the meanwhile there is no way for the &lt;a href=&quot;http://www.independent.co.uk/life-style/gadgets-and-tech/news/instagram-rolls-out-clickable-links-and-carousels-but-only-for-advertisers-10087605.html&quot;&gt;regular&lt;/a&gt; user to share a link to a bigger story.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;Instagram still &lt;a href=&quot;https://www.quora.com/How-do-I-upload-full-resolution-pictures-from-a-DSLR-to-Instagram/answer/J-Dennis-Thomas&quot;&gt;reduces the quality&lt;/a&gt; of pictures and &lt;a href=&quot;https://www.reddit.com/r/gopro/comments/2n80ct/video_quality_is_terrible_after_posting_to/&quot;&gt;ruins your videos&lt;/a&gt;.&lt;/b&gt; Sure, it's much better now than it used to be, but it's still far from ideal. Plus, what's up with &lt;a href=&quot;https://fstoppers.com/apps/why-do-your-instagram-photos-suddenly-look-terrible-facebook-83795&quot;&gt;quality of Instagram pics on Facebook&lt;/a&gt;? Is this by design? Because I have no other explanation how it can stay unfixed for so long.&lt;/li&gt;
+    &lt;li&gt;&lt;b&gt;It doesn't cater towards its original target audience - the amateur photographers&lt;/b&gt;. Instagram is no longer a network for good phone photography (or attempts at that), most pics one sees today are selfies, which says a lot about the current target audience of the service. Introduction of Stories (which is 100% Snapchat rip-off) cemented this trend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m &lt;a href=&quot;https://www.instagram.com/wswld/?hl=en&quot;&gt;still using the service&lt;/a&gt; for sharing what I deem interesting shots and occasional videos, but I’m also using Flickr as some kind of mirror feed and to be honest Instagram starts to feel like dead weight.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>TIL: Mongo Sucks</title>
+   <link href="http://localhost:4000/2016/10/07/til-mongo-sucks/"/>
+   <updated>2016-10-07T16:19:06+03:00</updated>
+   <id>http://localhost:4000/2016/10/07/til-mongo-sucks</id>
+   <content type="html">&lt;p&gt;MongoDB &lt;tt&gt;$nin&lt;/tt&gt; and &lt;tt&gt;$ne&lt;/tt&gt; and &lt;tt&gt;$exists: false&lt;/tt&gt; queries are &lt;em&gt;super&lt;/em&gt; expensive. I mean there is a point at which they are basically unusable. And I learned it the hard way, having developed a service, that relies heavily on this kind of queries to emulate queue-like workflow. 5+ million documents later and I’m hurriedly adding indexes for all flags that take more than 60 seconds to query for.&lt;/p&gt;
+&lt;p&gt;Information on this issue is limited to a short &lt;a href=&quot;http://t.umblr.com/redirect?z=https%3A%2F%2Fdocs.mongodb.com%2Fv3.0%2Ffaq%2Findexes%2F%23using-ne-and-nin-in-a-query-is-slow-why&amp;amp;t=MTFiMDQ2MDBhNjhhYTc4YjZmMzk1MWU1YzhjZmVjODZiOGMxNTkwOCwxaGNFWlBCYw%3D%3D&amp;amp;b=t%3Aco8q4pQsR0pkOuSy1frx2w&amp;amp;m=1&quot;&gt;FAQ entry&lt;/a&gt; at Mongo docs and a couple StackOverflow &lt;a href=&quot;http://t.umblr.com/redirect?z=http%3A%2F%2Fstackoverflow.com%2Fa%2F22639468&amp;amp;t=MDhjODlmOTY2MTY3NmQwYTdlYjczNmVlY2RjZWI4ZTM3NmJhOWJhNSwxaGNFWlBCYw%3D%3D&amp;amp;b=t%3Aco8q4pQsR0pkOuSy1frx2w&amp;amp;m=1&quot;&gt;answers&lt;/a&gt;. That’s it. Come on, it should be the first thing people see, when they open Mongo docs - a huge dialog you should scroll through three times before you can click accept.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Overriding Default Werkzeug Exceptions in Flask</title>
+   <link href="http://localhost:4000/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/"/>
+   <updated>2015-12-07T17:47:17+03:00</updated>
+   <id>http://localhost:4000/2015/12/07/overriding-default-werkzeug-exceptions-in-flask</id>
+   <content type="html">&lt;p&gt;Let's play a game here. What HTTP code is this exception:&lt;/p&gt;
+&lt;p&gt;[code lang=&quot;js&quot;]&lt;br /&gt;
+{&lt;br /&gt;
+&amp;quot;message&amp;quot;: &amp;quot;The browser (or proxy) sent a request that this server could not understand.&amp;quot;&lt;br /&gt;
+}&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;No no, you don't look at the code in response! That's cheating! This is actually a default Werkzeug description for &lt;code&gt;400&lt;/code&gt; code. No shit. I thought something is bad with my headers or encryption, but I would never guess simple &lt;code&gt;Bad request&lt;/code&gt; from this message. You could use a custom exception of course, the problem is, that the very useful &lt;code&gt;abort(400)&lt;/code&gt; object (it's an &lt;code&gt;Aborter&lt;/code&gt; in disguise) would stick with the default exception anyway.&lt;/p&gt;
+&lt;p&gt;Let's fix it, shall we?&lt;/p&gt;
+&lt;p&gt;There may be several possible ways of fixing that, but what I'm gonna do is just update &lt;code&gt;abort.mapping&lt;/code&gt;. Create a separate module for your custom HTTP exceptions &lt;code&gt;custom_http_exceptions.py&lt;/code&gt; and put a couple of overridden exceptions there (don't forget to import &lt;code&gt;abort&lt;/code&gt; we'll be needing that in a moment):&lt;/p&gt;
+&lt;p&gt;[code lang=&quot;python&quot;]&lt;br /&gt;
+from flask import abort&lt;br /&gt;
+from werkzeug.exceptions import HTTPException&lt;/p&gt;
+&lt;p&gt;class BadRequest(HTTPException):&lt;br /&gt;
+    code = 400&lt;br /&gt;
+    description = &amp;#039;Bad request.&amp;#039;&lt;/p&gt;
+&lt;p&gt;class NotFound(HTTPException):&lt;br /&gt;
+    code = 404&lt;br /&gt;
+    description = &amp;#039;Resource not found.&amp;#039;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;These are perfectly functional, but we still need to add it to the default &lt;code&gt;abort&lt;/code&gt; mapping:&lt;/p&gt;
+&lt;p&gt;[code lang=&quot;python&quot;]&lt;br /&gt;
+abort.mapping.update({&lt;br /&gt;
+    400: BadRequest,&lt;br /&gt;
+    404: NotFound&lt;br /&gt;
+})&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Note that I import &lt;code&gt;abort&lt;/code&gt; object from &lt;code&gt;flask&lt;/code&gt;, not &lt;code&gt;flask-restful&lt;/code&gt;, only the former is an &lt;code&gt;Aborter&lt;/code&gt; object with mapping and other bells and whistles, the latter is just a function.&lt;/p&gt;
+&lt;p&gt;Now just import this module with &lt;code&gt;*&lt;/code&gt; to your &lt;em&gt;app&lt;/em&gt; Flask module (where you declare and run your Flask app) or someplace it would have a similar effect on runtime.&lt;/p&gt;
+&lt;p&gt;Note that you also should have the following line in your config because of &lt;a href=&quot;http://stackoverflow.com/questions/34066290/custom-abort-mapping-exceptions-in-flask&quot;&gt;this issue&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;[code lang=&quot;python&quot;]&lt;br /&gt;
+ERROR_404_HELP = False&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;I'm not sure why this awkward and undocumented constant isn't &lt;code&gt;False&lt;/code&gt; by default. I opened &lt;a href=&quot;https://github.com/flask-restful/flask-restful/issues/545&quot;&gt;an issue&lt;/a&gt; on GitHub, but no one seems to care.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Remote Debugging with PyCharm</title>
+   <link href="http://localhost:4000/2015/09/17/remote-debugging-with-pycharm/"/>
+   <updated>2015-09-17T20:15:19+03:00</updated>
+   <id>http://localhost:4000/2015/09/17/remote-debugging-with-pycharm</id>
+   <content type="html">&lt;p&gt;I'm working in a project now, that requires a certain (server) environment to run, hence it is developed on my local machine and then gets deployed on remote server. I thought I'm gonna say bye bye to my favorite PyCharm feature, namely the debugger, but to my surprise remote debugging has been supported for years now. It took some time to figure out (tutorials online are a bit ambiguous), so here is a short report on my findings.&lt;/p&gt;
+&lt;p&gt;For the sake of this tutorial let's assume the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remote host: &lt;tt&gt;foo_host.io&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Remote user: &lt;tt&gt;foo_usr&lt;/tt&gt; (&lt;tt&gt;/home/foo_usr/&lt;/tt&gt;)&lt;/li&gt;
+&lt;li&gt;Local user: &lt;tt&gt;bar_usr&lt;/tt&gt; (&lt;tt&gt;/home/bar_usr/&lt;/tt&gt;)&lt;/li&gt;
+&lt;li&gt;Path to the project on the local machine: &lt;tt&gt;/home/bar_usr/proj&lt;/tt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here goes the step-by-step how-to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First we need to set up remote deploy, if you haven't done so already. Go to &lt;tt&gt;Tools → Deployment → Configuration&lt;/tt&gt;. And set up access to your remote server via SSH. I'd use:
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Type:&lt;/em&gt; SFTP&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;SFTP host:&lt;/em&gt; &lt;tt&gt;foo_host.io&lt;/tt&gt; (don't forget to test the connection before applying)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Port:&lt;/em&gt; 22 (obvously)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Root path:&lt;/em&gt; &lt;tt&gt;/home/foo_usr&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;User name:&lt;/em&gt; &lt;tt&gt;foo_usr&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Auth type:&lt;/em&gt; Key pair (OpenSSH or PyTTY)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Private key file:&lt;/em&gt; &lt;tt&gt;/home/bar_usr/.ssh/id_rsa&lt;/tt&gt; (you'd need to generate the key and ssh-copy-id it to the remote machine, which is outside of the scope of this tutorial).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Go to Mappings tab and add Deployment path on server (pehaps, the name of your project)&lt;/li&gt;
+&lt;li&gt;Now under &lt;tt&gt;Tools → Deployment&lt;/tt&gt; you have an option to deploy your code to remote server. These first three steps could be replaced with simple Git repository on the side of the server, however I sometimes prefer this way.&lt;/li&gt;
+&lt;li&gt;Now when you have the deployment set up you can go &lt;tt&gt;Tools → Deployment → Upload to ...&lt;/tt&gt;, note however, that it deploys only the file you have opened or the directory you selected in the project view, so if you need to sync the whole project just select your project root.&lt;/li&gt;
+&lt;li&gt;I use virtualenv, so at this step I need to ssh into the remote machine and set up virtualenv in your project directory (/home/foo_usr/test/.env), which is outside of the scope of this tutorial. If you're planning on using the global Pyhton interpreter, just skip this step.&lt;/li&gt;
+&lt;li&gt;Now let's go &lt;tt&gt;File → Settings → Project ... → Project Interpreter&lt;/tt&gt;. Using gear button select &lt;tt&gt;Add Remote&lt;/tt&gt;. The following dialog window would let you set up a remote interpreter over SSH (including remote &lt;tt&gt;.env&lt;/tt&gt;), Vagrant or using deployment configuration you have set up previously. For the sake of this tutorial I'm going to put something like that there (using SSH of course):
+&lt;ul&gt;
+&lt;li&gt;Host: foo_host.io&lt;/li&gt;
+&lt;li&gt;Port: 22 (which is there by default)&lt;/li&gt;
+&lt;li&gt;User name: foo_usr&lt;/li&gt;
+&lt;li&gt;Auth type: Key pair (OpenSSH or PyTTY)&lt;/li&gt;
+&lt;li&gt;Private key file: /home/bar_usr/.ssh/id_rsa&lt;/li&gt;
+&lt;li&gt;Python interpreter path: /home/foo_usr/proj/.env/bin/python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;If you set up everything correctly, it should list all the packages installed in your remote environment (if any) and select this interpreter for your project.&lt;/li&gt;
+&lt;li&gt;Now let's do the last, but the most important step: configure debugging. Go to Edit Configurations... menu and set things up accordingly. For our hypothetical project I will use the following:
+&lt;ul&gt;
+&lt;li&gt;Script: &lt;tt&gt;proj/run.py&lt;/tt&gt; (or something along these lines)&lt;/li&gt;
+&lt;li&gt;Python interpreter: just select the remote interpreter you have set up earlier.&lt;/li&gt;
+&lt;li&gt;Working directory: &lt;tt&gt;/home/bar_usr/proj/&lt;/tt&gt; (note that this is working directory on local machine)&lt;/li&gt;
+&lt;li&gt;Path mapping: create a mapping along the lines of &lt;tt&gt;/home/bar_usr/proj = /home/foo_usr/proj&lt;/tt&gt; (although this seems pretty easy, it may get tricky sometimes, when you forget about mappings and move the projects around, be careful).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;That's it. Now we should have a more or less working configuration that you could use both for debugging and running your project. Don't forget to update/redeploy your project before running as the versions may get async and PyCharm would get all whiny about missing files.&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>My Take on Yandex Pre-interview Python Assignment</title>
+   <link href="http://localhost:4000/2015/06/08/my-take-on-yandex-pre-interview-python-assignment/"/>
+   <updated>2015-06-08T14:19:12+03:00</updated>
+   <id>http://localhost:4000/2015/06/08/my-take-on-yandex-pre-interview-python-assignment</id>
+   <content type="html">&lt;p&gt;I've applied for a junior Python position at Russian internet giant Yandex (very similar to Google). And although my application has been rejected, due to lack of experience, I think their little pre-interview test and my take on that may be of interest to any inquisitive pythonista. Note, that this has never been properly translated into English before, so this is probably exclusive in that regard.&lt;/p&gt;
+&lt;h3&gt;Assignment I&lt;/h3&gt;
+&lt;p&gt;There are two lists of different length. The first one contains keys, the second - values. Write a function, that would create a dict out of these lists. If the key doesn't have a value - it should equal &lt;tt&gt;None&lt;/tt&gt;, if the value doesn't have a key, it should be omitted.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+def get_dict(list1, list2):&lt;br /&gt;
+    ret = dict(map(None, list1, list2))&lt;br /&gt;
+    if ret.get(None, False):&lt;br /&gt;
+        ret.__delitem__(None)&lt;br /&gt;
+    return ret&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;h3&gt;Assignment II&lt;/h3&gt;
+&lt;p&gt;Login should start with latin symbol, contain latin symbols, digits, dots and hyphens, but end only with a latin symbol or a digit. Minimum length is 1 symbol, maximum - 20 symbols. Write a function that checks strings for correspondence with these rules. Think of several methods of solving this problem and compare them.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+import re&lt;br /&gt;
+import time&lt;/p&gt;
+&lt;p&gt;def check1(login):&lt;br /&gt;
+    ret = False&lt;br /&gt;
+    if re.match('^[a-zA-Z][a-zA-Z0-9\-\.]{0,19}(?&amp;lt;![\-\.])$', login):&lt;br /&gt;
+        ret = True&lt;br /&gt;
+    return ret&lt;/p&gt;
+&lt;p&gt;def check2(login):&lt;br /&gt;
+    ret = False&lt;br /&gt;
+    if (len(login) &amp;gt;= 1 or len(login) &amp;lt;= 20) and login[0].isalpha() and (login[-1].isalpha() or login[-1].isdigit()):&lt;br /&gt;
+        for a in login[1:-1]:&lt;br /&gt;
+            if a.isalpha() or a.isdigit() or a == '-' or a == '.':&lt;br /&gt;
+                ret = True&lt;br /&gt;
+    return ret&lt;/p&gt;
+&lt;p&gt;def compare(login):&lt;br /&gt;
+    tm = time.time()&lt;br /&gt;
+    check1(login)&lt;br /&gt;
+    print(time.time() - tm)&lt;br /&gt;
+    tm = time.time()&lt;br /&gt;
+    check2(login)&lt;br /&gt;
+    print(time.time() - tm)&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;h3&gt;Assignment III&lt;/h3&gt;
+&lt;p&gt;There are two tables &lt;tt&gt;users&lt;/tt&gt; and &lt;tt&gt;messages&lt;/tt&gt; (I changed names and messages to non-Cyrillic):&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;users&lt;/caption&gt;
+&lt;tr&gt;
+&lt;td&gt;UID&lt;/td&gt;
+&lt;td&gt;name&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;John Doe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Natalie Knaph&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Johnatan Yozo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;caption&gt;messages&lt;/caption&gt;
+&lt;tr&gt;
+&lt;td&gt;UID&lt;/td&gt;
+&lt;td&gt;msg&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Hello, John!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Send me the card, quickly.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;I'm waiting on the corner of 5th and Lafayette&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;This is me again. Please message me more often.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Create a SQL query, that would return two fields: &quot;User name&quot; and &quot;Total amount of messages&quot;.&lt;/p&gt;
+&lt;p&gt;[code language=&quot;sql&quot;]&lt;br /&gt;
+SELECT users.name AS &amp;quot;User name&amp;quot;,count(*) AS &amp;quot;Total amount of messages&amp;quot;&lt;br /&gt;
+FROM users&lt;br /&gt;
+JOIN messages ON users.uid = messages.uid&lt;br /&gt;
+GROUP BY users.uid&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;h3&gt;Assignment IV&lt;/h3&gt;
+&lt;p&gt;Suppose you have a generic &lt;tt&gt;access.log&lt;/tt&gt;. How to get 10 most frequent IP-addresses using standard terminal tools? How to do that with Python?&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+# BASH:&lt;br /&gt;
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' access.log | sort -n | uniq -c | sort -n -r | head -10&lt;/p&gt;
+&lt;p&gt;# PYTHON:&lt;br /&gt;
+import sys&lt;br /&gt;
+import re&lt;/p&gt;
+&lt;p&gt;all = re.findall(&amp;quot;[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}&amp;quot;, open(sys.argv[1], 'r').read())&lt;br /&gt;
+srt = sorted(all, key=all.count, reverse=True)&lt;br /&gt;
+unq = []&lt;br /&gt;
+for m in srt:&lt;br /&gt;
+    if not m in unq:&lt;br /&gt;
+        unq.append(m)&lt;br /&gt;
+print unq[0:10]&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;If you can think of a better way to solve any of these, let me know.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Humble Collection of Python Sphinx Gotchas: Part II</title>
+   <link href="http://localhost:4000/2015/04/03/humble-collection-of-python-sphinx-gotchas-part-ii/"/>
+   <updated>2015-04-03T14:26:19+03:00</updated>
+   <id>http://localhost:4000/2015/04/03/humble-collection-of-python-sphinx-gotchas-part-ii</id>
+   <content type="html">&lt;h3&gt;Gotcha 1: Release and Version&lt;/h3&gt;
+&lt;p&gt;Sphinx makes a distinction between the release code and the version of the application. The idea is that it should look this way:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+version = &amp;quot;4.0.4&amp;quot;&lt;br /&gt;
+release = &amp;quot;4.0.4.rc.1&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Most project use a much simpler versioning convention, so they would probably do something like this:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+version = &amp;quot;4.0.4&amp;quot;&lt;br /&gt;
+release = &amp;quot;4.0.4&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;I'd been doing this myself for some time, until I realized the &lt;tt&gt;conf.py&lt;/tt&gt; file is a simple Python file (no shit!) and it is perfectly fine to do something like this:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+version = &amp;quot;4.0.4&amp;quot;&lt;br /&gt;
+release = version&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Yeah, kinda obvious I know. I however missed this (though I've been putting much more complex code to &lt;tt&gt;conf.py&lt;/tt&gt;) and &lt;a href=&quot;http://stackoverflow.com/questions/23470010/sphinx-does-not-change-version-number/23910848#23910848&quot;&gt;some people&lt;/a&gt; did either. So, I'll just leave it here.&lt;/p&gt;
+&lt;h3&gt;Gotcha 2: Download as PDF&lt;/h3&gt;
+&lt;p&gt;Sometimes a PDF download should be provided along with the hosted HTML version. It looks good and people can get a well-formatted file to use locally as they are trying to work with your API or product. In short: it could be done easily, using Python. I'm really pissed off at people, who know Python or Bash and they still keep asking, whether there is an &lt;em&gt;automatic&lt;/em&gt; way of doing that. Well, it doesn't get more automatic than that:&lt;br /&gt;
+[code language=&quot;bash&quot;]&lt;br /&gt;
+# generating latex and pdf&lt;br /&gt;
+make latexpdf&lt;/p&gt;
+&lt;p&gt;# generating html&lt;br /&gt;
+find 'index.rst' -print -exec sed -i.bak &amp;quot;s/.. &amp;amp;//g&amp;quot; {} \;&lt;br /&gt;
+find 'index.rst' -print -exec sed -i.bak &amp;quot;s/TARGET/$UPTARGET/g&amp;quot; {} \;&lt;/p&gt;
+&lt;p&gt;VERSION=&amp;quot;$(grep -F -m 1 'version = ' conf.py)&amp;quot;;&lt;br /&gt;
+VERSION=&amp;quot;${VERSION#*\'}&amp;quot;;&lt;br /&gt;
+VERSION=&amp;quot;${VERSION%\'*}&amp;quot;&lt;/p&gt;
+&lt;p&gt;sphinx-build -b html . ../$TARGET/$VERSION/&lt;br /&gt;
+cp latex/$UPTARGET.pdf ../$TARGET/$VERSION/&lt;br /&gt;
+[/code]&lt;br /&gt;
+Note, that there should be the following line, inserted into the &lt;tt&gt;index.rst&lt;/tt&gt; in the example above:&lt;br /&gt;
+[code]&lt;br /&gt;
+.. &amp;amp;  `Download as PDF &amp;lt;TARGET.pdf&amp;gt;`_&lt;br /&gt;
+[/code]&lt;br /&gt;
+Where &lt;tt&gt;..&lt;/tt&gt; is the comment syntax, &lt;tt&gt;&amp;amp;&lt;/tt&gt; is here to distinguish the line from usual comments and &lt;tt&gt;TARGET&lt;/tt&gt; is replaced with &lt;tt&gt;$UPTARGET&lt;/tt&gt; which is the upper case version of the project name and the default name of the .tex and .pdf files. It creates a relative link to the .pdf file, which is then copied to the exact same folder, where HTML output is located. I'm not going explain much about the variables, as their sources may differ. In my work I use a python script, with exact same principle (I figured bash example would be more universal) and it gets values of &lt;tt&gt;$TARGET&lt;/tt&gt;, &lt;tt&gt;$UPTARGET&lt;/tt&gt; and &lt;tt&gt;$VERSION&lt;/tt&gt; from a JSON file with a list of targets (more on that in the next example). In the example above, I'm stripping values off the conf.py file. In fact you can use whatever input you wish, even pass the values as arguments. What I was trying to illustrate is the concept itself.&lt;/p&gt;
+&lt;h3&gt;Gotcha 3: Using Scripting to Organize the Sphinx Project as a Multiple Project Knowledge Base&lt;/h3&gt;
+&lt;p&gt;Some of the companies, I've been working at had this huge array of active projects, that they wanted to present as a single site, or the whole variety of sites with the same theme, or the single site with PDF version for every first level subsection. Basically they wanted me to create a Sphinx-based knowledge base. Using a simple Python or Bash script there are ways to organize your project any way you want (we'll use Python this time as it's closer to what I've been using). We're going to create a site that automatically builds PDF version for each first level subsection (project) and puts it alongside the subsection's &lt;tt&gt;index.html&lt;/tt&gt;. Basically this is a bit more complex variant of the previous example. &lt;/p&gt;
+&lt;p&gt;Let's imagine we have a single Sphinx project with a couple first level sections corresponding to company's projects, for example: Foo and Bar (give me that medal for originality, yeah). Basically, your folder structure will look like this:&lt;br /&gt;
+[code language=&quot;text&quot;]&lt;br /&gt;
+Acme&lt;br /&gt;
+|  index.rst&lt;br /&gt;
+|_ Foo&lt;br /&gt;
+|  |_1.0.0&lt;br /&gt;
+|    |_index.rst&lt;br /&gt;
+|  |_1.1.0&lt;br /&gt;
+|    |_index.rst&lt;br /&gt;
+|&lt;br /&gt;
+|_ Bar&lt;br /&gt;
+   |_1.0.1&lt;br /&gt;
+     |_index.rst&lt;br /&gt;
+[/code]&lt;br /&gt;
+Yeah, we also have versions. I use the &lt;a href=&quot;https://gist.github.com/wswld/aa35821b2d76fba73cc1&quot;&gt;following script&lt;/a&gt; for the projects with such layout. Don't worry, it only looks kinda big. The script is rather simple. Also, I've commented the hell out of it so that you could figure it all out. Note, that you also need to create a &lt;tt&gt;targets.json&lt;/tt&gt; file in the root of your project, containing the following lines (assuming we're using the structure we agreed on in the beginning):&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;br /&gt;
+{&lt;br /&gt;
+  &amp;quot;foo&amp;quot; : &amp;quot;Foo Foo&amp;quot;,&lt;br /&gt;
+  &amp;quot;bar&amp;quot; : &amp;quot;Barrington&amp;quot;&lt;br /&gt;
+}&lt;br /&gt;
+[/code]&lt;br /&gt;
+The file will tell the script of full project names and how they correspond to target names (folder names) in the structure. Also you will need to have a &lt;tt&gt;temp.py&lt;/tt&gt; file containing only the info we need for PDF building with most of the target names and version numbers represented as variables for injection (yeah, I know this is hacky, but did't want to bother with imports, dependencies etc). First of all it should have &lt;tt&gt;$VRSN&lt;/tt&gt; tags:&lt;br /&gt;
+[code language=&quot;python&quot;]&lt;br /&gt;
+# The short X.Y version.&lt;br /&gt;
+version = '&amp;amp;VRSN'&lt;br /&gt;
+# The full version, including alpha/beta/rc tags.&lt;br /&gt;
+release = '&amp;amp;VRSN'&lt;br /&gt;
+[/code]&lt;br /&gt;
+It should also have tags in the LaTeX part of the settings:&lt;br /&gt;
+[code language=&quot;python&quot;]&lt;br /&gt;
+latex_documents = [&lt;br /&gt;
+  ('index', '&amp;amp;TRGT.tex', u'&amp;amp;UPTRGT',&lt;br /&gt;
+   u'ACME', 'manual'),&lt;br /&gt;
+]&lt;br /&gt;
+[/code]&lt;br /&gt;
+Other than that &lt;tt&gt;temp.py&lt;/tt&gt; may resemble your usual &lt;tt&gt;conf.py&lt;/tt&gt;. The reason is that we use &lt;tt&gt;conf.py&lt;/tt&gt; for HTML and it has preset version and project name values for the project as the whole. So we better distinguish between the file for injections and the main configuration file, so that they don't mess with each other. Note that if you'll need to add some additional parameters or a preamble to the LaTeX output, you should do that in &lt;tt&gt;temp.py&lt;/tt&gt; as &lt;tt&gt;conf.py&lt;/tt&gt; is not used for building PDFs at all. &lt;/p&gt;
+&lt;p&gt;If we prepare the project this way, the script should build PDF's for every subproject and put them to the subproject's HTML root. Ideally the HTML version could also be built separately for every subproject (for the right project name/version to appear for every subproject). This script is more of a proof of concept rather than out-of-the-box solution. However if you now understand Sphinx's capability to extension and automation, you may create projects of any complexity yourself.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Humble Collection of i3wm Lifehacks: Part I</title>
+   <link href="http://localhost:4000/2015/03/21/humble-collection-of-i3wm-lifehacks-part-i/"/>
+   <updated>2015-03-21T23:33:20+03:00</updated>
+   <id>http://localhost:4000/2015/03/21/humble-collection-of-i3wm-lifehacks-part-i</id>
+   <content type="html">&lt;h3&gt;Lifehack 1: Locking the Screen&lt;/h3&gt;
+&lt;p&gt;This is kinda a nobrainer, but me myself sometimes look for a place, where to copy some of the syntax (I'm lazy and don't always keep that in my head), so let's start with this one. i3wm ships with beautiful and robust screen locker &lt;tt&gt;i3lock&lt;/tt&gt;, which can be launched like that:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+i3lock -c 000000&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;It will lock the screen with black overlay. The problem is, that you wouldn't be typing this command every time you want to lock the screen. We need to add a shortcut to i3 config file:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+bindsym $mod+Shift+Tab exec &amp;quot;i3lock -c 000000&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Now when we press the combination of mod-button (&lt;kbd&gt;Win&lt;/kbd&gt; in my case) and &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; - our screen gets locked.&lt;/p&gt;
+&lt;h3&gt;Lifehack 2: Activating/Disactivating the Second Screen&lt;/h3&gt;
+&lt;p&gt;If you use i3wm on daily basis, you probably know, that the second screen is not turned on automatically. You should manage displays manually with &lt;tt&gt;xrandr&lt;/tt&gt; command. If we run this command without attributes, we're gonna get something like this:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+Screen 0: minimum 320 x 200, current 3200 x 1080, maximum 8192 x 8192&lt;br /&gt;
+LVDS1 connected 1280x800+1920+0 (normal left inverted right x axis y axis) 261mm x 163mm&lt;br /&gt;
+   1280x800      60.02*+  50.05&lt;br /&gt;
+   1024x768      60.00&lt;br /&gt;
+   800x600       60.32    56.25&lt;br /&gt;
+   640x480       59.94&lt;br /&gt;
+VGA1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 521mm x 293mm&lt;br /&gt;
+   1920x1080     60.00*+&lt;br /&gt;
+   1680x1050     59.95&lt;br /&gt;
+   1280x1024     75.02    60.02&lt;br /&gt;
+   1440x900      59.89&lt;br /&gt;
+   1280x960      60.00&lt;br /&gt;
+   1280x720      59.97&lt;br /&gt;
+   1024x768      75.08    70.07    60.00&lt;br /&gt;
+   832x624       74.55&lt;br /&gt;
+   800x600       72.19    75.00    60.32    56.25&lt;br /&gt;
+   640x480       75.00    72.81    66.67    60.00&lt;br /&gt;
+   720x400       70.08&lt;br /&gt;
+HDMI1 disconnected (normal left inverted right x axis y axis)&lt;br /&gt;
+DP1 disconnected (normal left inverted right x axis y axis)&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;On some rare occasion writing something like this would not be a problem:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+xrandr --output VGA1 --right-of LVDS1 --auto&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Well, I know you're probably well aware of how&lt;/em&gt; &lt;tt&gt;xrandr&lt;/tt&gt; &lt;em&gt;works. Just in case.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It may get pretty redundant if you use second screen on daily basis and regularly unplug it from your laptop. The best way to go would be to add script shortcut to your &lt;tt&gt;/usr/bin/&lt;/tt&gt; or &lt;tt&gt;/bin/&lt;/tt&gt; directory. Run the following lines:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+printf '#!/bin/bash\n\nxrandr --output VGA1 --right-of LVDS1 --auto' &amp;gt; /usr/bin/screenswitch&lt;br /&gt;
+chmod 755 /usr/bin/screenswitch&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;We can use &lt;tt&gt;screenswitch&lt;/tt&gt; command which doesn't make it much easier. What would certainly help us is a key shortcut, so let's add a line similar to one in the previous hack to our i3 configuration:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+bindsym XF86Display exec &amp;quot;screenswitch&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Now when you press on your special key combo (&lt;kbd&gt;Fn&lt;/kbd&gt;+&lt;kbd&gt;F7&lt;/kbd&gt; on my ThinkPad), you enable/disable the second screen. Try some other key combination if you have no special display button. Of course the script itself is pretty basic and it would work only if your screen works well in auto and you use the same second screen daily. However, there are more complex scripts available all over the web (&lt;a href=&quot;http://www.thinkwiki.org/wiki/Sample_Fn-F7_script&quot;&gt;example&lt;/a&gt;).&lt;/p&gt;
+&lt;h3&gt;Lifehack 3: Locking the Screen on Wake&lt;/h3&gt;
+&lt;p&gt;If you use &lt;tt&gt;pm-utils&lt;/tt&gt; with your i3wm setup, you've probably noticed that the screen is not locked, when the laptop is awakened after suspend or hibernate. It's very insecure. Let's try to fix it. Create file &lt;tt&gt;cat /etc/pm/sleep.d/91blocker&lt;/tt&gt; and add the following lines to it:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+#!/bin/sh&lt;br /&gt;
+case &amp;quot;$1&amp;quot; in&lt;br /&gt;
+        thaw|resume)&lt;br /&gt;
+                su youruser -c '/usr/bin/i3lock -c 000000'&lt;br /&gt;
+                ;;&lt;br /&gt;
+        *) exit $NA&lt;br /&gt;
+                ;;&lt;br /&gt;
+esac&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Don't forget to change &lt;tt&gt;youruser&lt;/tt&gt; to your username. Now let's make sure we have all the right permissions:&lt;/p&gt;
+&lt;p&gt;[code]&lt;br /&gt;
+chmod 755 /etc/pm/sleep.d/91blocker&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Now, if we run &lt;tt&gt;pm-suspend&lt;/tt&gt; or &lt;tt&gt;pm-hibernate&lt;/tt&gt; our screen is going to be locked on wake. This script has one shortcoming though: it doesn't lock the screen instantly, so you may see stuff for a couple of seconds before it gets locked. If it is not a critical issue to you, feel free to use it, othrewise you may need to work on it or find a different solution altogether. If you have any ideas how to improve it, let me know.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Short History of my Relationship with Lenovo ThinkPad</title>
+   <link href="http://localhost:4000/2015/03/14/short-history-of-my-relationship-with-lenovo-thinkpad/"/>
+   <updated>2015-03-14T22:47:10+03:00</updated>
+   <id>http://localhost:4000/2015/03/14/short-history-of-my-relationship-with-lenovo-thinkpad</id>
+   <content type="html">&lt;p&gt;[caption width=&quot;300&quot; id=&quot;attachment_462&quot; align=&quot;alignright&quot;]&lt;img src=&quot;/assets/20150315_015224.jpg?w=300&quot; alt=&quot;My own ThinkPad X201.&quot; width=&quot;300&quot; height=&quot;225&quot; class=&quot;size-medium wp-image-462&quot; /&gt; &lt;small&gt;My own ThinkPad X201 workhorse&lt;/small&gt;[/caption] For those, who have limited time, this post comes down to the following statement: &lt;em&gt;&lt;a href=&quot;http://www.notebookreview.com/notebookreview/lenovo-thinkpad-x201-review/&quot;&gt;Lenovo Thinkpad X201&lt;/a&gt; is the best X-series Thinkpad created yet&lt;/em&gt; (&lt;em&gt;although after a somewhat heated discussion at Reddit, x220 looks better&lt;/em&gt;). What follows is my attempt at proving this point with my merely anecdotal evidence. I'm funny like that. Here comes a short story of my relationship with Lenovo Thinkpad X series.&lt;/p&gt;
+&lt;p&gt;In 2013 I've been working as a technical writer (more &lt;em&gt;technical&lt;/em&gt; than a &lt;em&gt;writer&lt;/em&gt; actually) in a medium-sized web-slash-mobile startup and the Macbook, they'd given me, failed and I decided to try something new. At that time I got increasingly interested in Lenovo Thinkpad (yeah, it hadn't been IBM for quite a long time already). A couple of my colleagues had these &lt;a href=&quot;http://www.notebookreview.com/notebookreview/lenovo-thinkpad-x220-review/&quot;&gt;X220&lt;/a&gt; machines and they seemed pretty solid and professional, especially with all kinds of Linux installed on them (I worked with a bunch of Python devs and everybody used their favorite flavor of Linux). My transition from Macbook to Thinkpad was also dictated by how Macbook wouldn't let me use &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3wm&lt;/a&gt; (which I was completely sold on at the time) as the main WM. So I went to my manager an he approved my order. The problem was I wasn't really familiar with modern ThinkPads then and ordered 14&quot; model (thought I could use all the extra screen space). I figured any Thinkpad will do. It was my mistake. &lt;/p&gt;
+&lt;p&gt;I got &lt;a href=&quot;http://www.notebookreview.com/notebookreview/lenovo-thinkpad-t431s-review/&quot;&gt;T431S&lt;/a&gt;, which was admittedly quite expensive at the time, but didn't look like Thinkpad at all. If anything it resembled  plastic version of Macbook. It had a rather disguising chiclet (island-type) keyboard, no LED indicators, thinner body and as a result much less ports (although for the record I do understand S stands for slim). The only thing it had in common with the previous generations of Thinkpads was the clit, which was kinda useless without the additional row of buttons, the device actually had no touchpad buttons at all as it mimicked the Macbook-style &lt;em&gt;platform&lt;/em&gt; touchpad (awful, awful trend, actually). The hardware was of questionable quality and it gave me lots of headache on Linux (especially WiFi) despite the ThinkPads traditionally being considered one of the best laptops, when it comes to compatibility with Linux. I worked on this machine until the  company went under, and got used to it somehow, but it never lived up to the image of Thinkpad I had in my head.&lt;/p&gt;
+&lt;p&gt;Even after that I didn't give up on the Thinkpad series completely, though it clearly went downhill with every subsequent model. My wife got herself X230 at work and as I got to play with the device a bit, I had an impression that this is not as bad as 431S, so as the line moved forward I decided to go in the opposite direction. At that time I started working in a medium enterprise infosec company and they had Thinkpads all over the place, and most of these were the Thinkpads as I expected them to be from the day one. These were X201 models. They aren't as outdated as the earlier ones but they have all the right features. Here is a short comparison between some of the latest X series models:&lt;/p&gt;
+&lt;table style=&quot;width:100%;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;X201&lt;/th&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;X220&lt;/th&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;X230&lt;/th&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;X240&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;LED Indicators&lt;/th&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;9 on the front and 3 are mirrored on the back.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;3 on the front and 2 on the back.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;2 on the front and 2 on the back.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;None (!)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;Keyboard&lt;/th&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Classic&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Classic&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;Chiclet&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;Chiclet&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;Ports&lt;/th&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;VGA, Ethernet, 3 USB, separate ports for mic and headphones, phone line port, ECSC slot.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;VGA, Mini DisplayPort, 3 USB (1 USB 3.0), combo audio jack, media card reader slot, ECSC slot.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;VGA, Mini DisplayPort, 3 USB (2 USB 3.0), combo audio jack, media card reader slot, ECSC slot.&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;VGA, Mini DisplayPort, 2 USB 3.0, combo audio jack, media card reader slot, ECSC slot.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;ThinkLight (Keyboard Flashlight)&lt;/th&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;The keyboard is backlit instead. Get your tongue out of Apple's ass, Lenovo!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&quot;border:1px solid #cccccc;&quot;&gt;Clit Buttons&lt;/th&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;background-color:#40FF01;&quot;&gt;Yes&lt;/td&gt;
+&lt;td style=&quot;border:1px solid #cccccc;&quot;&gt;Touchpad is a platform with &lt;em&gt;areas&lt;/em&gt; for clit buttons, which is kinda sad.*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;small&gt;* - to be fair Thinkpad X250 actually went back to having hardware buttons, so X240 is not the whole new tendency, but rather disappointing stumble.&lt;/small&gt;&lt;br /&gt;
+&lt;br /&gt;
+So, to sum it up for X201:&lt;/p&gt;
+&lt;li&gt;There is the right number of LED indicators (X220 and X230 have less and X240 seem to have none whatsoever) and they are mirrored on the back of the machine, which is convenient, when the lid is closed.&lt;/li&gt;
+&lt;li&gt;The classic Thinkpad keyboard is just right for coding. No trendy chiclet bullshit.&lt;/li&gt;
+&lt;li&gt;Ports and slots is the area, where the age of the machine shows the most. It doesn't have any USB 3.0 ports and Mini DisplayPort would be actually nice. Still, it's much better than X240.&lt;/li&gt;
+&lt;li&gt;There are two rows of buttons, one for clit mode and the other for the touchpad. Although I work with clit most of the time, I find having an additional bottom row rather convenient, yet I'd probably go with no touchpad at all.&lt;/li&gt;
+&lt;li&gt;Flashlight!&lt;/li&gt;
+&lt;p&gt;The only problem with X201 model for me is that it's not available for sale officially anymore (at least where I live), I even tried to buy out my office X201, when leaving the company but they wouldn't let me. So I found a place that sold used ThinkPads for a reasonable price and bought one from there. This machine is pure magic, and it doesn't matter that it's a bit outdated. It has i3 CPU (which is still fair these days), up to 8GB RAM (which is usually enough), extended 6 cell battery makes up for its age (easily gives me 5 or 4 hours of relaxed coding) and overall design hints at the times when the word Thinkpad meant something more than &lt;em&gt;&quot;an ugly plastic Macbook knockoff&quot;&lt;/em&gt;. Without much exaggeration I can say, that in 12.5&quot; X line of ThinkPads (at least to me) the X201 model seems greatly superior to anything made before (due to being relatively modern) or after. It's still relevant today and has the potential of being developer's muse (fetishist talking) and workhorse.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;An update is due: although I still think X201 is one of the best ThinkPad X-series machines, after a heated Reddit discussion X220 seems to be an even better model with all the advantages of X201 (except the amount of LEDs ;) ), plus newer hardware and better screen. You probably should consider that machine if you are shopping for classic ThinkPads.&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ASUS X102B and second screen on Debian</title>
+   <link href="http://localhost:4000/2015/02/02/asus-x102b-and-second-screen-on-debian/"/>
+   <updated>2015-02-02T21:17:36+03:00</updated>
+   <id>http://localhost:4000/2015/02/02/asus-x102b-and-second-screen-on-debian</id>
+   <content type="html">&lt;p&gt;I've stumbled upon a very capricious piece of hardware lately, which is ASUS X102B. Basic (very basic) video seems to work out of the box, but there are numerous problems here and there. Especially the second screen, which doesn't seem to work at the first glance. If you run &lt;tt&gt;xrandr&lt;/tt&gt; it will only recognize the &lt;em&gt;&quot;default&quot;&lt;/em&gt; output and even that would look pretty much broken. First thing to do was:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+sudo apt-get install firmware-linux-nonfree&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Actually, it's a go-to solution (as in first thing to try) to many Debian hardware-related problems, as the distro doesn't include non-free firmware by default. After that it recognizes most outputs the right way, but it may miss the right modes. If so, you could add your mode manually.&lt;/p&gt;
+&lt;p&gt;First, retrieve the full information about the mode:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+cvt 1920 1080&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;You will get something like that:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+# 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz&lt;br /&gt;
+Modeline &amp;quot;1920x1080_60.00&amp;quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Now use the info to add the mode to &lt;tt&gt;xrandr&lt;/tt&gt; and then assign it to the output:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+xrandr --newmode &amp;quot;1920x1080&amp;quot; 173.00  1920 2048 2248 2576  1080 1083 1088 1120 -HSync +VSync&lt;br /&gt;
+xrandr --addmode VGA-0 &amp;quot;1920x1080&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Use the &lt;tt&gt;xrandr&lt;/tt&gt; command to check the list of availible outputs and modes. You probably know that already, but here is how to use &lt;tt&gt;xrandr&lt;/tt&gt; with the newly created mode:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+xrandr --output VGA-0 --mode &amp;quot;1920x1080&amp;quot;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Well, as this one issue is officially resolved I'm off to fight the rest of a couple hundred problems, that arise, when trying to use this laptop with Debian. Wish me luck and leave a comment if you had some trouble with the machine (when used with Debian that is) — we could try to work it out together.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Update on BioAid and my Hearing in General</title>
+   <link href="http://localhost:4000/2014/09/24/update-on-bioaid-and-my-hearing-in-general/"/>
+   <updated>2014-09-24T13:20:29+04:00</updated>
+   <id>http://localhost:4000/2014/09/24/update-on-bioaid-and-my-hearing-in-general</id>
+   <content type="html">&lt;p&gt;&lt;em&gt;This post was written about a year ago, but it has been lost among the drafts, as I haven't been a frequent guest here lately. Now it's time to finally publish this piece for good.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Some time ago I did a big, comprehensive &lt;a href=&quot;http://wswld.net/2013/07/20/bioaid-meets-life-2/&quot;&gt;review&lt;/a&gt; of the &lt;a href=&quot;http://bioaid.org.uk/&quot;&gt;BioAid&lt;/a&gt; hearing app for iOS. A couple of months down the road, the situation has changed entirely. I've got some good news and some bad news for you. Let's start with the latter.&lt;/p&gt;
+&lt;h3&gt;Bad News&lt;/h3&gt;
+&lt;p&gt;I've joined the dark side and after several months of struggling, I've finally bought a commercial hearing aid. It is not a spontaneous decision though, I've been thoroughly thinking it over for a couple of weeks. Here is what made my mind up:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I've started to notice some discomfort while using BioAid, for the most part it was minor headache and mental fatigue. I've been taking some medications, that could have caused this effect too, but I do believe BioAid had its share of responsibility in driving me into this condition. As I've been using &lt;em&gt;Gradual HF&lt;/em&gt; regime, it could be a little too high frequency in my case. Not high enough to notice that at once, but it had some profound effect on me in the long run. I was feeling ruined by the weekday evenings after the full day of continuous use of BioAid at work, and I was feeling OK on weekends, when I hardly used the app at all. I think it was natural fatugue, combined with the sound irritant of BioAid. I'm not saying that you're sure to be feeling exactly the same way, but I strongly recommend you to stop using the app as soon as you feel any side effects. You should also consider starting using the app twice if you have any sort of rare medical condition. The creators of the app warn you about that themselves.&lt;/li&gt;
+&lt;li&gt;Annoying state of being unable to use my iPhone to its full potential throughout the day and implications of using it as a hearing aid in day-to-day situations made me feel quite miserable. If you're interested in what I'm speaking about, I've been writing about all the limitations in the &lt;a href=&quot;http://wswld.net/2013/07/20/bioaid-meets-life-2/&quot;&gt;original post&lt;/a&gt;. However, it could be alright, if you really can't afford a hearing aid, or want to use the app as a temporary solution.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As a result, I went to the same center, where I've refused to buy an aid in the first place and bought the same exact aid I had been offered back then. It is OK (Widex, by the way), but I've not changed my mind completely. I do think that devices like BioAid are the future of hearing aid market, which is really underdeveloped and monopolistic in this day and age.&lt;/p&gt;
+&lt;h3&gt;Good News&lt;/h3&gt;
+&lt;p&gt;Some time ago I got this letter in my inbox:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Dear Vsevolod,&lt;/p&gt;
+&lt;p&gt;You contacted me a couple of months back about the original BioAid app. I'd like to let you know that I've been looking at the hearing app idea again recently and have just released (yesterday) a rather more powerful and flexible piece of software. Check out aud1.com for more details and don't hesitate to get back to me if you have any questions.&lt;/p&gt;
+&lt;p&gt;Best,&lt;/p&gt;
+&lt;p&gt;Dr. Nick Clark&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Dr. Nick Clark is one of the scientists behind the original BioAid project (the one who wrote most of ObjC code, actually) and &lt;a href=&quot;http://www.aud1.com/&quot;&gt;Aud1&lt;/a&gt; is his solo project. &lt;del datetime=&quot;2014-08-13T13:37:08+00:00&quot;&gt;Yes, basically it's BioAid 2.0 and it's paid now.&lt;/del&gt; &lt;em&gt;Actually, it's not BioAid 2.0, but rather implementation of BioAid algorithm, as Nick Clark himself &lt;a href=&quot;http://www.hearingaidforums.com/showthread.php?15501-BioAid-is-now-a-product-called-Aud1&quot;&gt;explained it&lt;/a&gt;:&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;I'd just like to clear up any confusion that I may have caused by my haphazardly typed original email! Aud1 is not the new name for BioAid. BioAid is the name of a &lt;a href=&quot;http://audioplastic.org/blog/2013/01/24/bioaid-algo/&quot;&gt;biologically-inspired open-source gain model&lt;/a&gt;. The original BioAid app was a particular implementation of this algorithm (confusingly also named BioAid, but referred to in-house as &quot;the BioAid app&quot;). Aud1 is a much more flexible framework that has been developed independently by one of the original BioAid team (me), and currently runs an optimized version of the BioAid algorithm. However, there are plans to allow the user to switch between various algorithm designs in the future, potentially making Aud1 a useful research tool for field comparisons. Switching algorithms is not like changing the processing strategy on a hearing aid, but rather more like switching out an entire part of the hearing instrument.&lt;/p&gt;
+&lt;p&gt;Aud1 is a platform for the BioAid algorithm, and potentially other algorithms in the future, allowing it to behave more like the lab scale version that we used (providing features like linked stereo processing if the user has appropriate input hardware). Aud1 is no more a hearing aid than the original BioAid app can be considered a hearing aid, because they are just a software component restrained by the limitations of the devices on which they run. I prefer the deliberately vague term &quot;assistive hearing technology&quot;. Limitations aside, the the BioAid app really seemed to help a select group of people, and this motivated me to push the technology further, adding many features requested by BioAid-app users. Check it out if you like.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I installed the app and field-tested it right away. I was glad to see that some of the annoying issues of the original version were gone. The app features much cleaner interface and more flexible configuration with sliders instead of fixed presets. There are no more welcome popup screens appearing every time on startup and the app seems to preserve the configuration on relaunch.&lt;/p&gt;
+&lt;p&gt;It also has introduced some new features like an ability to choose bit rate of the output, support for stereo, latency test and input/output calibration. It also provides some basic session info and a logger for the tinkerers. The application now looks more mature and ready for commercial distribution. Although no essential improvement over the original app was introduced, it looks, feels and &lt;em&gt;hears&lt;/em&gt; much better, which is enough for me to reach for my wallet. Still, there are issues, that were ignored, like returning to hearing aid mode after a call (as the stock music app does) and some other minor problems. Regimes are the same for the most part (albeit a tad more configurable), hence it haven't solved my headache problem. Eventually, I've abandoned the concept of iPhone as &lt;em&gt;the everyday&lt;/em&gt; hearing aid. Again, it doesn't mean it would not work for you. Give it a try.&lt;/p&gt;
+&lt;p&gt;By the end of the day I do think that this version is worth every pence, even if you're not particularly amazed with the new features and improvements. You may consider it a little contribution to an amazing project, especially if you have been using the original BioAid for some time already. After many months of extensive BioAid usage, I was glad to pay it back. Hopefully, you would be too. If you're completely new to this kind of apps, my advice would be to try BioAid first and see, whether you're not experiencing any of the side effects and it does help your hearing, then you could easily migrate to Aud1.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A little year-down-the-road update is due. As of now the projects seems a abandoned: last updates on &lt;a href=&quot;https://www.facebook.com/bioaidapp&quot;&gt;BioAid&lt;/a&gt; and &lt;a href=&quot;https://www.facebook.com/aud1app&quot;&gt;Aud1&lt;/a&gt; Facebook pages date back to September 13, 2013. It is quite unfortunate as the project showed big promise. Hopefully, Nick Clark haven't abandoned this idea completely and works on something new in the same vein. Time will tell.&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Humble Collection of Python Sphinx Gotchas: Part I</title>
+   <link href="http://localhost:4000/2013/09/02/humble-collection-of-python-sphinx-gotchas-1/"/>
+   <updated>2013-09-02T19:11:05+04:00</updated>
+   <id>http://localhost:4000/2013/09/02/humble-collection-of-python-sphinx-gotchas-1</id>
+   <content type="html">&lt;h3&gt;Gotcha 1: Getting Started with Sphinx Theming&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;b&gt;Update 02.10.2014:&lt;/b&gt; It seems absolutely obvious to me, but apparently it is not that obvious to &lt;a href=&quot;http://stackoverflow.com/questions/25800264/bootstrap-theme-ugly-looking-font-for-inline-literal/25890178&quot;&gt;some&lt;/a&gt;: you can't do anything about your Sphinx theme without some basic CSS and HTML skills. You can only change some of the theme parameters, if the developer was kind enough to add some, but it is &lt;a href=&quot;http://sphinx-doc.org/theming.html#using-a-theme&quot;&gt;well covered&lt;/a&gt; in the official documentation.&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Customizing Sphinx visuals was somewhat upsetting to me at first, since the process is not straightforward and documentation is scarce. It could be a little bit user-friendlier. However, as soon as you get a grip on the basics, it gets pretty smooth and simple. You may have already tried copying over the default theme only to discover, that there is nothing particularly useful in there for an inquisitive scholar. Only one of the standard Sphinx themes is in fact complete, the rest of them simply inherit its properties to add some minor alterations. This theme is called &lt;em&gt;Basic&lt;/em&gt; and it's a minimal sandbox template, the only theme that could be helpful for getting to the very bottom of Sphinx customization. Later you'd be able to inherit it and create a template, consisting only of alterations, but for a start it's OK to copy the &lt;em&gt;Basic&lt;/em&gt; in its entirety.&lt;/p&gt;
+&lt;p&gt;Hopefully, you've already created a folder for your Sphinx project and initiated it by issuing:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;bash&quot;]&lt;br /&gt;
+$ sphinx-quickstart&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Or you may have an already existing Sphinx project, you want to theme — it's up to you. In your project folder create the &lt;tt&gt;_themes&lt;/tt&gt; directory and then rename and copy the theme folder there. &lt;em&gt;Basic&lt;/em&gt; theme, perhaps, should be located in &lt;tt&gt;site_packages&lt;/tt&gt; folder of your active Python install. On my Mac it's: &lt;tt&gt;/Library/Python/2.7/site-packages/Sphinx-1.2b1-py2.7.egg/sphinx/themes/basic/&lt;/tt&gt;, but Python on Mac OS X is just weird. If you're using Linux (&lt;tt&gt;/usr/share/sphinx/themes/basic/&lt;/tt&gt; on Debian) or Windows, you should look it up yourself.&lt;/p&gt;
+&lt;p&gt;Next step would be to change &lt;tt&gt;conf.py&lt;/tt&gt; of your project, accordingly. First, we should make sure, that the following line is uncommented and correct:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+html_theme_path = ['_themes']&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Don't forget to check the value of the &lt;tt&gt;html_theme&lt;/tt&gt; parameter above:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;python&quot;]&lt;br /&gt;
+html_theme = 'renamed_basic'&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;[caption id=&quot;attachment_282&quot; align=&quot;alignleft&quot; width=&quot;300&quot;]&lt;a href=&quot;http://methodandgrit.files.wordpress.com/2013/09/screen-shot-2013-09-02-at-10-14-52-pm.png&quot;&gt;&lt;img class=&quot;size-medium wp-image-282&quot; src=&quot;/assets/screen-shot-2013-09-02-at-10-14-52-pm.png?w=300&quot; alt=&quot;Basic Theme&quot; width=&quot;300&quot; height=&quot;206&quot; /&gt;&lt;/a&gt; Basic theme without customization looks like vanilla HTML with no stylesheet whatsoever.[/caption]&lt;/p&gt;
+&lt;p&gt;As of now you may start making alterations to the theme. You will find that HTML files in there aren't really HTML files, but templates (Sphinx uses &lt;a href=&quot;http://en.wikipedia.org/wiki/Jinja_(template_engine)&quot;&gt;Jinja&lt;/a&gt; template engine) with some staff automatically inserted on build. You can combine these automatic tags with basic HTML tags and as soon as you figure out how it works, you could move some of the interactive tags around, or get rid of some of them altogether. Don't forget to check whether you're not breaking anything though. Most visual aspects of Sphinx theme are modified through the main CSS file, which is located in the &lt;tt&gt;static&lt;/tt&gt; folder. For &lt;em&gt;Basic&lt;/em&gt; theme it would be &lt;tt&gt;basic.css_t&lt;/tt&gt;. Notice, that &lt;tt&gt;t&lt;/tt&gt; in the extension brings to our attention the fact, that this is a template. Other than that it could be viewed and edited as a simple CSS file. If you're interested in the values, provided by Sphinx templates and how you cam make use of them, consult &lt;a href=&quot;http://sphinx-doc.org/templating.html#jinja-sphinx-templating-primer&quot;&gt;the official documentation&lt;/a&gt;. If you want the main CSS file to have some other name, you can change that in &lt;tt&gt;theme.conf&lt;/tt&gt;, there are also some other settings, that could be of interest.&lt;/p&gt;
+&lt;h3&gt;Gotcha 2: Spoiler&lt;/h3&gt;
+&lt;p&gt;If you play with Sphinx templates for some time, you may want to start adding something more interactive. We could easily implement these kinds of things trough JavaScript or jQuerry (which is kindly included in the package).&lt;/p&gt;
+&lt;p&gt;Let's go trough a little example project, to recognize, what could be achieved with combined power of Sphinx and JavaScript. You may notice, that as for common elements in HTML themes there is usually a way to address them in JavaScript, it's not that easy to introduce new classes and wrap some parts of the text into them. There is no custom &lt;tt&gt;div&lt;/tt&gt; tag in Sphinx, unless you do that as &lt;tt&gt;.. raw&lt;/tt&gt; directive which is not really a native way, and breaks lots of things. What I needed to do was to wrap some section of text into a &lt;tt&gt;div&lt;/tt&gt; and make it collapsible on button pressed. You could achieve that by creating your own admonition and assigning it to certain HTML class.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;p&gt;[code]&lt;br /&gt;
+.. admonition:: Request&lt;br /&gt;
+		:class: splr&lt;br /&gt;
+ 		Request example and parameters.&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;You can then easily reference this admonition by its class in your JavaScript. For example you could put this jQuerry script to your &lt;tt&gt;page.html&lt;/tt&gt; template:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;javascript&quot;]&lt;br /&gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;br /&gt;
+    $('.splr').css(&amp;quot;background-color&amp;quot;, '#F0F0F0');&lt;br /&gt;
+    $('.splr').css('box-shadow', '0px 0px 1px 1px #000000');&lt;br /&gt;
+    $('.splr &amp;gt; .last').hide();&lt;br /&gt;
+    $('.splr &amp;gt; .expanded + .last').show('normal');&lt;br /&gt;
+    $('.splr &amp;gt; p').click(function() {&lt;br /&gt;
+        $(this).find('.last').hide();&lt;br /&gt;
+        $(this).toggleClass('expanded').toggleClass('collapsed').next('.last').toggle('normal');&lt;br /&gt;
+    });&lt;br /&gt;
+    &amp;lt;/script&amp;gt;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;If implemented correctly, this script should turn the &lt;tt&gt;splr&lt;/tt&gt; admonition into a collapsible drawer. I've been actively using this, when documenting HTTP APIs, since it's very helpful to hide JSON responses by default. Note, that you could also use this method for special CSS effects. Imagine, if aside from usual note, warning and tip you could have yellow, blue and purple boxes for whatever reason you can think of? Well, it couldn't be any simpler. Admonitions are good default containers for some parts of your text, that should differ in design or function from the rest of the page.&lt;/p&gt;
+&lt;h3&gt;Gotcha 3: Interactive TOC in Sidebar&lt;/h3&gt;
+&lt;p&gt;[caption id=&quot;attachment_242&quot; align=&quot;alignright&quot; width=&quot;300&quot;]&lt;a href=&quot;http://methodandgrit.files.wordpress.com/2013/08/tocs.png&quot;&gt;&lt;img class=&quot;  wp-image-242 size-medium&quot; src=&quot;/assets/tocs.png?w=300&quot; alt=&quot;Not the worst case, but still a valid comparison of TOC trees in Default theme and our JavaScript enhanced Basic. Note, that on the right the subcategories may be collapsed and opened dynamically.&quot; width=&quot;300&quot; height=&quot;198&quot; /&gt;&lt;/a&gt; Not the worst case, but still a valid comparison of TOC trees in Default theme and our JavaScript enhanced Basic.[/caption]&lt;/p&gt;
+&lt;p&gt;You may have noticed, that Sphinx often adds TOC to sidebar automatically, if it's not explicitly placed in the page itself. While this is certainly a very useful feature, sometimes things get out of control. I didn't use the worst case in the picture on the right, but it could get up to innumerable 1st level sections, each of them could have a number of subsections and so on. Sometimes it is a clear sign, that the page should be reorganized into multiple standalone pages, united by a category, but it's not always possible or needed. It's perfectly alright to have a long and deep TOC in some cases and &lt;em&gt;Default&lt;/em&gt; Sphinx theme is terrible in that regard (&lt;em&gt;as of 2014 it is fixed and children categories are shown only for the currently selected one&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;You could use an updated version of the algorithm from the previous example to collapse some parts of the TOC by default. Note, how this script works with &lt;tt&gt;ul&lt;/tt&gt; and &lt;tt&gt;li&lt;/tt&gt; tags of the TOC tree list. Some stuff is applied recursively on the highest level of the list, some — on the subsequent levels. Especially noticeable with different styles applied to different levels of the list, so that you could tell whether it is 1st, 2nd or even 3rd level title. Here is the full script:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;javascript&quot;]&lt;br /&gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;br /&gt;
+    $('.sphinxsidebar').attr('position', 'fixed');&lt;br /&gt;
+    $('.sphinxsidebar').css('position', 'fixed');&lt;br /&gt;
+    $(&amp;quot;h3:contains('Table Of Contents')&amp;quot;).css('border-bottom', '1px');&lt;br /&gt;
+    $(&amp;quot;h3:contains('Table Of Contents')&amp;quot;).text('TOC:');&lt;/p&gt;
+&lt;p&gt;    $('.sphinxsidebarwrapper li').css('background-color', '#B8B8B8');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li').css('box-shadow', '0px 0px 1px 1px #000000');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li').css('color', 'white');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li').css('border-color', '#000000');&lt;/p&gt;
+&lt;p&gt;    $('.sphinxsidebarwrapper li &amp;gt; ul &amp;gt; li').css('background', '#D0D0D0');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li &amp;gt; ul &amp;gt; li').css('box-shadow', '0px 0px 1px 1px #000000');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li &amp;gt; ul &amp;gt; li &amp;gt; ul &amp;gt; li').css('background', '#F0F0F0');&lt;/p&gt;
+&lt;p&gt;    $('.sphinxsidebarwrapper li &amp;gt; ul').hide();&lt;br /&gt;
+    $('.sphinxsidebarwrapper li &amp;gt; .expanded + ul').show('normal');&lt;br /&gt;
+    $('.sphinxsidebarwrapper li &amp;gt; a').click(function() {&lt;br /&gt;
+    //hide everything&lt;br /&gt;
+    $(this).find('li').hide();&lt;br /&gt;
+    //toggle next ul&lt;br /&gt;
+    $(this).toggleClass('expanded').toggleClass('collapsed').next('ul').toggle('normal');&lt;br /&gt;
+    });&lt;br /&gt;
+    &amp;lt;/script&amp;gt;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Perhaps, it won't look very well, but it is a very simplified version to illustrate the concept. If you get the idea, you may alter or add &lt;tt&gt;.css&lt;/tt&gt; methods to achieve more plausible visuals. You could also work on lower title levels, but you will have to figure it all out for yourself. In this version algorithm works best only with three headings levels from &lt;tt&gt;&amp;lt;h1&amp;gt;&lt;/tt&gt; to &lt;tt&gt;&amp;lt;h3&amp;gt;&lt;/tt&gt;, but it could definitely handle more.&lt;/p&gt;
+&lt;p&gt;That's it. &lt;del datetime=&quot;2014-10-04T14:32:09+00:00&quot;&gt;I've compiled these examples as a full-featured theme project on GitHub. I'm going to polish it to some extent and perhaps, implement more interactive stuff over time. Feel free to contribute to this little project.&lt;/del&gt;&lt;em&gt; Nope, never happened. Well, it did happened actually, but it was no good, sorry.&lt;/em&gt; If you come upon any issue with this little gotchas of mine, let me know. Sure, I've tested everything myself, but you never know. Also, you're free to use any of these examples as a building block in your work with no attribution, since they're rather generic and simple.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>On dType Suspension</title>
+   <link href="http://localhost:4000/2013/08/22/on-dtype-suspension/"/>
+   <updated>2013-08-22T11:56:04+04:00</updated>
+   <id>http://localhost:4000/2013/08/22/on-dtype-suspension</id>
+   <content type="html">&lt;p&gt;I can safely confess, that a couple years ago I didn't know a single thing about programming. I was aware of some fairly abstract concepts and had a basic understanding of how it all works, but it definitely wasn't enough. My English teacher had a saying about the active vocabulary: &quot;You may learn all the words from the dictionary by heart, but unless you use them regularly and naturally, you don't really know them&quot;. My situation with programming was somewhat similar to knowing lots of trivia, but having no grasp on the practical side of things. I was determined on fixing it as soon as possible. I've tried reading a book or two, but it never really got me going. Well, it explained a couple things here and there, but it was like learning things by heart — tedious and irrelevant (on an absolutely unrelated note: &lt;a href=&quot;http://learnpythonthehardway.org/book/&quot;&gt;Learn Python the Hard Way&lt;/a&gt; is great). At that point one of my techie friends suggested me throw the book away and learn by immersion: make an objective, stumble upon problems, see docs and StackOverflow for possible solutions. That was the moment I started looking for the first project, fairly simple, yet more challenging than a mindless &lt;em&gt;Hello World&lt;/em&gt; routine.&lt;/p&gt;
+&lt;p&gt;Once, I was typing down a big portion of plain text on my old slow Android phone, using another memory hog &lt;em&gt;Office Suite&lt;/em&gt;, with all those controls, sets of buttons on all sides of the screen and I wished there was something like &lt;em&gt;Focus Writer&lt;/em&gt; for Ubuntu: basic, but fairly powerful in terms of achieving that special &lt;em&gt;zen&lt;/em&gt; state. There weren't many such projects in Android market back then (yeah, kids, it was called that in days of old) and this is how the idea of &lt;a href=&quot;https://play.google.com/store/apps/details?id=net.wswld.dtype.writer&amp;amp;hl=en&quot;&gt;dType&lt;/a&gt; has stricken me. The concept was fairly simple: a minimalistic tool, that would let you jot down some text and then pass it to some other application (Evernote, Dropbox, Email, etc.) for saving or processing. It was simple enough to get grip at basics, yet quite challenging for a person, who haven't seen Java code (or any code) before.&lt;/p&gt;
+&lt;p&gt;It was the moment, when I started coding. Well, let's say it was more about googling intensively for just about anything. It was hard. Most of the time I didn't know, what I was doing and asked fairly inept &lt;a href=&quot;http://stackoverflow.com/users/1349940/vsevolod-glumov?tab=questions&quot;&gt;questions&lt;/a&gt; on StackOverflow. I still do, but now at least I can tell, what most parts of my code are for. First, the immersion is like trying to play piano blindfolded — my code probably stunk a big time, but at the end of the day it worked and it was encouraging. Interest in Android development helped me to get a job as a technical writer in a bunch of Android-related projects, especially &lt;a href=&quot;http://opencv.org/&quot;&gt;OpenCV for Android&lt;/a&gt;. Since, I've been working mainly on C++ API references, I've started to delve into OOP concepts. I've been thoroughly explained, what is a class, a method and how they relate to each other, interfaces, abstract classes and the rest of this stuff. I'm extremely grateful for my mentors at there. Later, working on some other project, I had a chance to look closer at working Java code and see these concepts applied to Java. I immediately started to refactor dType code once again in attempt to implement thorough OOP design and shake off all the redundancy. My code became a little bit more laconic and neat. Not that it couldn't get any better, but it was still a huge leap forward for me.&lt;/p&gt;
+&lt;p&gt;As long as I remember, dType was constantly improving. It was first a bunch of undocumented spaghetti code, which was somewhat straightened out at version 0.16 — it became the earliest version I bother to keep in the repository, since everything before that was a complete disaster. Perhaps, it's still rather bad, but I've managed to shorten it almost twice, provide descriptive JavaDoc (for the sake of it, I know no one will probably bother to read) and fix a lot of issues while at it. I do feel a little attached to this code emotionally, since it is my first coding experience, that has grown into a little indie project of mine. Over the course of two years it has provided me with innumerable challenges and priceless practical experience, but it's finally time for me to move on. I've taken great interest in Python lately, and started a couple of projects in it. Coming back to Java code became more and more daunting to me. I was also advised by several programmers, that I'd better concentrate on getting really proficient with one language for now. My growing frustration with Java verbosity ensured, that I would end up with Python as my language of choice.&lt;/p&gt;
+&lt;p&gt;Still, it was a hard decision for me to drop &lt;a href=&quot;https://play.google.com/store/apps/details?id=net.wswld.dtype.writer&amp;amp;hl=en&quot;&gt;dType&lt;/a&gt; completely. People do use it and clone it on GitHub (yeah, it had a couple of official clones before the project has been moved back and forward, nevermind the actual numbers on GitHub). This project, though certainly quite niche and facile, does work for some. I decided, that this suspension is going to be more of a role shift for me: from active developer of this application to its maintainer. It will stay as an open repository at GitHub for you to clone and alter, it will stay published on Google Play. You can continue to use it in version 0.71. If people provide some relevant pull requests, I would be happy to merge them and even publish the resulting build as the new version of the app. It's just that me myself don't have the time or inclination for introducing new features anymore. It is now exactly the way I envisioned it, when I was starting. My big learning project has reached its objective. It's finished. My priorities have changed, but if you do care, I would be glad to see your contributions. I'm not naive to think that it could become a huge open source project, mind you, but I do hope, that the app could continue living on its own, while I'm gone.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Update 06.10.2014:&lt;/b&gt; No one decided to contribute to this project yet, and probably never will as more than a year has passed since this post. Perhaps, this is for the best, as I've seen people complaining about a couple of nasty visual bugs on some devices. Me myself wasn't able to work with it on Galaxy SIII as the screen gets black from time to time. So if you really want to revive the project, I can only wish you good luck with that. Seriously, if you want to try, give me your contacts, so that I could talk you out of this.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Why Static Site Generators aren't Good for My Blog</title>
+   <link href="http://localhost:4000/2013/08/06/why-static-site-generators-arent-good-for-my-blog/"/>
+   <updated>2013-08-06T17:24:27+04:00</updated>
+   <id>http://localhost:4000/2013/08/06/why-static-site-generators-arent-good-for-my-blog</id>
+   <content type="html">&lt;p&gt;I would be speaking about my own experiences and you may have noticed &lt;em&gt;my&lt;/em&gt; in the title, which is there to remind you about the subjective nature of this article. I don't dare to speak about &lt;em&gt;your&lt;/em&gt; blog or any other blog out there, but my own. I have no intention to convert you to my side, yet I would be very glad to see some of the like-minded people out there. I know they exist. My own research on the topic has unveiled, that although static site generators have this really substantial and zealous following, there are sober voices in the crowd, appealing to common sense. This is exactly why Kevin Dangoor went &lt;a href=&quot;http://www.kevindangoor.com/2012/03/wordpress-to-octopress-and-back/&quot;&gt;&quot;From Wordpress to Octopress and Back&quot;&lt;/a&gt; or why Michael Rooney is &lt;a href=&quot;http://mikerooney.rowk.com/2013/02/11/migrating-from-octopress-to-wordpress-really/&quot;&gt;&quot;Migrating from Octopress to WordPress&quot;&lt;/a&gt; — in the exact opposite direction from the majority of switchers.&lt;/p&gt;
+&lt;p&gt;[caption id=&quot;attachment_99&quot; align=&quot;alignnone&quot; width=&quot;630&quot;]&lt;img class=&quot; wp-image-99&quot; alt=&quot;Masses Migrating from Wordpress to Octopress&quot; src=&quot;/assets/screen-shot-2013-07-25-at-15-46-12-e1374753319968.png?w=700&quot; width=&quot;630&quot; height=&quot;519&quot; /&gt; Illustrating the distinctive trend among majority of switchers.[/caption]&lt;/p&gt;
+&lt;p&gt;It doesn't boil down solely to Wordpress vs Octopress debate, as the issue in hands is much broader and may be represented as &lt;em&gt;dynamic site engines&lt;/em&gt; vs &lt;em&gt;static site generators&lt;/em&gt;. If you're not aware of the difference between the two, here are the basics: with &lt;em&gt;dynamic site&lt;/em&gt; your content is generated dynamically by an application running on the server side, &lt;em&gt;static sites&lt;/em&gt;, on contrary, are pre-generated or written outright in HTML. Basically, &lt;em&gt;dynamic sites&lt;/em&gt; are a web-applications that could change their behaviour instantly, depending on input and other factors, while &lt;em&gt;static sites&lt;/em&gt;: well, they're just HTML files passively sitting there, waiting for you to open and read them. Sure, with introduction of jQuerry, Java Script and HTML 5 to the mix, the difference gets a little less distinctive, but let's stop at this level.&lt;/p&gt;
+&lt;p&gt;So, &lt;em&gt;static&lt;/em&gt; vs &lt;em&gt;dynamic&lt;/em&gt;. It could be virtually anything: Tumblr vs Hyde, Blogger vs Pelican, Movable Type vs Jekyll, etc. Major differences between the two models are more or less the same. It means that we should be really comparing the models themselves, not their instances.&lt;/p&gt;
+&lt;p&gt;So, what are the lucrative advantages of the static generation model? What makes people switch so quickly and without looking back? I came up with 3 most important reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Almost endless customizability.&lt;/li&gt;
+&lt;li&gt;It's mostly plain markup text files, that you can store in a Git repository.&lt;/li&gt;
+&lt;li&gt;Increased loading speed and security (&lt;em&gt;well, no features - no loopholes, obviously&lt;/em&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All three are valid points and at some moment I went down the static path myself with all three in mind. First I went with Jekyll, then switched to Octopress. At some point I even &lt;a href=&quot;http://stackoverflow.com/questions/1576340/using-sphinx-to-write-personal-websites-and-blogs&quot;&gt;tried&lt;/a&gt; to make Sphinx-generated site (sic!) work as a personal web-page, but lack of blog awareness and increasing complexity made me abandon this idea. When they say that running this kind of site is the easiest things to do, this is complete nonsense. In terms of comfortable workflow, I only can say a couple good things about pure Jekyll paired with GitHub Pages, but the result was so raw and required so much customization, that straightforward workflow was hardly an advantage. It is positioned as a toy for true geeks, tinkerers, but I don't see how anyone could really benefit from this kind of tinkering (&lt;em&gt;yeah, even geeks and tinkerers&lt;/em&gt;). I work in IT and we are here mainly to solve problems, not create tons of complimentary issues. Instead of reinventing the wheel, you could as well invest your time into something, that really needs to be done, perhaps — writing good stuff for your website.&lt;/p&gt;
+&lt;p&gt;I'm not the only one who noticed it, but for several months I've been experimenting with static generators, I've hardly written half a post. It was a common problem, as I googled it. People dug so deep into the endless customization and switching routine that eventually they've stopped writing. I may sound conservative to some, but I still think that blogging is mainly about writing. Sure, to some extent, this problem is applicable to dynamic platforms too (ping pong between Wordpress and Blogger, anyone?), but with static generators it grows to catastrophic proportions. They are the ultimate time drain for nerds and wannabes. Sure, if your time worth basically nothing and constant tweaking your blog is the best part about having it, be my guest. To me it looks pretty much like that little joke from Fry&amp;amp;Laurie:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Oh, yes, my boyfriend's a real DIY enthusiast, DIY mad.&lt;br /&gt;
+He's decorated the whole room and he's put up all these bookshelves, and now he's writing all these books to put on them.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Another seeming advantage of static site generators is their reliance on simple text, that could be utilized in distributed version control systems like Git. Most switchers assume, that they already use plain text and Git for code, why not use it for a blog? The problem is, that it also complicates things instead of easing them. Each generator has its own &lt;em&gt;super-easy-workflow™&lt;/em&gt; with different special folders, commands and scripts — quickly it becomes a mess. In this regard Git is basically one more noose on your neck. I'd focus on one especially nasty implementation of Git in such workflow — Octopress. You should fork the original Octopress repo, the &lt;code&gt;_deploy&lt;/code&gt; folder will be used for deploy to the pages repository and sources should be committed to the special &lt;code&gt;source&lt;/code&gt; branch. Now imagine what would happen if a somewhat major update gets pushed to the upstream of Octopress and your copy has been significantly modified over time. As someone has put it: &quot;Octopress is great, until it breaks&quot;. If you have some experience with Git and seen the Octopress workflow, you may imagine the hell it could possibly be. Actually, Octopress is itself a heavily modified version of Jenkins. No offence, but it all seems like Rupe Goldberg machine to me.&lt;/p&gt;
+&lt;p&gt;If you google it, you will find lots of people, performing full-featured benchmark tests of Wordpress vs Octopress with a complete disregard for the principal differences between the two. People start speaking of security and speed benefits of static sites, forgetting about all the advantages of dynamic sites, that come at the price of increased complexity and bloat (yes, I do think Wordpress is &lt;em&gt;a tad&lt;/em&gt; bloated). Imagine the situation: you need to jot down a post draft on a public or someone else's PC? Will you be cloning the repo, installing ruby, Octopress — setting up all the environment to write a short post? What about mobile support? Should you attempt to clone Octopress to your mobile phone? What about preserving drafts in the cloud without publishing them, but having access to them virtually from anywhere and anytime? Can you really put a price on that? People start using Evernote or similar service for drafts and such, but does it really worth introducing another tool to your workflow? Does mobility and availability worth another couple seconds of load time? My own choice is comfort and efficiency. I want my blog to be complimentary to my technical endeavors, not the other way around.&lt;/p&gt;
+&lt;p&gt;I've started thinking that less is actually more a long time ago and it may apply to blogging as to almost any other area of our life. You may notice, that I don't even use the standalone Wordpress install, but the pretty limited hosted Wordpress site. I prefer to pay engineers at Wordpress $13 for domain mapping and settle for less choice in themes, plugins and other options to focus on writing. We're all too lost in the world of different platform and workflow options these days. Google it and you will see hundreds of rants about why platform A is &lt;em&gt;deliberately&lt;/em&gt; better, than platform B, why static sites are better, than dynamic. You almost never hear that they help you in writing, no. It's all about SEO, storage space, customization, load speed and other insignificant stuff, not directly related to blogging. We're too obsessed with form and seem to forget about goddamn content. But, as I said before, it is all entirely subjective. You may still go down the static route, customize the ass out of your blog. You may even spend several years on writing your own static or dynamic blog engine from scratch, that will sure be absolutely unique and different from anything ever done before. Yet, I'm writing this post in a beautiful distraction-free WYSIWYG editor and my draft will be preserved online, when I press the &lt;em&gt;Save&lt;/em&gt; button and no &lt;code&gt;rake deploy&lt;/code&gt; is needed ever again.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>BioAid Meets Life</title>
+   <link href="http://localhost:4000/2013/07/20/bioaid-meets-life-2/"/>
+   <updated>2013-07-20T13:10:56+04:00</updated>
+   <id>http://localhost:4000/2013/07/20/bioaid-meets-life-2</id>
+   <content type="html">&lt;p&gt;&lt;!-- Introduction --&gt;&lt;/p&gt;
+&lt;p&gt;Couple of weeks ago me and my wife went to a hearing aid center for a free consultation before, perhaps, buying a new hearing aid. The previous one has been working just fine for five years or more and it has became unusable lately. In the center they have run all the ususal tests, created an audiogram and offered a couple variants to choose from. I was satisfied with the devices, however I haven't recognized any major difference from the one, that I already had. I was hoping to manage with $600-$500, and I was shocked when they named their price: even the cheapest of the devices was around $1000. We could afford it, but I declined.&lt;/p&gt;
+&lt;p&gt;Being a person with inborn defect of the auditory nerve, I'm wearing a BTE hearing aid all my life since the early childhood and I still remember the day, when I put the thing on for the first time. For a boy, who haven't been hearing the sounds of footsteps on asphalt or the birds twittering, etc, it was a marvelous to discover all those sounds for the first time. Later in life, when I was wearing my fifth of sixth hearing aid this wonderful piece of technology was already taken for granted and I was actively using it in school, university and later — in the workplace. Gradually, I started to recognize quite a few shortcomings of modern hearing aids:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Most doctors would suggest you wear aids on both ears, since it is really good at helping you to locate the sound and experience the stereo or 3D hearing. Wearing two devices may be considered tempting if you doesn't do anything else with your ears like using a phone, headphones and participating in all the different kinds of intense activities (&lt;em&gt;sport?&lt;/em&gt;), when people may unwillingly flick it off. It's a physical inconvenience of having something plugged into your ear that is not that simple to take off, but paradoxically simple to drop. People using them day-to-day would understand, what I'm talking about. Headphones and phone would also require you to take the aid off first and don't get me started on the horrible phone regime, which is available in most modern aids. This was actually how I lost one of my aids: I needed to use a phone, took it off and missed my pocket. Never saw that device again.&lt;/li&gt;
+&lt;li&gt;Whistling. Yes, they are constantly whistling and it is a curse upon the people with limited hearing. They whistle even more as the plastic ear mold of the aid is wearing off, which means that ideally it should be replaced every year. Whistling is produced by the mic and the speaker in the ear mold since they are too close to each other and the feedback sound is being produced. Ideally the ear mold should hermetically fit in the ear, to avoid the feedback, but at times it sticks out anyway, and when it does — it's close to unbearable.&lt;/li&gt;
+&lt;li&gt;Close sourced software and hardware parts. This industry is controlled by a bunch of electronics industry giants (Siemens, Phonak, etc) and they became to some extent monopolistic in this market, since only they had the initial resources to support research and production of hearing aids. Of course they are laying out all the rules now, which leads us to the fourth and the worst limitation of all.&lt;/li&gt;
+&lt;li&gt;Price. These devices are pricey as hell. It's a mic, a little processor and a speaker. Yeah, the size is super-small, but it doesn't add up to $1500-$2000 in my head, sorry. It's just immensely overpriced. I'm not a cheap guy, but I do have a problem when people feed me up with &quot;&lt;em&gt;magic&lt;/em&gt;&quot; and as I work in technology, I know that such claims are almost 100% marketing and outright bullshit. They know that most of us — the hearing impaired don't have a choice and we're forced to pay twice as much money for anything they come up with. If you look for the last ten years — they are going round in circles. Hearing aids haven't seen any revolutionary improvement for decades, compared with the booming technology market in consumer electronics and it's just sad.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Considering all the above, there is great demand for some open solution in the market. Something you could thinker with yourself and use as a temporary or permanent substitution for a commercial hearing aid. To achieve that, it should be capable not only of recording, amplifying and reproducing the sound, but it also should be smart enough to amplify only some frequency ranges, depending on type and severity of the hearing damage. It would need some computational power to process the sound. Ideally, it should also analyze the sound and get rid of background noise, while normalizing the rest of it (making it quieter or louder depending on the context). Modern smartphones are perfect candidates, since they have everything we need in a hearing aid. I started looking for solutions available as an iPhone app and stumbled upon &lt;a href=&quot;http://bioaid.org.uk/&quot;&gt;BioAid&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;BioAid is an app, implementing a full-featured hearing compensation algorithm, developed by a &lt;a href=&quot;http://bioaid.org.uk/contact.html&quot;&gt;team of scientists&lt;/a&gt; in the university of Essex. They themselves stress on the fact, that this is not about an iOS app, but the algorithm at the heart of it, which took years of research and continues to evolve today.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Initially, the research was not concerned with hearing aids at all but with the construction of computer models of how hearing works at a physiological level in the auditory periphery.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;However, the team has moved to working on hardware models and opted for mobile phones, since commercial hearing aids are almost impossible or too expensive to modify and require an agreement with the manufacturers, which is not that easy to obtain. Smartphones have everything, that a hearing aid needs (&lt;em&gt;mic&lt;/em&gt; → &lt;em&gt;processor&lt;/em&gt; → &lt;em&gt;speaker&lt;/em&gt;), they're compact enough and modern smartphones have sufficiently long battery life to perform on-the-fly sound processing almost all day. In my case it was a godsend and I rushed to test the app in everyday situations.&lt;/p&gt;
+&lt;p&gt;First thing I needed to do was to find the most suitable mode. For me it was simple since I've done million audiograms and knew that my hearing lacks some of the higher frequencies. After a quick scan I have found Gradual HF — the one I recognized at once as it reminded me of how all my aids sounded. My advice would be to start your scan with the first variants of every mode since some of the modes may be too loud or high in frequency and it's just unpleasant to learn it the worst way. Surprisingly, finding the right mode is not a problem at all. I was afraid the app would require audiograms and it would complicate things. It's definitely easier this way. Depending on the headphones (they have different levels and may alter the sound a little bit) I was best off with the 2nd and 3rd variants of Gradual HF mode.&lt;/p&gt;
+&lt;p&gt;I started testing the app in a park with lots of people walking, rolling and skating around. Although it was quite a test to start with I was pretty impressed with the results. It reminded me of times, when I put my first aid on. I heard everything happening around quite distinctly. Frequencies were altered in the right way. Sure iPhone headphones mic has its problems and I'm still hoping to find a better one, but other than that, I had no problems at all. It does reduce a little bit of background noise, depending on Gate value, however I wouldn't recommend setting it much higher than default settings as it may cripple the other, more critical sounds. The problem with the standard headphones mic boils down to missing out on sounds from behind or on the left (if you have the mic on your right side) occasionally, but it's not critical. However, if you're speaking with someone and the person is on the left — it may work a little less precisely than usually. The mic is also quite sensitive to wind and clothing rustle. Due to some lag you can't use Bluetooth headphones, though. This is an iPhone issue since people watching videos with Bluetooth headphones sometimes notice that too.&lt;/p&gt;
+&lt;p&gt;Usually, I wear my hearing aid in office, since it is the only place, where most of conversations are critical and may happen almost spontaneously. I was also quite satisfied. I heard everything said on meetings, even better, than with my previous aid, and decided to use BioAid at least temporarily at work. The only problem I can imagine is people's perception of wearing headphones all the time. Some people assume that you're listening to music. My office is quite liberal and modern since it's an IT company and a little Skype chat announcement worked, I can imagine, however, it couldn't always work this well. Me personally, I find headphones more aesthetically tolerable than a BTE aid, since people are almost constantly wearing headphones nowadays. Another problem is that you may need to buy a battery extender case or enhance the battery life of your iPhone in some other way. My battery is just enough to live through an usual working day, avoiding, if possible other uses of the phone. I only listen to some occasional music on my commute in the morning and after work. If I took the phone off charger at 8 in the morning it is usually almost dead by 22 after the full 8-hour day. Battery life is my biggest concern with the app so far. I had thought of getting a separate iPod Touch player and run the app there as professor Ray Meddis does in &lt;a href=&quot;http://www.youtube.com/watch?v=V_spE9JiUTg&amp;amp;amp&quot;&gt;this video&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Other minor flaw is that algorithm is implemented in mono, though in theory, stereo implementation is also possible. It is a problem since it may affect your perception of the direction, the sound is coming from. Even if it was processed as stereo, the iPhone standard headphones mic is mono, so the sound is mono by default. Perhaps, stereo would be even worse as a battery drain, so maybe it's OK the way it is. It is specific to iPhone implementation only and not the algorithm itself. Speaking about iPhone implementation, there are also some minor issues that complicate the workflow: like the app stopping on phone call and not resuming afterwards, or welcome screen appearing every time the app is launched, but all of these are solvable.&lt;/p&gt;
+&lt;p&gt;Still, for now I'm &lt;strong&gt;not even thinking&lt;/strong&gt; of getting back to commercial aids. I have a very strong impression, that BioAid approach is the future of hearing aids. Especially for people, who don't have the hearing damage so severe, that they require deep in-canal aids or even implants, which is majority of people with hearing problems. Unloading the sound processing from the aid to a smartphone or similar device (&lt;em&gt;iPod Touch?&lt;/em&gt;) may be the right way especially considering the fact, that going from nine to twelve channels adds up at least a thousand dollars to the price of the commercial aid and iPhone has enough computational power to process much more. Sure, there are still some problems, but most of them are of the implementation and are going to be fixed sooner or later. Algorithm itself is entirely open-source, which means you can &lt;a href=&quot;https://github.com/audioplastic/BioAid&quot;&gt;fork&lt;/a&gt; it on GitHub and create your own version, addressing all of the issues described above, or providing support for some other platform. If you're a hearing impaired person and you've decided to try &lt;a href=&quot;http://bioaid.org.uk/&quot;&gt;BioAid&lt;/a&gt; for yourself, don't forget to provide your &lt;a href=&quot;http://bioaid.org.uk/contact.html&quot;&gt;feedback&lt;/a&gt; to the research group, since it may turn out very useful to them.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Update 14.11.2014:&lt;/b&gt; I've written &lt;a href=&quot;http://wswld.net/2014/09/24/update-on-bioaid-and-my-hearing-in-general/&quot;&gt;another piece on BioAid&lt;/a&gt; in a year's time, where I've reexamined most of my earlier observations and conclusions.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Google Apps and Household Finances</title>
+   <link href="http://localhost:4000/2013/06/21/google-apps-and-household-finances/"/>
+   <updated>2013-06-21T01:41:06+04:00</updated>
+   <id>http://localhost:4000/2013/06/21/google-apps-and-household-finances</id>
+   <content type="html">&lt;p&gt;I'm in charge of household finances. By this I imply recording every single money transaction, occurring within our family, and providing on demand information about balance by account, overall household value, etc. I also issue monthly financial reports, so that me and my wife could analyze them and come up with a better spending strategy. When the whole thing works, it provides some outstanding insights into the economic condition of our household. &lt;em&gt;When it works&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s assume you want to try it for yourself. Casual Google search will expose you to the vast amount of options, some of them are paid, some — free as in beer. But I dare you wouldn’t be &lt;em&gt;completely&lt;/em&gt; satisfied with any of those apps and services:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Some of the superb options out there are probably unavailable in your country, if you live outside of US. For example, the famous &lt;a href=&quot;https://www.mint.com&quot;&gt;Mint&lt;/a&gt; app is unavailable in my country without a good VPN.&lt;/li&gt;
+&lt;li&gt;Some of the projects don’t provide any mobile app or provide a 3rd party solution, which will have all sorts of quirks and unsupported features.&lt;/li&gt;
+&lt;li&gt;Only a small subset of projects gets it right. Experience is always to some extent limiting even with the paid applications. I’ve never seen a personal finance app that would provide all the features I need, and I’m not among the most demanding users out there, believe me.&lt;/li&gt;
+&lt;li&gt;You usually have no access to data except for export (if you're lucky). If your data is somehow lost or ruined, it all happens under-the-hood. You won’t be able to fix the thing yourself, unless you’re a developer and the app is open source.&lt;/li&gt;
+&lt;li&gt;Platforms may be also the thing. Some developers provide only iOS and Mac binding and other try to please everyone except Apple users. I’m using Mac and iPhone, and my wife has been a die hard Android zealot (&lt;em&gt;just kidding&lt;/em&gt;). Since she couldn't access our database herself, she notified me about every transaction and I placed it into the system on her behalf. Can you imagine how exhausted I was after several months of this workflow? It was all because the app developer didn’t provide any sane way of syncing between Android and iOS. Moreover, when my wife has switched to the iPhone, we discovered that they don’t even provide syncing between iOS devices.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I’m speaking now about &lt;a href=&quot;http://www.jumsoft.com/money/&quot;&gt;Money by Jumsoft&lt;/a&gt;. Not only it never really implemented syncing between different mobile devices, but it also failed to provide simple Mac to iPhone sync, the feature that is actually listed on their site. It used to sync through iCloud but when all the drama with iCloud not supporting databases occurred, they went back to Wi-Fi syncing. It never worked right and ultimately it crippled our data. Five months of carefully collected entries for every single transaction gone in a second. It was the moment I started to look for some other approach.&lt;/p&gt;
+&lt;p&gt;New approach came as an idea of using something simple and omnipresent. Something that would be available for all of the popular mobile and desktop platforms out there. I was thinking of using Google Docs. First, this idea seemed a little bit crazy (&lt;em&gt;it still does&lt;/em&gt;), but then as it developed into a working prototype, it was actually a very smart move (&lt;em&gt;still crazy though&lt;/em&gt;). Let’s break the concept down in theory:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We need some kind of &lt;strong&gt;interface&lt;/strong&gt; for creating entries.&lt;/li&gt;
+&lt;li&gt;We need a &lt;strong&gt;database&lt;/strong&gt; for storing entries.&lt;/li&gt;
+&lt;li&gt;We need some kind of a &lt;strong&gt;script&lt;/strong&gt; to process the results.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I looked closely at all the products provided by Google, and found all three components for implementing this concept:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interface is going to be implemented as &lt;a href=&quot;http://support.google.com/drive/bin/answer.py?hl=en&amp;amp;amp;answer=87809&quot;&gt;Google Forms&lt;/a&gt; document.&lt;/li&gt;
+&lt;li&gt;Database is best implemented as Google Spreadsheet. Jumping ahead of myself, I can also reveal that the forms may write responses to the spreadsheets. That’s exactly what we need!&lt;/li&gt;
+&lt;li&gt;Script was a little bit harder to figure out. First, I was hoping to process everything with built-in spreadsheet functions, but it never really worked for this kind of calculations. So I went with &lt;a href=&quot;https://developers.google.com/apps-script/&quot;&gt;Google Apps Script&lt;/a&gt;. More of that in a bit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It all look quite simple in theory, but in reality there are quite a few pitfalls here and there. I’m going to guide you trough all the major steps of implementing this concept in practice.&lt;/p&gt;
+&lt;p&gt;Creating the form and collecting responses is not actually that hard. In Google Drive create the form document and populate it with elements. However, there are a couple of minor considerations which may affect your output data to some extent:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Watch the question titles as they directly affect the number of columns and their caps. Section caption is of no interest in regard to the output data though.&lt;/li&gt;
+&lt;li&gt;Questions do not override. So, if you have question called &lt;em&gt;Amount&lt;/em&gt; in one section and a question with the same name in another, it will result in two columns &lt;em&gt;Amount&lt;/em&gt; in your table with different values.&lt;/li&gt;
+&lt;li&gt;Also you may want to avoid nested sections as they complicate things a little.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here is an example of how you should &lt;strong&gt;not&lt;/strong&gt; organize your form:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;text&quot;]&lt;/p&gt;
+&lt;p&gt;Section: Start&lt;br /&gt;
+Element: Type [Bills, Food]&lt;/p&gt;
+&lt;p&gt;* Depending on type value go to one of the following:&lt;/p&gt;
+&lt;p&gt;- Section: Bills&lt;br /&gt;
+Element: Subtype [Electricity, Cellular, Rent]&lt;br /&gt;
+Amount: [Number]&lt;/p&gt;
+&lt;p&gt;* Commit results.&lt;/p&gt;
+&lt;p&gt;- Section: Food&lt;br /&gt;
+Element: Subtype [Grocery, Fast Food]&lt;br /&gt;
+Amount: [Number]&lt;/p&gt;
+&lt;p&gt;* Commit results.&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+&lt;p&gt;Above you could probably notice an attempt to override the &lt;tt&gt;Subtype&lt;/tt&gt; and &lt;tt&gt;Amount&lt;/tt&gt; elements. It will result in a table with duplicate &lt;em&gt;Subtype&lt;/em&gt; and &lt;em&gt;Amount&lt;/em&gt; columns. It’s not that smart but it is the way it is. What I did is getting rid of subtypes and creating only the number of types I would certainly need. For example I have no &lt;em&gt;Bills&lt;/em&gt; in types, but &lt;em&gt;Electricity&lt;/em&gt;, &lt;em&gt;Cellular&lt;/em&gt;, etc. So, I ended up with only one section like this:&lt;/p&gt;
+&lt;p&gt;[code language=&quot;text&quot;]&lt;/p&gt;
+&lt;p&gt;Section: Start&lt;br /&gt;
+Element: Type [Electricity, Cellular, Rent, Grocery, Fast Food]&lt;br /&gt;
+Amount: [Number]&lt;br /&gt;
+* Commit results.&lt;/p&gt;
+&lt;p&gt;[/code]&lt;/p&gt;
+&lt;p&gt;I was geared towards creating the system as simple as possible, so I tried to exclude all the nice but potentially useless stuff leaving only the core functionality, that would be harder to break. In menu go &lt;tt&gt;Responses&lt;/tt&gt; → &lt;tt&gt;Choose response destination&lt;/tt&gt;. It will show a dialog window allowing you to choose a spreadsheet for your output data. Quite easy. If you test the form now you can see how the responses are being added to the table in your Google Drive. It even creates the human-readable timestamp column, which saves you the trouble of inputing the date and time yourself. Note, that &lt;em&gt;live&lt;/em&gt; form may be accessed as a bookmark, or opened in mobile Google Drive apps for Android and iOS.&lt;/p&gt;
+&lt;p&gt;Creating the form and gathering the data aren’t exactly the trickiest stages of our little project. Providing somehow valuable analytics on top of that data – that’s the real challenge. Let’s imagine, that we’ve collected all the data and now we want to analyze it. We’ll need some automatically updated metrics for our project:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Household Balance&lt;/li&gt;
+&lt;li&gt;Balance by Account&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As soon as we figure out the algorithm for these two, we can easily implement any other metric (&lt;em&gt;Balance by Category?&lt;/em&gt;) using the same method. Note that built-in spreadsheet functions probably won't work, we need something much more extensive and smart. Here comes the &lt;a href=&quot;https://developers.google.com/apps-script/&quot;&gt;Google Apps Script&lt;/a&gt;. It’s basically a full-featured scripting API for simple JavaScript web apps. Google provides the server and the ability to bind the script with the variety of Google Products. If you haven’t heard of that before, there are lots of examples and learning materials on their site — believe me, there is a lot of magic going on over there.&lt;/p&gt;
+&lt;p&gt;Let’s see how we can apply the scripting capabilities of Google Apps to our case. Open your destination spreadsheet and in menu go: &lt;tt&gt;Tools&lt;/tt&gt; → &lt;tt&gt;Script Editor&lt;/tt&gt;, in the &lt;tt&gt;Google Apps Script&lt;/tt&gt; dialog window select &lt;tt&gt;Spreadsheet&lt;/tt&gt; We will need a little script, that should run, when the spreadsheet is opened. Example script will leave you with &lt;code&gt;onOpen&lt;/code&gt; and &lt;code&gt;readRows&lt;/code&gt; functions. You can pretty much start with that. Let’s see my take on the latter:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In the first part we start with &lt;code&gt;SpreadsheetApp.getActiveSpreadsheet()&lt;/code&gt; and end with row values as a 2-dimensional array &lt;code&gt;values&lt;/code&gt;. Please keep in mind, that the array is 2-dimensional.&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;    var ss = SpreadsheetApp.getActiveSpreadsheet();&lt;br /&gt;
+    var sheet = ss.getSheetByName(&amp;quot;Form Responses&amp;quot;);&lt;br /&gt;
+    var rows = sheet.getDataRange();&lt;br /&gt;
+    var numRows = rows.getNumRows();&lt;br /&gt;
+    var values = rows.getValues();&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;li&gt;Now we should declare all the variables we will need. In my case it was the output array and a separate variable for every account within family, including the cash accounts:&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;    var arr = [];&lt;br /&gt;
+    var hhld = 0.0;&lt;br /&gt;
+    var vcsh = 0.0;&lt;br /&gt;
+    var c4545 = 0.0;&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;Note that &lt;tt&gt;hhld&lt;/tt&gt; here stands for the total household value, &lt;tt&gt;vcsh&lt;/tt&gt; for Victor's cash, and &lt;tt&gt;c4545&lt;/tt&gt; — a fictional credit card by its last four digits.&lt;/li&gt;
+&lt;li&gt;Let’s iterate trough every row and match the entry with the account accordingly:&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;      for (var i = 0; i &amp;lt;= numRows - 1; i++) {&lt;br /&gt;
+          var row = values[i];&lt;/p&gt;
+&lt;p&gt;          if (row[1]=='Victor Cash')&lt;br /&gt;
+          {&lt;br /&gt;
+              vcsh = vcsh+parseFloat(row[3]);&lt;br /&gt;
+              hhld = hhld+parseFloat(row[3]);&lt;br /&gt;
+          }&lt;/p&gt;
+&lt;p&gt;          if (row[1]=='4545')&lt;br /&gt;
+          {&lt;br /&gt;
+              c4545 = c4545+parseFloat(row[3]);&lt;br /&gt;
+              hhld = hhld+parseFloat(row[3]);&lt;br /&gt;
+          }&lt;br /&gt;
+      };&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;li&gt;Now we may append the values to the array and return it:&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;      arr[0]=hhld;&lt;br /&gt;
+      arr[2]=vcsh;&lt;br /&gt;
+      arr[3]=c4545;&lt;/p&gt;
+&lt;p&gt;      return arr;&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let’s get to the main &lt;tt&gt;onOpen()&lt;/tt&gt; function. It is shorter, but a little more tricky:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We open an active spreadsheet again, but this time use the other sheet, since no one would ever consider mixing data and results a good idea. We also should create two arrays.&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;      var ss = SpreadsheetApp.getActiveSpreadsheet();&lt;br /&gt;
+      var targetSheet = ss.getSheetByName(&amp;quot;Analytics&amp;quot;);&lt;br /&gt;
+      var array = [];&lt;br /&gt;
+      var data = [];&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;li&gt;Now let’s call the &lt;tt&gt;readRows&lt;/tt&gt; function and get an array of account balances. Note how we use &lt;tt&gt;data[0]&lt;/tt&gt; to create a two-dimensional array.&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;      array = readRows();&lt;br /&gt;
+      data[0]=array;&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;li&gt;Finally, we should get the sheet range and assign data to it. Note that &lt;tt&gt;setValues&lt;/tt&gt; can work only with 2-dimensional arrays and it was the reason we created one in the first place:&lt;br /&gt;
+[code language=&quot;javascript&quot;]&lt;/p&gt;
+&lt;p&gt;      var range = targetSheet.getRange('A2:M2');&lt;br /&gt;
+      range.setValues(data);&lt;br /&gt;
+[/code]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can test your app by both opening the spreadsheet or calling the &lt;tt&gt;onOpen&lt;/tt&gt; function directly by clicking &lt;tt&gt;Tools&lt;/tt&gt; → &lt;tt&gt;Script Manager&lt;/tt&gt; → &lt;tt&gt;Run&lt;/tt&gt;. For now the script doesn’t really work with mobile devices, so you will need to open the sheet on your machine to update the metrics. There are innumerable ways you may improve this script. Please let me know if you come up with something cool.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update 18.06.2013:&lt;/strong&gt; I've found a way to automate the account counters and therefore enable full support for mobile devices. If you follow the workflow described in the post, you would end up with the script running only when opened, however for a spreadsheet paired with a form there is another kind of trigger available: &lt;em&gt;on form sent&lt;/em&gt;. It runs the script every time, when the form is sent and unlike &lt;tt&gt;onOpen&lt;/tt&gt; it seem to be performed on the side of Google, which makes our script platform-agnostic. Trigger can be enabled by going to &lt;tt&gt;Resources&lt;/tt&gt; → &lt;tt&gt;Current project's triggers&lt;/tt&gt;. In the dialog window add a new trigger and then select your main function (&lt;tt&gt;onOpen&lt;/tt&gt;), next — &lt;tt&gt;From spreadsheet&lt;/tt&gt; (yes, they have time-driven triggers too) and &lt;tt&gt;On form submit&lt;/tt&gt;. You may test it now by filling the form from your phone and then checking the account counters in a second or so.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Update 14.11.2014&lt;/b&gt;: We've spent some time with this system (a year or so), but eventually I've decided to make something more reliable: check out my &lt;a href=&quot;https://github.com/wswld/menage&quot;&gt;Le Ménage&lt;/a&gt; project on Github.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introduction</title>
+   <link href="http://localhost:4000/2013/06/07/introduction/"/>
+   <updated>2013-06-07T21:51:29+04:00</updated>
+   <id>http://localhost:4000/2013/06/07/introduction</id>
+   <content type="html">&lt;p&gt;My name is Vsevolod Glumov.&lt;/p&gt;
+&lt;p&gt;I’m working now as a technical writer with strong focus on code references and other developer-oriented materials. I’m also an inspired beginner developer, delving into the worlds of Java and Python on my own. You can find links to quite a few of my open-source &lt;a href=&quot;http://wswld.net/projects/&quot;&gt;projects&lt;/a&gt; on this site.&lt;/p&gt;
+&lt;p&gt;I’m not among the people who have recently joined the industry because they heard it may help them to pay their bills and more. I’m not among the people, constantly laying siege to conference halls in search of another million-dollar startup idea. I’m here because I’m in the state of being constantly amazed by the vast universe of knowledge the 20-year-old industry is now. I want to contribute to this. I want to be a part of it.&lt;/p&gt;
+&lt;p&gt;Along the way I’m getting stuck and puzzled. Sometimes I’m capable of fixing it myself, sometimes — some wiser guy comes and helps me. Some of these issues were real pearls and it’s a shame that they may be ultimately forgotten. Sometimes I suddenly get an idea of how I can improve my performance and implement them in my workflow. I start to perform better and it’s a shame I have no public space online to tell about this trick. Well, not anymore.&lt;/p&gt;
+&lt;p&gt;At the end of the day there is no final goal to this blog. Ideally, it should have no end, no real destination, as the learning process that it conveys. In fact, I wouldn’t even call it a blog. It should be more like the journal of the odyssey into the unknown.&lt;/p&gt;
+&lt;p&gt;Let it be the ultimate mission statement.&lt;/p&gt;
 </content>
  </entry>
  

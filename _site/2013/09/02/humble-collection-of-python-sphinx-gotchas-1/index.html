@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Humble Collection of Python Sphinx Gotchas: Part I &middot; וסוולוד
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="וסוולוד" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">וסוולוד</a>
+        </h3>
+        <div class="subtitle"><small>Running behind the schedule since 1989.</small></div>
+      </header>
+
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Humble Collection of Python Sphinx Gotchas: Part I</h1>
+  <time datetime="2013-09-02T19:11:05+04:00" class="post-date">02 Sep 2013</time>
+  <h3>Gotcha 1: Getting Started with Sphinx Theming</h3>
+<p><em><b>Update 02.10.2014:</b> It seems absolutely obvious to me, but apparently it is not that obvious to <a href="http://stackoverflow.com/questions/25800264/bootstrap-theme-ugly-looking-font-for-inline-literal/25890178">some</a>: you can't do anything about your Sphinx theme without some basic CSS and HTML skills. You can only change some of the theme parameters, if the developer was kind enough to add some, but it is <a href="http://sphinx-doc.org/theming.html#using-a-theme">well covered</a> in the official documentation.</em></p>
+<hr />
+<p>Customizing Sphinx visuals was somewhat upsetting to me at first, since the process is not straightforward and documentation is scarce. It could be a little bit user-friendlier. However, as soon as you get a grip on the basics, it gets pretty smooth and simple. You may have already tried copying over the default theme only to discover, that there is nothing particularly useful in there for an inquisitive scholar. Only one of the standard Sphinx themes is in fact complete, the rest of them simply inherit its properties to add some minor alterations. This theme is called <em>Basic</em> and it's a minimal sandbox template, the only theme that could be helpful for getting to the very bottom of Sphinx customization. Later you'd be able to inherit it and create a template, consisting only of alterations, but for a start it's OK to copy the <em>Basic</em> in its entirety.</p>
+<p>Hopefully, you've already created a folder for your Sphinx project and initiated it by issuing:</p>
+<p>[code language="bash"]<br />
+$ sphinx-quickstart<br />
+[/code]</p>
+<p>Or you may have an already existing Sphinx project, you want to theme — it's up to you. In your project folder create the <tt>_themes</tt> directory and then rename and copy the theme folder there. <em>Basic</em> theme, perhaps, should be located in <tt>site_packages</tt> folder of your active Python install. On my Mac it's: <tt>/Library/Python/2.7/site-packages/Sphinx-1.2b1-py2.7.egg/sphinx/themes/basic/</tt>, but Python on Mac OS X is just weird. If you're using Linux (<tt>/usr/share/sphinx/themes/basic/</tt> on Debian) or Windows, you should look it up yourself.</p>
+<p>Next step would be to change <tt>conf.py</tt> of your project, accordingly. First, we should make sure, that the following line is uncommented and correct:</p>
+<p>[code language="python"]<br />
+html_theme_path = ['_themes']<br />
+[/code]</p>
+<p>Don't forget to check the value of the <tt>html_theme</tt> parameter above:</p>
+<p>[code language="python"]<br />
+html_theme = 'renamed_basic'<br />
+[/code]</p>
+<p>[caption id="attachment_282" align="alignleft" width="300"]<a href="http://methodandgrit.files.wordpress.com/2013/09/screen-shot-2013-09-02-at-10-14-52-pm.png"><img class="size-medium wp-image-282" src="/assets/screen-shot-2013-09-02-at-10-14-52-pm.png?w=300" alt="Basic Theme" width="300" height="206" /></a> Basic theme without customization looks like vanilla HTML with no stylesheet whatsoever.[/caption]</p>
+<p>As of now you may start making alterations to the theme. You will find that HTML files in there aren't really HTML files, but templates (Sphinx uses <a href="http://en.wikipedia.org/wiki/Jinja_(template_engine)">Jinja</a> template engine) with some staff automatically inserted on build. You can combine these automatic tags with basic HTML tags and as soon as you figure out how it works, you could move some of the interactive tags around, or get rid of some of them altogether. Don't forget to check whether you're not breaking anything though. Most visual aspects of Sphinx theme are modified through the main CSS file, which is located in the <tt>static</tt> folder. For <em>Basic</em> theme it would be <tt>basic.css_t</tt>. Notice, that <tt>t</tt> in the extension brings to our attention the fact, that this is a template. Other than that it could be viewed and edited as a simple CSS file. If you're interested in the values, provided by Sphinx templates and how you cam make use of them, consult <a href="http://sphinx-doc.org/templating.html#jinja-sphinx-templating-primer">the official documentation</a>. If you want the main CSS file to have some other name, you can change that in <tt>theme.conf</tt>, there are also some other settings, that could be of interest.</p>
+<h3>Gotcha 2: Spoiler</h3>
+<p>If you play with Sphinx templates for some time, you may want to start adding something more interactive. We could easily implement these kinds of things trough JavaScript or jQuerry (which is kindly included in the package).</p>
+<p>Let's go trough a little example project, to recognize, what could be achieved with combined power of Sphinx and JavaScript. You may notice, that as for common elements in HTML themes there is usually a way to address them in JavaScript, it's not that easy to introduce new classes and wrap some parts of the text into them. There is no custom <tt>div</tt> tag in Sphinx, unless you do that as <tt>.. raw</tt> directive which is not really a native way, and breaks lots of things. What I needed to do was to wrap some section of text into a <tt>div</tt> and make it collapsible on button pressed. You could achieve that by creating your own admonition and assigning it to certain HTML class.</p>
+<p>For example:</p>
+<p>[code]<br />
+.. admonition:: Request<br />
+		:class: splr<br />
+ 		Request example and parameters.<br />
+[/code]</p>
+<p>You can then easily reference this admonition by its class in your JavaScript. For example you could put this jQuerry script to your <tt>page.html</tt> template:</p>
+<p>[code language="javascript"]<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    $('.splr').css(&quot;background-color&quot;, '#F0F0F0');<br />
+    $('.splr').css('box-shadow', '0px 0px 1px 1px #000000');<br />
+    $('.splr &gt; .last').hide();<br />
+    $('.splr &gt; .expanded + .last').show('normal');<br />
+    $('.splr &gt; p').click(function() {<br />
+        $(this).find('.last').hide();<br />
+        $(this).toggleClass('expanded').toggleClass('collapsed').next('.last').toggle('normal');<br />
+    });<br />
+    &lt;/script&gt;<br />
+[/code]</p>
+<p>If implemented correctly, this script should turn the <tt>splr</tt> admonition into a collapsible drawer. I've been actively using this, when documenting HTTP APIs, since it's very helpful to hide JSON responses by default. Note, that you could also use this method for special CSS effects. Imagine, if aside from usual note, warning and tip you could have yellow, blue and purple boxes for whatever reason you can think of? Well, it couldn't be any simpler. Admonitions are good default containers for some parts of your text, that should differ in design or function from the rest of the page.</p>
+<h3>Gotcha 3: Interactive TOC in Sidebar</h3>
+<p>[caption id="attachment_242" align="alignright" width="300"]<a href="http://methodandgrit.files.wordpress.com/2013/08/tocs.png"><img class="  wp-image-242 size-medium" src="/assets/tocs.png?w=300" alt="Not the worst case, but still a valid comparison of TOC trees in Default theme and our JavaScript enhanced Basic. Note, that on the right the subcategories may be collapsed and opened dynamically." width="300" height="198" /></a> Not the worst case, but still a valid comparison of TOC trees in Default theme and our JavaScript enhanced Basic.[/caption]</p>
+<p>You may have noticed, that Sphinx often adds TOC to sidebar automatically, if it's not explicitly placed in the page itself. While this is certainly a very useful feature, sometimes things get out of control. I didn't use the worst case in the picture on the right, but it could get up to innumerable 1st level sections, each of them could have a number of subsections and so on. Sometimes it is a clear sign, that the page should be reorganized into multiple standalone pages, united by a category, but it's not always possible or needed. It's perfectly alright to have a long and deep TOC in some cases and <em>Default</em> Sphinx theme is terrible in that regard (<em>as of 2014 it is fixed and children categories are shown only for the currently selected one</em>).</p>
+<p>You could use an updated version of the algorithm from the previous example to collapse some parts of the TOC by default. Note, how this script works with <tt>ul</tt> and <tt>li</tt> tags of the TOC tree list. Some stuff is applied recursively on the highest level of the list, some — on the subsequent levels. Especially noticeable with different styles applied to different levels of the list, so that you could tell whether it is 1st, 2nd or even 3rd level title. Here is the full script:</p>
+<p>[code language="javascript"]<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    $('.sphinxsidebar').attr('position', 'fixed');<br />
+    $('.sphinxsidebar').css('position', 'fixed');<br />
+    $(&quot;h3:contains('Table Of Contents')&quot;).css('border-bottom', '1px');<br />
+    $(&quot;h3:contains('Table Of Contents')&quot;).text('TOC:');</p>
+<p>    $('.sphinxsidebarwrapper li').css('background-color', '#B8B8B8');<br />
+    $('.sphinxsidebarwrapper li').css('box-shadow', '0px 0px 1px 1px #000000');<br />
+    $('.sphinxsidebarwrapper li').css('color', 'white');<br />
+    $('.sphinxsidebarwrapper li').css('border-color', '#000000');</p>
+<p>    $('.sphinxsidebarwrapper li &gt; ul &gt; li').css('background', '#D0D0D0');<br />
+    $('.sphinxsidebarwrapper li &gt; ul &gt; li').css('box-shadow', '0px 0px 1px 1px #000000');<br />
+    $('.sphinxsidebarwrapper li &gt; ul &gt; li &gt; ul &gt; li').css('background', '#F0F0F0');</p>
+<p>    $('.sphinxsidebarwrapper li &gt; ul').hide();<br />
+    $('.sphinxsidebarwrapper li &gt; .expanded + ul').show('normal');<br />
+    $('.sphinxsidebarwrapper li &gt; a').click(function() {<br />
+    //hide everything<br />
+    $(this).find('li').hide();<br />
+    //toggle next ul<br />
+    $(this).toggleClass('expanded').toggleClass('collapsed').next('ul').toggle('normal');<br />
+    });<br />
+    &lt;/script&gt;<br />
+[/code]</p>
+<p>Perhaps, it won't look very well, but it is a very simplified version to illustrate the concept. If you get the idea, you may alter or add <tt>.css</tt> methods to achieve more plausible visuals. You could also work on lower title levels, but you will have to figure it all out for yourself. In this version algorithm works best only with three headings levels from <tt>&lt;h1&gt;</tt> to <tt>&lt;h3&gt;</tt>, but it could definitely handle more.</p>
+<p>That's it. <del datetime="2014-10-04T14:32:09+00:00">I've compiled these examples as a full-featured theme project on GitHub. I'm going to polish it to some extent and perhaps, implement more interactive stuff over time. Feel free to contribute to this little project.</del><em> Nope, never happened. Well, it did happened actually, but it was no good, sorry.</em> If you come upon any issue with this little gotchas of mine, let me know. Sure, I've tested everything myself, but you never know. Also, you're free to use any of these examples as a building block in your work with no attribution, since they're rather generic and simple.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2017/06/01/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2017-06-01T00:00:00+03:00">01 Jun 2017</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00+03:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2016/10/07/til-mongo-sucks/">
+          TIL: Mongo Sucks
+          <small><time datetime="2016-10-07T16:19:06+03:00">07 Oct 2016</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2017-12-25T19:44:50+03:00">2017</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,45 @@
+---
+layout: post
+title: Test
+date: 
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '10080708'
+  geo_public: '0'
+  _wpcom_is_markdown: '1'
+author:
+  login: wswld
+  email: seva17@gmail.com
+  display_name: wswld
+  first_name: ''
+  last_name: ''
+---
+<h2>Introduction</h2>
+<p>The notebook extends the console-based approach to interactive computing in a qualitatively new direction, providing a web-based application suitable for capturing the whole computation process: developing, documenting, and executing code, as well as communicating the results. The IPython notebook combines two components:</p>
+<p>Here comes some math:</p>
+<p>$ x^n + y^n = z^n $</p>
+<p>Here goes some text after some math.</p>
+<p>[code lang=python]<br />
+from marshmallow import Schema, fields</p>
+<p>class BandMemberSchema(Schema):<br />
+    name = fields.String(required=True)<br />
+    email = fields.Email()</p>
+<p>user_data = [<br />
+    {&#039;email&#039;: &#039;mick@stones.com&#039;, &#039;name&#039;: &#039;Mick&#039;},<br />
+    {&#039;email&#039;: &#039;invalid&#039;, &#039;name&#039;: &#039;Invalid&#039;},  # invalid email<br />
+    {&#039;email&#039;: &#039;keith@stones.com&#039;, &#039;name&#039;: &#039;Keith&#039;},<br />
+    {&#039;email&#039;: &#039;charlie@stones.com&#039;},  # missing &quot;name&quot;<br />
+]</p>
+<p>result = BandMemberSchema(many=True).load(user_data)<br />
+result.errors<br />
+[/code]</p>
+<p>[code lang=python]<br />
+    {1: {&#039;email&#039;: [u&#039;&quot;invalid&quot; is not a valid email address.&#039;]},<br />
+     3: {&#039;name&#039;: [u&#039;Missing data for required field.&#039;]}}<br />
+[/code]</p>

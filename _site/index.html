@@ -91,11 +91,158 @@ full of mindless routine and the ensuing procrastination. Until we are there, l
 
   </article>
   
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+        Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+      </a>
+    </h1>
+
+    <time datetime="2017-03-06T00:00:00+03:00" class="post-date">06 Mar 2017</time>
+
+    <p>Full disclaimer: the title is a total clickbait. Still I’m very concerned about 
+the current state of Instagram and the direction the site has taken. Here are 
+some of my grievances:</p>
+
+<ul>
+    <li><b>I haven't seen anyone but bots in a while</b>. Sure, that's a gross 
+    exaggeration, but it certainly feels like actual people are in the minority 
+    on the site. Most accounts that like or follow me are 
+    <a href="http://www.huffingtonpost.com/2015/07/02/instagram-spambot_n_7708550.html">spambots</a> or some low-tier SMM guys from developing world.</li>
+    <li><b>My major grievance is <a href="https://www.quora.com/Why-doesnt-Instagram-allow-3rd-party-applications-to-upload-photos-through-its-API/answer/Il-Vaila">lack of posting</a> in official API</b>. Sure, there are unofficial private API wrappers, but why should users jump through the hoops? Limiting access to CRUD operations in public API is walled garden approach at its finest.</li>
+    <li><b>No links</b>. Instagram prohibits adding clickable links and copying in both descriptions and comments. I understand they're doing it to minimize spam, but it's like getting rid of intestines to avoid diarrhea. Also, see the first point. How much should it take before ineffectiveness of this approach is evident? In the meanwhile there is no way for the <a href="http://www.independent.co.uk/life-style/gadgets-and-tech/news/instagram-rolls-out-clickable-links-and-carousels-but-only-for-advertisers-10087605.html">regular</a> user to share a link to a bigger story.</li>
+    <li><b>Instagram still <a href="https://www.quora.com/How-do-I-upload-full-resolution-pictures-from-a-DSLR-to-Instagram/answer/J-Dennis-Thomas">reduces the quality</a> of pictures and <a href="https://www.reddit.com/r/gopro/comments/2n80ct/video_quality_is_terrible_after_posting_to/">ruins your videos</a>.</b> Sure, it's much better now than it used to be, but it's still far from ideal. Plus, what's up with <a href="https://fstoppers.com/apps/why-do-your-instagram-photos-suddenly-look-terrible-facebook-83795">quality of Instagram pics on Facebook</a>? Is this by design? Because I have no other explanation how it can stay unfixed for so long.</li>
+    <li><b>It doesn't cater towards its original target audience - the amateur photographers</b>. Instagram is no longer a network for good phone photography (or attempts at that), most pics one sees today are selfies, which says a lot about the current target audience of the service. Introduction of Stories (which is 100% Snapchat rip-off) cemented this trend.</li>
+</ul>
+
+<p>I’m <a href="https://www.instagram.com/wswld/?hl=en">still using the service</a> for sharing what I deem interesting shots and occasional videos, but I’m also using Flickr as some kind of mirror feed and to be honest Instagram starts to feel like dead weight.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2016/10/07/til-mongo-sucks/">
+        TIL: Mongo Sucks
+      </a>
+    </h1>
+
+    <time datetime="2016-10-07T16:19:06+03:00" class="post-date">07 Oct 2016</time>
+
+    <p>MongoDB <tt>$nin</tt> and <tt>$ne</tt> and <tt>$exists: false</tt> queries are <em>super</em> expensive. I mean there is a point at which they are basically unusable. And I learned it the hard way, having developed a service, that relies heavily on this kind of queries to emulate queue-like workflow. 5+ million documents later and I’m hurriedly adding indexes for all flags that take more than 60 seconds to query for.</p>
+<p>Information on this issue is limited to a short <a href="http://t.umblr.com/redirect?z=https%3A%2F%2Fdocs.mongodb.com%2Fv3.0%2Ffaq%2Findexes%2F%23using-ne-and-nin-in-a-query-is-slow-why&amp;t=MTFiMDQ2MDBhNjhhYTc4YjZmMzk1MWU1YzhjZmVjODZiOGMxNTkwOCwxaGNFWlBCYw%3D%3D&amp;b=t%3Aco8q4pQsR0pkOuSy1frx2w&amp;m=1">FAQ entry</a> at Mongo docs and a couple StackOverflow <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fstackoverflow.com%2Fa%2F22639468&amp;t=MDhjODlmOTY2MTY3NmQwYTdlYjczNmVlY2RjZWI4ZTM3NmJhOWJhNSwxaGNFWlBCYw%3D%3D&amp;b=t%3Aco8q4pQsR0pkOuSy1frx2w&amp;m=1">answers</a>. That’s it. Come on, it should be the first thing people see, when they open Mongo docs - a huge dialog you should scroll through three times before you can click accept.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/">
+        Overriding Default Werkzeug Exceptions in Flask
+      </a>
+    </h1>
+
+    <time datetime="2015-12-07T17:47:17+03:00" class="post-date">07 Dec 2015</time>
+
+    <p>Let's play a game here. What HTTP code is this exception:</p>
+<p>[code lang="js"]<br />
+{<br />
+&quot;message&quot;: &quot;The browser (or proxy) sent a request that this server could not understand.&quot;<br />
+}<br />
+[/code]</p>
+<p>No no, you don't look at the code in response! That's cheating! This is actually a default Werkzeug description for <code>400</code> code. No shit. I thought something is bad with my headers or encryption, but I would never guess simple <code>Bad request</code> from this message. You could use a custom exception of course, the problem is, that the very useful <code>abort(400)</code> object (it's an <code>Aborter</code> in disguise) would stick with the default exception anyway.</p>
+<p>Let's fix it, shall we?</p>
+<p>There may be several possible ways of fixing that, but what I'm gonna do is just update <code>abort.mapping</code>. Create a separate module for your custom HTTP exceptions <code>custom_http_exceptions.py</code> and put a couple of overridden exceptions there (don't forget to import <code>abort</code> we'll be needing that in a moment):</p>
+<p>[code lang="python"]<br />
+from flask import abort<br />
+from werkzeug.exceptions import HTTPException</p>
+<p>class BadRequest(HTTPException):<br />
+    code = 400<br />
+    description = &#039;Bad request.&#039;</p>
+<p>class NotFound(HTTPException):<br />
+    code = 404<br />
+    description = &#039;Resource not found.&#039;<br />
+[/code]</p>
+<p>These are perfectly functional, but we still need to add it to the default <code>abort</code> mapping:</p>
+<p>[code lang="python"]<br />
+abort.mapping.update({<br />
+    400: BadRequest,<br />
+    404: NotFound<br />
+})<br />
+[/code]</p>
+<p>Note that I import <code>abort</code> object from <code>flask</code>, not <code>flask-restful</code>, only the former is an <code>Aborter</code> object with mapping and other bells and whistles, the latter is just a function.</p>
+<p>Now just import this module with <code>*</code> to your <em>app</em> Flask module (where you declare and run your Flask app) or someplace it would have a similar effect on runtime.</p>
+<p>Note that you also should have the following line in your config because of <a href="http://stackoverflow.com/questions/34066290/custom-abort-mapping-exceptions-in-flask">this issue</a>:</p>
+<p>[code lang="python"]<br />
+ERROR_404_HELP = False<br />
+[/code]</p>
+<p>I'm not sure why this awkward and undocumented constant isn't <code>False</code> by default. I opened <a href="https://github.com/flask-restful/flask-restful/issues/545">an issue</a> on GitHub, but no one seems to care.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/09/17/remote-debugging-with-pycharm/">
+        Remote Debugging with PyCharm
+      </a>
+    </h1>
+
+    <time datetime="2015-09-17T20:15:19+03:00" class="post-date">17 Sep 2015</time>
+
+    <p>I'm working in a project now, that requires a certain (server) environment to run, hence it is developed on my local machine and then gets deployed on remote server. I thought I'm gonna say bye bye to my favorite PyCharm feature, namely the debugger, but to my surprise remote debugging has been supported for years now. It took some time to figure out (tutorials online are a bit ambiguous), so here is a short report on my findings.</p>
+<p>For the sake of this tutorial let's assume the following:</p>
+<ul>
+<li>Remote host: <tt>foo_host.io</tt></li>
+<li>Remote user: <tt>foo_usr</tt> (<tt>/home/foo_usr/</tt>)</li>
+<li>Local user: <tt>bar_usr</tt> (<tt>/home/bar_usr/</tt>)</li>
+<li>Path to the project on the local machine: <tt>/home/bar_usr/proj</tt></li>
+</ul>
+<p>Here goes the step-by-step how-to:</p>
+<ol>
+<li>First we need to set up remote deploy, if you haven't done so already. Go to <tt>Tools → Deployment → Configuration</tt>. And set up access to your remote server via SSH. I'd use:
+<ul>
+<li><em>Type:</em> SFTP</li>
+<li><em>SFTP host:</em> <tt>foo_host.io</tt> (don't forget to test the connection before applying)</li>
+<li><em>Port:</em> 22 (obvously)</li>
+<li><em>Root path:</em> <tt>/home/foo_usr</tt></li>
+<li><em>User name:</em> <tt>foo_usr</tt></li>
+<li><em>Auth type:</em> Key pair (OpenSSH or PyTTY)</li>
+<li><em>Private key file:</em> <tt>/home/bar_usr/.ssh/id_rsa</tt> (you'd need to generate the key and ssh-copy-id it to the remote machine, which is outside of the scope of this tutorial).</li>
+</ul>
+</li>
+<li>Go to Mappings tab and add Deployment path on server (pehaps, the name of your project)</li>
+<li>Now under <tt>Tools → Deployment</tt> you have an option to deploy your code to remote server. These first three steps could be replaced with simple Git repository on the side of the server, however I sometimes prefer this way.</li>
+<li>Now when you have the deployment set up you can go <tt>Tools → Deployment → Upload to ...</tt>, note however, that it deploys only the file you have opened or the directory you selected in the project view, so if you need to sync the whole project just select your project root.</li>
+<li>I use virtualenv, so at this step I need to ssh into the remote machine and set up virtualenv in your project directory (/home/foo_usr/test/.env), which is outside of the scope of this tutorial. If you're planning on using the global Pyhton interpreter, just skip this step.</li>
+<li>Now let's go <tt>File → Settings → Project ... → Project Interpreter</tt>. Using gear button select <tt>Add Remote</tt>. The following dialog window would let you set up a remote interpreter over SSH (including remote <tt>.env</tt>), Vagrant or using deployment configuration you have set up previously. For the sake of this tutorial I'm going to put something like that there (using SSH of course):
+<ul>
+<li>Host: foo_host.io</li>
+<li>Port: 22 (which is there by default)</li>
+<li>User name: foo_usr</li>
+<li>Auth type: Key pair (OpenSSH or PyTTY)</li>
+<li>Private key file: /home/bar_usr/.ssh/id_rsa</li>
+<li>Python interpreter path: /home/foo_usr/proj/.env/bin/python</li>
+</ul>
+</li>
+<li>If you set up everything correctly, it should list all the packages installed in your remote environment (if any) and select this interpreter for your project.</li>
+<li>Now let's do the last, but the most important step: configure debugging. Go to Edit Configurations... menu and set things up accordingly. For our hypothetical project I will use the following:
+<ul>
+<li>Script: <tt>proj/run.py</tt> (or something along these lines)</li>
+<li>Python interpreter: just select the remote interpreter you have set up earlier.</li>
+<li>Working directory: <tt>/home/bar_usr/proj/</tt> (note that this is working directory on local machine)</li>
+<li>Path mapping: create a mapping along the lines of <tt>/home/bar_usr/proj = /home/foo_usr/proj</tt> (although this seems pretty easy, it may get tricky sometimes, when you forget about mappings and move the projects around, be careful).</li>
+</ul>
+</li>
+</ol>
+<div>That's it. Now we should have a more or less working configuration that you could use both for debugging and running your project. Don't forget to update/redeploy your project before running as the versions may get async and PyCharm would get all whiny about missing files.</div>
+<div></div>
+<p></p>
+
+  </article>
+  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>
@@ -106,7 +253,7 @@ full of mindless routine and the ensuing procrastination. Until we are there, l
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2017-10-30T18:25:53+03:00">2017</time>. All rights reserved.
+          &copy; <time datetime="2017-12-25T19:44:50+03:00">2017</time>. All rights reserved.
         </small>
       </footer>
     </div>

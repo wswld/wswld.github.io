@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Overriding Default Werkzeug Exceptions in Flask &middot; וסוולוד
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="וסוולוד" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">וסוולוד</a>
+        </h3>
+        <div class="subtitle"><small>Running behind the schedule since 1989.</small></div>
+      </header>
+
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Overriding Default Werkzeug Exceptions in Flask</h1>
+  <time datetime="2015-12-07T17:47:17+03:00" class="post-date">07 Dec 2015</time>
+  <p>Let's play a game here. What HTTP code is this exception:</p>
+<p>[code lang="js"]<br />
+{<br />
+&quot;message&quot;: &quot;The browser (or proxy) sent a request that this server could not understand.&quot;<br />
+}<br />
+[/code]</p>
+<p>No no, you don't look at the code in response! That's cheating! This is actually a default Werkzeug description for <code>400</code> code. No shit. I thought something is bad with my headers or encryption, but I would never guess simple <code>Bad request</code> from this message. You could use a custom exception of course, the problem is, that the very useful <code>abort(400)</code> object (it's an <code>Aborter</code> in disguise) would stick with the default exception anyway.</p>
+<p>Let's fix it, shall we?</p>
+<p>There may be several possible ways of fixing that, but what I'm gonna do is just update <code>abort.mapping</code>. Create a separate module for your custom HTTP exceptions <code>custom_http_exceptions.py</code> and put a couple of overridden exceptions there (don't forget to import <code>abort</code> we'll be needing that in a moment):</p>
+<p>[code lang="python"]<br />
+from flask import abort<br />
+from werkzeug.exceptions import HTTPException</p>
+<p>class BadRequest(HTTPException):<br />
+    code = 400<br />
+    description = &#039;Bad request.&#039;</p>
+<p>class NotFound(HTTPException):<br />
+    code = 404<br />
+    description = &#039;Resource not found.&#039;<br />
+[/code]</p>
+<p>These are perfectly functional, but we still need to add it to the default <code>abort</code> mapping:</p>
+<p>[code lang="python"]<br />
+abort.mapping.update({<br />
+    400: BadRequest,<br />
+    404: NotFound<br />
+})<br />
+[/code]</p>
+<p>Note that I import <code>abort</code> object from <code>flask</code>, not <code>flask-restful</code>, only the former is an <code>Aborter</code> object with mapping and other bells and whistles, the latter is just a function.</p>
+<p>Now just import this module with <code>*</code> to your <em>app</em> Flask module (where you declare and run your Flask app) or someplace it would have a similar effect on runtime.</p>
+<p>Note that you also should have the following line in your config because of <a href="http://stackoverflow.com/questions/34066290/custom-abort-mapping-exceptions-in-flask">this issue</a>:</p>
+<p>[code lang="python"]<br />
+ERROR_404_HELP = False<br />
+[/code]</p>
+<p>I'm not sure why this awkward and undocumented constant isn't <code>False</code> by default. I opened <a href="https://github.com/flask-restful/flask-restful/issues/545">an issue</a> on GitHub, but no one seems to care.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2017/06/01/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2017-06-01T00:00:00+03:00">01 Jun 2017</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00+03:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2016/10/07/til-mongo-sucks/">
+          TIL: Mongo Sucks
+          <small><time datetime="2016-10-07T16:19:06+03:00">07 Oct 2016</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2017-12-25T19:44:50+03:00">2017</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

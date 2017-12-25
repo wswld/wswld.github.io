@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      וסוולוד &middot; Running behind the schedule since 1989.
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="וסוולוד" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">וסוולוד</a>
+        </h3>
+        <div class="subtitle"><small>Running behind the schedule since 1989.</small></div>
+      </header>
+
+
+      <main>
+        <div class="posts">
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/06/08/my-take-on-yandex-pre-interview-python-assignment/">
+        My Take on Yandex Pre-interview Python Assignment
+      </a>
+    </h1>
+
+    <time datetime="2015-06-08T14:19:12+03:00" class="post-date">08 Jun 2015</time>
+
+    <p>I've applied for a junior Python position at Russian internet giant Yandex (very similar to Google). And although my application has been rejected, due to lack of experience, I think their little pre-interview test and my take on that may be of interest to any inquisitive pythonista. Note, that this has never been properly translated into English before, so this is probably exclusive in that regard.</p>
+<h3>Assignment I</h3>
+<p>There are two lists of different length. The first one contains keys, the second - values. Write a function, that would create a dict out of these lists. If the key doesn't have a value - it should equal <tt>None</tt>, if the value doesn't have a key, it should be omitted.</p>
+<p>[code language="python"]<br />
+def get_dict(list1, list2):<br />
+    ret = dict(map(None, list1, list2))<br />
+    if ret.get(None, False):<br />
+        ret.__delitem__(None)<br />
+    return ret<br />
+[/code]</p>
+<h3>Assignment II</h3>
+<p>Login should start with latin symbol, contain latin symbols, digits, dots and hyphens, but end only with a latin symbol or a digit. Minimum length is 1 symbol, maximum - 20 symbols. Write a function that checks strings for correspondence with these rules. Think of several methods of solving this problem and compare them.</p>
+<p>[code language="python"]<br />
+import re<br />
+import time</p>
+<p>def check1(login):<br />
+    ret = False<br />
+    if re.match('^[a-zA-Z][a-zA-Z0-9\-\.]{0,19}(?&lt;![\-\.])$', login):<br />
+        ret = True<br />
+    return ret</p>
+<p>def check2(login):<br />
+    ret = False<br />
+    if (len(login) &gt;= 1 or len(login) &lt;= 20) and login[0].isalpha() and (login[-1].isalpha() or login[-1].isdigit()):<br />
+        for a in login[1:-1]:<br />
+            if a.isalpha() or a.isdigit() or a == '-' or a == '.':<br />
+                ret = True<br />
+    return ret</p>
+<p>def compare(login):<br />
+    tm = time.time()<br />
+    check1(login)<br />
+    print(time.time() - tm)<br />
+    tm = time.time()<br />
+    check2(login)<br />
+    print(time.time() - tm)<br />
+[/code]</p>
+<h3>Assignment III</h3>
+<p>There are two tables <tt>users</tt> and <tt>messages</tt> (I changed names and messages to non-Cyrillic):</p>
+<table>
+<caption>users</caption>
+<tr>
+<td>UID</td>
+<td>name</td>
+</tr>
+<tr>
+<td>1</td>
+<td>John Doe</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Natalie Knaph</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Johnatan Yozo</td>
+</tr>
+</table>
+<table>
+<caption>messages</caption>
+<tr>
+<td>UID</td>
+<td>msg</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Hello, John!</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Send me the card, quickly.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>I'm waiting on the corner of 5th and Lafayette</td>
+</tr>
+<tr>
+<td>1</td>
+<td>This is me again. Please message me more often.</td>
+</tr>
+</table>
+<p>Create a SQL query, that would return two fields: "User name" and "Total amount of messages".</p>
+<p>[code language="sql"]<br />
+SELECT users.name AS &quot;User name&quot;,count(*) AS &quot;Total amount of messages&quot;<br />
+FROM users<br />
+JOIN messages ON users.uid = messages.uid<br />
+GROUP BY users.uid<br />
+[/code]</p>
+<h3>Assignment IV</h3>
+<p>Suppose you have a generic <tt>access.log</tt>. How to get 10 most frequent IP-addresses using standard terminal tools? How to do that with Python?</p>
+<p>[code language="python"]<br />
+# BASH:<br />
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' access.log | sort -n | uniq -c | sort -n -r | head -10</p>
+<p># PYTHON:<br />
+import sys<br />
+import re</p>
+<p>all = re.findall(&quot;[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}&quot;, open(sys.argv[1], 'r').read())<br />
+srt = sorted(all, key=all.count, reverse=True)<br />
+unq = []<br />
+for m in srt:<br />
+    if not m in unq:<br />
+        unq.append(m)<br />
+print unq[0:10]<br />
+[/code]</p>
+<p>If you can think of a better way to solve any of these, let me know.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/04/03/humble-collection-of-python-sphinx-gotchas-part-ii/">
+        Humble Collection of Python Sphinx Gotchas: Part II
+      </a>
+    </h1>
+
+    <time datetime="2015-04-03T14:26:19+03:00" class="post-date">03 Apr 2015</time>
+
+    <h3>Gotcha 1: Release and Version</h3>
+<p>Sphinx makes a distinction between the release code and the version of the application. The idea is that it should look this way:</p>
+<p>[code language="python"]<br />
+version = &quot;4.0.4&quot;<br />
+release = &quot;4.0.4.rc.1&quot;<br />
+[/code]</p>
+<p>Most project use a much simpler versioning convention, so they would probably do something like this:</p>
+<p>[code language="python"]<br />
+version = &quot;4.0.4&quot;<br />
+release = &quot;4.0.4&quot;<br />
+[/code]</p>
+<p>I'd been doing this myself for some time, until I realized the <tt>conf.py</tt> file is a simple Python file (no shit!) and it is perfectly fine to do something like this:</p>
+<p>[code language="python"]<br />
+version = &quot;4.0.4&quot;<br />
+release = version<br />
+[/code]</p>
+<p>Yeah, kinda obvious I know. I however missed this (though I've been putting much more complex code to <tt>conf.py</tt>) and <a href="http://stackoverflow.com/questions/23470010/sphinx-does-not-change-version-number/23910848#23910848">some people</a> did either. So, I'll just leave it here.</p>
+<h3>Gotcha 2: Download as PDF</h3>
+<p>Sometimes a PDF download should be provided along with the hosted HTML version. It looks good and people can get a well-formatted file to use locally as they are trying to work with your API or product. In short: it could be done easily, using Python. I'm really pissed off at people, who know Python or Bash and they still keep asking, whether there is an <em>automatic</em> way of doing that. Well, it doesn't get more automatic than that:<br />
+[code language="bash"]<br />
+# generating latex and pdf<br />
+make latexpdf</p>
+<p># generating html<br />
+find 'index.rst' -print -exec sed -i.bak &quot;s/.. &amp;//g&quot; {} \;<br />
+find 'index.rst' -print -exec sed -i.bak &quot;s/TARGET/$UPTARGET/g&quot; {} \;</p>
+<p>VERSION=&quot;$(grep -F -m 1 'version = ' conf.py)&quot;;<br />
+VERSION=&quot;${VERSION#*\'}&quot;;<br />
+VERSION=&quot;${VERSION%\'*}&quot;</p>
+<p>sphinx-build -b html . ../$TARGET/$VERSION/<br />
+cp latex/$UPTARGET.pdf ../$TARGET/$VERSION/<br />
+[/code]<br />
+Note, that there should be the following line, inserted into the <tt>index.rst</tt> in the example above:<br />
+[code]<br />
+.. &amp;  `Download as PDF &lt;TARGET.pdf&gt;`_<br />
+[/code]<br />
+Where <tt>..</tt> is the comment syntax, <tt>&amp;</tt> is here to distinguish the line from usual comments and <tt>TARGET</tt> is replaced with <tt>$UPTARGET</tt> which is the upper case version of the project name and the default name of the .tex and .pdf files. It creates a relative link to the .pdf file, which is then copied to the exact same folder, where HTML output is located. I'm not going explain much about the variables, as their sources may differ. In my work I use a python script, with exact same principle (I figured bash example would be more universal) and it gets values of <tt>$TARGET</tt>, <tt>$UPTARGET</tt> and <tt>$VERSION</tt> from a JSON file with a list of targets (more on that in the next example). In the example above, I'm stripping values off the conf.py file. In fact you can use whatever input you wish, even pass the values as arguments. What I was trying to illustrate is the concept itself.</p>
+<h3>Gotcha 3: Using Scripting to Organize the Sphinx Project as a Multiple Project Knowledge Base</h3>
+<p>Some of the companies, I've been working at had this huge array of active projects, that they wanted to present as a single site, or the whole variety of sites with the same theme, or the single site with PDF version for every first level subsection. Basically they wanted me to create a Sphinx-based knowledge base. Using a simple Python or Bash script there are ways to organize your project any way you want (we'll use Python this time as it's closer to what I've been using). We're going to create a site that automatically builds PDF version for each first level subsection (project) and puts it alongside the subsection's <tt>index.html</tt>. Basically this is a bit more complex variant of the previous example. </p>
+<p>Let's imagine we have a single Sphinx project with a couple first level sections corresponding to company's projects, for example: Foo and Bar (give me that medal for originality, yeah). Basically, your folder structure will look like this:<br />
+[code language="text"]<br />
+Acme<br />
+|  index.rst<br />
+|_ Foo<br />
+|  |_1.0.0<br />
+|    |_index.rst<br />
+|  |_1.1.0<br />
+|    |_index.rst<br />
+|<br />
+|_ Bar<br />
+   |_1.0.1<br />
+     |_index.rst<br />
+[/code]<br />
+Yeah, we also have versions. I use the <a href="https://gist.github.com/wswld/aa35821b2d76fba73cc1">following script</a> for the projects with such layout. Don't worry, it only looks kinda big. The script is rather simple. Also, I've commented the hell out of it so that you could figure it all out. Note, that you also need to create a <tt>targets.json</tt> file in the root of your project, containing the following lines (assuming we're using the structure we agreed on in the beginning):<br />
+[code language="javascript"]<br />
+{<br />
+  &quot;foo&quot; : &quot;Foo Foo&quot;,<br />
+  &quot;bar&quot; : &quot;Barrington&quot;<br />
+}<br />
+[/code]<br />
+The file will tell the script of full project names and how they correspond to target names (folder names) in the structure. Also you will need to have a <tt>temp.py</tt> file containing only the info we need for PDF building with most of the target names and version numbers represented as variables for injection (yeah, I know this is hacky, but did't want to bother with imports, dependencies etc). First of all it should have <tt>$VRSN</tt> tags:<br />
+[code language="python"]<br />
+# The short X.Y version.<br />
+version = '&amp;VRSN'<br />
+# The full version, including alpha/beta/rc tags.<br />
+release = '&amp;VRSN'<br />
+[/code]<br />
+It should also have tags in the LaTeX part of the settings:<br />
+[code language="python"]<br />
+latex_documents = [<br />
+  ('index', '&amp;TRGT.tex', u'&amp;UPTRGT',<br />
+   u'ACME', 'manual'),<br />
+]<br />
+[/code]<br />
+Other than that <tt>temp.py</tt> may resemble your usual <tt>conf.py</tt>. The reason is that we use <tt>conf.py</tt> for HTML and it has preset version and project name values for the project as the whole. So we better distinguish between the file for injections and the main configuration file, so that they don't mess with each other. Note that if you'll need to add some additional parameters or a preamble to the LaTeX output, you should do that in <tt>temp.py</tt> as <tt>conf.py</tt> is not used for building PDFs at all. </p>
+<p>If we prepare the project this way, the script should build PDF's for every subproject and put them to the subproject's HTML root. Ideally the HTML version could also be built separately for every subproject (for the right project name/version to appear for every subproject). This script is more of a proof of concept rather than out-of-the-box solution. However if you now understand Sphinx's capability to extension and automation, you may create projects of any complexity yourself.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/03/21/humble-collection-of-i3wm-lifehacks-part-i/">
+        Humble Collection of i3wm Lifehacks: Part I
+      </a>
+    </h1>
+
+    <time datetime="2015-03-21T23:33:20+03:00" class="post-date">21 Mar 2015</time>
+
+    <h3>Lifehack 1: Locking the Screen</h3>
+<p>This is kinda a nobrainer, but me myself sometimes look for a place, where to copy some of the syntax (I'm lazy and don't always keep that in my head), so let's start with this one. i3wm ships with beautiful and robust screen locker <tt>i3lock</tt>, which can be launched like that:</p>
+<p>[code language="bash"]<br />
+i3lock -c 000000<br />
+[/code]</p>
+<p>It will lock the screen with black overlay. The problem is, that you wouldn't be typing this command every time you want to lock the screen. We need to add a shortcut to i3 config file:</p>
+<p>[code language="bash"]<br />
+bindsym $mod+Shift+Tab exec &quot;i3lock -c 000000&quot;<br />
+[/code]</p>
+<p>Now when we press the combination of mod-button (<kbd>Win</kbd> in my case) and <kbd>Shift</kbd>+<kbd>Tab</kbd> - our screen gets locked.</p>
+<h3>Lifehack 2: Activating/Disactivating the Second Screen</h3>
+<p>If you use i3wm on daily basis, you probably know, that the second screen is not turned on automatically. You should manage displays manually with <tt>xrandr</tt> command. If we run this command without attributes, we're gonna get something like this:</p>
+<p>[code language="bash"]<br />
+Screen 0: minimum 320 x 200, current 3200 x 1080, maximum 8192 x 8192<br />
+LVDS1 connected 1280x800+1920+0 (normal left inverted right x axis y axis) 261mm x 163mm<br />
+   1280x800      60.02*+  50.05<br />
+   1024x768      60.00<br />
+   800x600       60.32    56.25<br />
+   640x480       59.94<br />
+VGA1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 521mm x 293mm<br />
+   1920x1080     60.00*+<br />
+   1680x1050     59.95<br />
+   1280x1024     75.02    60.02<br />
+   1440x900      59.89<br />
+   1280x960      60.00<br />
+   1280x720      59.97<br />
+   1024x768      75.08    70.07    60.00<br />
+   832x624       74.55<br />
+   800x600       72.19    75.00    60.32    56.25<br />
+   640x480       75.00    72.81    66.67    60.00<br />
+   720x400       70.08<br />
+HDMI1 disconnected (normal left inverted right x axis y axis)<br />
+DP1 disconnected (normal left inverted right x axis y axis)<br />
+[/code]</p>
+<p>On some rare occasion writing something like this would not be a problem:</p>
+<p>[code language="bash"]<br />
+xrandr --output VGA1 --right-of LVDS1 --auto<br />
+[/code]</p>
+<p><em>Well, I know you're probably well aware of how</em> <tt>xrandr</tt> <em>works. Just in case.</em></p>
+<p>It may get pretty redundant if you use second screen on daily basis and regularly unplug it from your laptop. The best way to go would be to add script shortcut to your <tt>/usr/bin/</tt> or <tt>/bin/</tt> directory. Run the following lines:</p>
+<p>[code language="bash"]<br />
+printf '#!/bin/bash\n\nxrandr --output VGA1 --right-of LVDS1 --auto' &gt; /usr/bin/screenswitch<br />
+chmod 755 /usr/bin/screenswitch<br />
+[/code]</p>
+<p>We can use <tt>screenswitch</tt> command which doesn't make it much easier. What would certainly help us is a key shortcut, so let's add a line similar to one in the previous hack to our i3 configuration:</p>
+<p>[code language="bash"]<br />
+bindsym XF86Display exec &quot;screenswitch&quot;<br />
+[/code]</p>
+<p>Now when you press on your special key combo (<kbd>Fn</kbd>+<kbd>F7</kbd> on my ThinkPad), you enable/disable the second screen. Try some other key combination if you have no special display button. Of course the script itself is pretty basic and it would work only if your screen works well in auto and you use the same second screen daily. However, there are more complex scripts available all over the web (<a href="http://www.thinkwiki.org/wiki/Sample_Fn-F7_script">example</a>).</p>
+<h3>Lifehack 3: Locking the Screen on Wake</h3>
+<p>If you use <tt>pm-utils</tt> with your i3wm setup, you've probably noticed that the screen is not locked, when the laptop is awakened after suspend or hibernate. It's very insecure. Let's try to fix it. Create file <tt>cat /etc/pm/sleep.d/91blocker</tt> and add the following lines to it:</p>
+<p>[code language="bash"]<br />
+#!/bin/sh<br />
+case &quot;$1&quot; in<br />
+        thaw|resume)<br />
+                su youruser -c '/usr/bin/i3lock -c 000000'<br />
+                ;;<br />
+        *) exit $NA<br />
+                ;;<br />
+esac<br />
+[/code]</p>
+<p>Don't forget to change <tt>youruser</tt> to your username. Now let's make sure we have all the right permissions:</p>
+<p>[code]<br />
+chmod 755 /etc/pm/sleep.d/91blocker<br />
+[/code]</p>
+<p>Now, if we run <tt>pm-suspend</tt> or <tt>pm-hibernate</tt> our screen is going to be locked on wake. This script has one shortcoming though: it doesn't lock the screen instantly, so you may see stuff for a couple of seconds before it gets locked. If it is not a critical issue to you, feel free to use it, othrewise you may need to work on it or find a different solution altogether. If you have any ideas how to improve it, let me know.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/03/14/short-history-of-my-relationship-with-lenovo-thinkpad/">
+        Short History of my Relationship with Lenovo ThinkPad
+      </a>
+    </h1>
+
+    <time datetime="2015-03-14T22:47:10+03:00" class="post-date">14 Mar 2015</time>
+
+    <p>[caption width="300" id="attachment_462" align="alignright"]<img src="/assets/20150315_015224.jpg?w=300" alt="My own ThinkPad X201." width="300" height="225" class="size-medium wp-image-462" /> <small>My own ThinkPad X201 workhorse</small>[/caption] For those, who have limited time, this post comes down to the following statement: <em><a href="http://www.notebookreview.com/notebookreview/lenovo-thinkpad-x201-review/">Lenovo Thinkpad X201</a> is the best X-series Thinkpad created yet</em> (<em>although after a somewhat heated discussion at Reddit, x220 looks better</em>). What follows is my attempt at proving this point with my merely anecdotal evidence. I'm funny like that. Here comes a short story of my relationship with Lenovo Thinkpad X series.</p>
+<p>In 2013 I've been working as a technical writer (more <em>technical</em> than a <em>writer</em> actually) in a medium-sized web-slash-mobile startup and the Macbook, they'd given me, failed and I decided to try something new. At that time I got increasingly interested in Lenovo Thinkpad (yeah, it hadn't been IBM for quite a long time already). A couple of my colleagues had these <a href="http://www.notebookreview.com/notebookreview/lenovo-thinkpad-x220-review/">X220</a> machines and they seemed pretty solid and professional, especially with all kinds of Linux installed on them (I worked with a bunch of Python devs and everybody used their favorite flavor of Linux). My transition from Macbook to Thinkpad was also dictated by how Macbook wouldn't let me use <a href="https://i3wm.org/">i3wm</a> (which I was completely sold on at the time) as the main WM. So I went to my manager an he approved my order. The problem was I wasn't really familiar with modern ThinkPads then and ordered 14" model (thought I could use all the extra screen space). I figured any Thinkpad will do. It was my mistake. </p>
+<p>I got <a href="http://www.notebookreview.com/notebookreview/lenovo-thinkpad-t431s-review/">T431S</a>, which was admittedly quite expensive at the time, but didn't look like Thinkpad at all. If anything it resembled  plastic version of Macbook. It had a rather disguising chiclet (island-type) keyboard, no LED indicators, thinner body and as a result much less ports (although for the record I do understand S stands for slim). The only thing it had in common with the previous generations of Thinkpads was the clit, which was kinda useless without the additional row of buttons, the device actually had no touchpad buttons at all as it mimicked the Macbook-style <em>platform</em> touchpad (awful, awful trend, actually). The hardware was of questionable quality and it gave me lots of headache on Linux (especially WiFi) despite the ThinkPads traditionally being considered one of the best laptops, when it comes to compatibility with Linux. I worked on this machine until the  company went under, and got used to it somehow, but it never lived up to the image of Thinkpad I had in my head.</p>
+<p>Even after that I didn't give up on the Thinkpad series completely, though it clearly went downhill with every subsequent model. My wife got herself X230 at work and as I got to play with the device a bit, I had an impression that this is not as bad as 431S, so as the line moved forward I decided to go in the opposite direction. At that time I started working in a medium enterprise infosec company and they had Thinkpads all over the place, and most of these were the Thinkpads as I expected them to be from the day one. These were X201 models. They aren't as outdated as the earlier ones but they have all the right features. Here is a short comparison between some of the latest X series models:</p>
+<table style="width:100%;">
+<tbody>
+<tr>
+<th></th>
+<th style="border:1px solid #cccccc;">X201</th>
+<th style="border:1px solid #cccccc;">X220</th>
+<th style="border:1px solid #cccccc;">X230</th>
+<th style="border:1px solid #cccccc;">X240</th>
+</tr>
+<tr>
+<th style="border:1px solid #cccccc;">LED Indicators</th>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">9 on the front and 3 are mirrored on the back.</td>
+<td style="border:1px solid #cccccc;">3 on the front and 2 on the back.</td>
+<td style="border:1px solid #cccccc;">2 on the front and 2 on the back.</td>
+<td style="border:1px solid #cccccc;">None (!)</td>
+</tr>
+<tr>
+<th style="border:1px solid #cccccc;">Keyboard</th>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Classic</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Classic</td>
+<td style="border:1px solid #cccccc;">Chiclet</td>
+<td style="border:1px solid #cccccc;">Chiclet</td>
+</tr>
+<tr>
+<th style="border:1px solid #cccccc;">Ports</th>
+<td style="border:1px solid #cccccc;">VGA, Ethernet, 3 USB, separate ports for mic and headphones, phone line port, ECSC slot.</td>
+<td style="border:1px solid #cccccc;">VGA, Mini DisplayPort, 3 USB (1 USB 3.0), combo audio jack, media card reader slot, ECSC slot.</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">VGA, Mini DisplayPort, 3 USB (2 USB 3.0), combo audio jack, media card reader slot, ECSC slot.</td>
+<td style="border:1px solid #cccccc;">VGA, Mini DisplayPort, 2 USB 3.0, combo audio jack, media card reader slot, ECSC slot.</td>
+</tr>
+<tr>
+<th style="border:1px solid #cccccc;">ThinkLight (Keyboard Flashlight)</th>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;">The keyboard is backlit instead. Get your tongue out of Apple's ass, Lenovo!</td>
+</tr>
+<tr>
+<th style="border:1px solid #cccccc;">Clit Buttons</th>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;">Touchpad is a platform with <em>areas</em> for clit buttons, which is kinda sad.*</td>
+</tr>
+</tbody>
+</table>
+<p><small>* - to be fair Thinkpad X250 actually went back to having hardware buttons, so X240 is not the whole new tendency, but rather disappointing stumble.</small><br />
+<br />
+So, to sum it up for X201:</p>
+<li>There is the right number of LED indicators (X220 and X230 have less and X240 seem to have none whatsoever) and they are mirrored on the back of the machine, which is convenient, when the lid is closed.</li>
+<li>The classic Thinkpad keyboard is just right for coding. No trendy chiclet bullshit.</li>
+<li>Ports and slots is the area, where the age of the machine shows the most. It doesn't have any USB 3.0 ports and Mini DisplayPort would be actually nice. Still, it's much better than X240.</li>
+<li>There are two rows of buttons, one for clit mode and the other for the touchpad. Although I work with clit most of the time, I find having an additional bottom row rather convenient, yet I'd probably go with no touchpad at all.</li>
+<li>Flashlight!</li>
+<p>The only problem with X201 model for me is that it's not available for sale officially anymore (at least where I live), I even tried to buy out my office X201, when leaving the company but they wouldn't let me. So I found a place that sold used ThinkPads for a reasonable price and bought one from there. This machine is pure magic, and it doesn't matter that it's a bit outdated. It has i3 CPU (which is still fair these days), up to 8GB RAM (which is usually enough), extended 6 cell battery makes up for its age (easily gives me 5 or 4 hours of relaxed coding) and overall design hints at the times when the word Thinkpad meant something more than <em>"an ugly plastic Macbook knockoff"</em>. Without much exaggeration I can say, that in 12.5" X line of ThinkPads (at least to me) the X201 model seems greatly superior to anything made before (due to being relatively modern) or after. It's still relevant today and has the potential of being developer's muse (fetishist talking) and workhorse.</p>
+<p><em>An update is due: although I still think X201 is one of the best ThinkPad X-series machines, after a heated Reddit discussion X220 seems to be an even better model with all the advantages of X201 (except the amount of LEDs ;) ), plus newer hardware and better screen. You probably should consider that machine if you are shopping for classic ThinkPads.</em></p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/2015/02/02/asus-x102b-and-second-screen-on-debian/">
+        ASUS X102B and second screen on Debian
+      </a>
+    </h1>
+
+    <time datetime="2015-02-02T21:17:36+03:00" class="post-date">02 Feb 2015</time>
+
+    <p>I've stumbled upon a very capricious piece of hardware lately, which is ASUS X102B. Basic (very basic) video seems to work out of the box, but there are numerous problems here and there. Especially the second screen, which doesn't seem to work at the first glance. If you run <tt>xrandr</tt> it will only recognize the <em>"default"</em> output and even that would look pretty much broken. First thing to do was:</p>
+<p>[code language="bash"]<br />
+sudo apt-get install firmware-linux-nonfree<br />
+[/code]</p>
+<p>Actually, it's a go-to solution (as in first thing to try) to many Debian hardware-related problems, as the distro doesn't include non-free firmware by default. After that it recognizes most outputs the right way, but it may miss the right modes. If so, you could add your mode manually.</p>
+<p>First, retrieve the full information about the mode:</p>
+<p>[code language="bash"]<br />
+cvt 1920 1080<br />
+[/code]</p>
+<p>You will get something like that:</p>
+<p>[code language="bash"]<br />
+# 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz<br />
+Modeline &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync<br />
+[/code]</p>
+<p>Now use the info to add the mode to <tt>xrandr</tt> and then assign it to the output:</p>
+<p>[code language="bash"]<br />
+xrandr --newmode &quot;1920x1080&quot; 173.00  1920 2048 2248 2576  1080 1083 1088 1120 -HSync +VSync<br />
+xrandr --addmode VGA-0 &quot;1920x1080&quot;<br />
+[/code]</p>
+<p>Use the <tt>xrandr</tt> command to check the list of availible outputs and modes. You probably know that already, but here is how to use <tt>xrandr</tt> with the newly created mode:</p>
+<p>[code language="bash"]<br />
+xrandr --output VGA-0 --mode &quot;1920x1080&quot;<br />
+[/code]</p>
+<p>Well, as this one issue is officially resolved I'm off to fight the rest of a couple hundred problems, that arise, when trying to use this laptop with Debian. Wish me luck and leave a comment if you had some trouble with the machine (when used with Debian that is) — we could try to work it out together.</p>
+
+  </article>
+  
+</div>
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page3">Older</a>
+  
+  
+    <a class="pagination-item newer" href="/">Newer</a>
+  
+</div>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2017-12-25T19:44:50+03:00">2017</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
