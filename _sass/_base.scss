@@ -35,11 +35,13 @@ body {
 }
 
 ::-moz-selection { /* Code for Firefox */
-  background: darken(saturate(#ffc400, 55%), 1%);
+  background: rgba(75,198,223,0.4); 
+  color: #000; 
 }
 
 ::selection {
-  background: darken(saturate(#ffc400, 55%), 2%);
+  background: rgba(75,198,223,0.4); 
+  color: #000; 
 }
 
 // No `:visited` state is required by default (browsers will use `a`)
