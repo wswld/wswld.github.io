@@ -3,6 +3,24 @@ layout: default
 title: Home
 ---
 
+<div class="block-item-text">
+  <input type="checkbox" hidden class="read-more-state" id="read-more">
+  <label for="read-more" class="read-more-trigger_closed">
+    <img src="public/wakatime-120.png" height="50rem" width="50rem"/>
+  </label>
+  <label for="read-more" class="read-more-trigger_opened">
+    <img src="public/wakatime-120.png" height="50rem" width="50rem"/>
+  </label>
+  <div class="read-more-wrap">
+    <div class="read-more-target">
+        <figure><embed src="https://wakatime.com/share/@26ef7b2d-4c39-41c2-b9a0-d78077d75e8e/570b6d46-ccc1-40b0-aa28-acf2e329d67d.svg"></embed></figure>
+    </div>
+  </div>
+</div>
+
+<!-- <a href="https://github.com/wswld"><img src="http://ghchart.rshah.org/wswld" alt="wswld Github chart" /></a> -->
+
+
 <div class="posts">
   {% for post in paginator.posts %}
   <article class="post">
