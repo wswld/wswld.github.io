@@ -2,6 +2,9 @@
 //
 // Super small header above the content for site name and short description.
 
+
+@import url('https://fonts.googleapis.com/css?family=Tinos:700');
+
 .masthead {
   padding-top:    1rem;
   padding-bottom: 1rem;
@@ -10,6 +13,7 @@
 }
 
 .masthead-title {
+
   color: white;
   background-color: #000000;
   border-radius: 3px;
@@ -93,6 +97,7 @@
 
 
   a {
+    font-family: "Tinos", serif; 
     color: inherit;
     -webkit-transition: none;
     -moz-transition: none;
@@ -101,6 +106,7 @@
     transition: none;
     border-bottom: none;
     box-shadow:none;
+    font-weight:700;
 
 
   }
