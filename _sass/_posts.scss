@@ -12,6 +12,8 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 // Blog post or page title
 .page-title,
 .post-title,
@@ -19,6 +21,7 @@
   color: #303030;
       border-bottom: none;
     box-shadow:none;
+    font-family: "Lato", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 .page-title,
 .post-title {

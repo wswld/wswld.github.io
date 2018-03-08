@@ -13,9 +13,16 @@
         <div class="subtitle"><small>{{ site.tagline }}</small></div>
       </header>
 
-
+        <ul class="page-menu">
+        {% for page in site.pages %}
+          {% if page.layout == 'page' %}
+          <li> <a href="{{ page.url }}">{{ page.title }}</a></li>
+          {% endif %}
+       {% endfor %}
+     </ul>
+     <br />
       <main>
-        {{ content }}
+      {{ content }}
       </main>
 
       <footer class="footer">
