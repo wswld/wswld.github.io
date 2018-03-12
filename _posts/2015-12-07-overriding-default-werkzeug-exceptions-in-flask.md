@@ -55,13 +55,17 @@ exceptions there (don't forget to import `abort` we'll be needing that in a
 moment):
 
 ``` python 
-from flask import abort 
+from flask import abort
 from werkzeug.exceptions import HTTPException
+
+
 class BadRequest(HTTPException): 
-    code = 400 
+    code = 400
     description = 'Bad request.'
+
+
 class NotFound(HTTPException): 
-    code = 404 
+    code = 404
     description = 'Resource not found.' 
 ```
 
