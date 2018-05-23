@@ -48,7 +48,7 @@
 
 .related-posts {
   padding-left: 0;
-  list-style: none;
+  list-style: disc;
 
   h3 {
     margin-top: 0;
@@ -61,11 +61,11 @@
     }
 
     a:hover {
-      color: #268bd2;
+      color: #000;
       text-decoration: none;
 
       small {
-        color: inherit;
+        color: #999;
       }
     }
   }

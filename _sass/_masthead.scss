@@ -12,6 +12,13 @@
 }
 
 .masthead-title {
+  ::-moz-selection { /* Code for Firefox */
+    color: #fff;
+  }
+
+  ::selection {
+    color: #fff;
+  }
   color: white;
   background-color: $color-mako-title;
   border-radius: 3px;
