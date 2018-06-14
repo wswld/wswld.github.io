@@ -26,16 +26,16 @@ author:
 
 Two and a half years ago (Dec 4, 2015) I've [written](
 http://wswld.net/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/) 
-about a minor issue in Flask-RESTful, that puzzled and amused me. An issue [was 
+about a minor problem in Flask-RESTful, that puzzled and amused me. An issue [was 
 created](https://github.com/flask-restful/flask-restful/issues/545) on the same 
 day. I then went on with my life, hoping for someone to step in and fix this 
 trivial design inconsistency. Several people including the repo maintainer 
 enthusiastically expressed support for proposed changes but no code was ever 
 commited.
 
-Fast forward almost a year (Oct 30, 2016), I noticed this issue while skimming 
+Fast forward almost a year (Oct 30, 2016), I noticed this issue while skimming through  
 my  Github activities and decided to open a PR. I wasn't using Flask at the 
-moment, so I was doing it for the grater good. Having commited some code and 
+moment, so I was doing it for the greater good. Having commited some code and 
 hoping for the maintainer to review it ASAP, I switched 
 to other commitments. Needles to say there was no review in several days, weeks 
 and even months. Feeling more and more irritated with the whole affair, I 
