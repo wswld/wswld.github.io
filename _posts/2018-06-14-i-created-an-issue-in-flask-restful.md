@@ -33,11 +33,11 @@ trivial design inconsistency. Several people including the repo maintainer
 enthusiastically expressed support for proposed changes but no code was ever 
 commited.
 
-Fast forward almost a year (Oct 30, 2016), I noticed this issue while skimming through  
-my  Github activities and decided to open a PR. I wasn't using Flask at the 
-moment, so I was doing it for the greater good. Having commited some code and 
-hoping for the maintainer to review it ASAP, I switched 
-to other commitments. Needles to say there was no review in several days, weeks 
+Fast forward almost a year (Oct 30, 2016), I noticed this issue while skimming 
+through my  Github activities and decided to open a PR. I wasn't using Flask at 
+the moment, so I was doing it for the greater good. Having commited some code 
+and hoping for the maintainer to review it ASAP, I switched to other 
+commitments. Needles to say there was no review in several days, weeks 
 and even months. Feeling more and more irritated with the whole affair, I 
 emailed the maintaner and several other people, whose PRs have 
 been merged recently - to no avail. I gave up and decided to finally let it go. 
