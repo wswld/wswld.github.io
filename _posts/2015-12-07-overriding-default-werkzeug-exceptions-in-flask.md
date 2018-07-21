@@ -35,7 +35,7 @@ author:
 
 ***Update 15.06.2018:*** *The issue described in this post is now a history, 
 read the [epic story](
-http://wswld.net/2018/06/14/i-created-an-issue-in-flask-restful/) of my 
+http://bardakist.com/2018/06/14/i-created-an-issue-in-flask-restful/) of my 
 struggle to get it fixed.*
 
 

@@ -37,7 +37,7 @@ as I haven't been a frequent guest here lately. Now it's time to finally
 publish this piece for good.*
 
 Some time ago I did a big, comprehensive [review](
-http://wswld.net/2013/07/20/bioaid-meets-life-2/) of the [BioAid](
+http://bardakist.com/2013/07/20/bioaid-meets-life-2/) of the [BioAid](
 http://bioaid.org.uk/) hearing app for iOS. A couple of months down the road, 
 the situation has changed entirely. I've got some good news and some bad news 
 for you. Let's start with the latter.
@@ -66,7 +66,7 @@ mind up:
   throughout the day and implications of using it as a hearing aid in 
   day-to-day situations made me feel quite miserable. If you're interested in 
   what I'm speaking about, I've been writing about all the limitations in the 
-  [original post](http://wswld.net/2013/07/20/bioaid-meets-life-2/). However, 
+  [original post](http://bardakist.com/2013/07/20/bioaid-meets-life-2/). However, 
   it could be alright, if you really can't afford a hearing aid, or want to use 
   the app as a temporary solution.
 
