@@ -1,5 +1,8 @@
-$color-mako: rgba(42,102,157,0.3);
-$color-mako-title: rgb(42,102,157);
+$main-accent-color: #2b57a2;
+$secondary-accent-color: #9642ce;
+
+$secondary-accent-color-alpha: rgba($secondary-accent-color, .5);
+$main-accent-color-alpha: rgba($main-accent-color, .5);
 
 $gray-1: #f9f9f9;
 $gray-2: #ccc;
