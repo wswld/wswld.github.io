@@ -96,15 +96,15 @@ models:
 </tr>
 <tr>
 <th style="border:1px solid #cccccc;">LED Indicators</th>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">9 on the front and 3 are mirrored on the back.</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">9 on the front and 3 are mirrored on the back.</td>
 <td style="border:1px solid #cccccc;">3 on the front and 2 on the back.</td>
 <td style="border:1px solid #cccccc;">2 on the front and 2 on the back.</td>
 <td style="border:1px solid #cccccc;">None (!)</td>
 </tr>
 <tr>
 <th style="border:1px solid #cccccc;">Keyboard</th>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Classic</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Classic</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Classic</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Classic</td>
 <td style="border:1px solid #cccccc;">Chiclet</td>
 <td style="border:1px solid #cccccc;">Chiclet</td>
 </tr>
@@ -112,21 +112,21 @@ models:
 <th style="border:1px solid #cccccc;">Ports</th>
 <td style="border:1px solid #cccccc;">VGA, Ethernet, 3 USB, separate ports for mic and headphones, phone line port, ECSC slot.</td>
 <td style="border:1px solid #cccccc;">VGA, Mini DisplayPort, 3 USB (1 USB 3.0), combo audio jack, media card reader slot, ECSC slot.</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">VGA, Mini DisplayPort, 3 USB (2 USB 3.0), combo audio jack, media card reader slot, ECSC slot.</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">VGA, Mini DisplayPort, 3 USB (2 USB 3.0), combo audio jack, media card reader slot, ECSC slot.</td>
 <td style="border:1px solid #cccccc;">VGA, Mini DisplayPort, 2 USB 3.0, combo audio jack, media card reader slot, ECSC slot.</td>
 </tr>
 <tr>
 <th style="border:1px solid #cccccc;">ThinkLight (Keyboard Flashlight)</th>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
 <td style="border:1px solid #cccccc;">The keyboard is backlit instead. Get your tongue out of Apple's ass, Lenovo!</td>
 </tr>
 <tr>
 <th style="border:1px solid #cccccc;">Clit Buttons</th>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
-<td style="border:1px solid #cccccc;background-color:#40FF01;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
+<td style="border:1px solid #cccccc;background-color:#002300;">Yes</td>
 <td style="border:1px solid #cccccc;">Touchpad is a platform with <em>areas</em> for clit buttons, which is kinda sad.*</td>
 </tr>
 </tbody>

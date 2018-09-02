@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  color: #313131;
+  color: $body-color;
   background-color: $body-bg;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -36,16 +36,16 @@ body {
 
 ::-moz-selection { /* Code for Firefox */
   background: $secondary-accent-color-alpha; 
-  color: #000; 
+  color: #fff; 
 }
 
 ::selection {
   background: $secondary-accent-color-alpha; 
-  color: #000; 
+  color: #fff; 
 }
 
 a {
-  color: #000;
+  color: inherit;
   text-decoration: none;
 
   -webkit-transition: all 1s ease-in-out;
@@ -59,7 +59,7 @@ a {
   &:hover,
   &:focus {
     background: $secondary-accent-color-alpha;
-    color:black;
+    color: $link-color;
     -webkit-transition: none;
     -moz-transition: none;
     -ms-transition: none;
@@ -68,8 +68,8 @@ a {
     border-bottom: 3px solid $secondary-accent-color-alpha;
   }
 
-  strong {
-    color: inherit;
+strong {
+    color: #fff;
   }
 }
 
@@ -96,11 +96,7 @@ th {
 
 th {
   text-align: left;
-}
-
-tbody tr:nth-child(odd) td,
-tbody tr:nth-child(odd) th {
-  background-color: #f9f9f9;
+  background-color: #0d0314;
 }
 
 .read-more-target, 

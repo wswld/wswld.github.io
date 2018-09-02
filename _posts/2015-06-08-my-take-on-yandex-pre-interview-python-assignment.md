@@ -88,8 +88,8 @@ non-Cyrillic):
 <table>
 <caption><code>users</code></caption>
 <tr>
-<td>UID</td>
-<td>name</td>
+<th>UID</th>
+<th>name</th>
 </tr>
 <tr>
 <td>1</td>
@@ -107,8 +107,8 @@ non-Cyrillic):
 <table>
 <caption><code>messages</code></caption>
 <tr>
-<td>UID</td>
-<td>msg</td>
+<th>UID</th>
+<th>msg</th>
 </tr>
 <tr>
 <td>1</td>
