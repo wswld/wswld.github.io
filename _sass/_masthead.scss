@@ -13,13 +13,13 @@
 
 .masthead-title {
   ::-moz-selection { /* Code for Firefox */
-    color: #fff;
+    color: inherit;
   }
 
   ::selection {
-    color: #fff;
+    color: inherit;
   }
-  color: white;
+  color: #000;
   border-radius: 10px;
   display: inline-block;
   font-size: 1.8rem;
