@@ -19,7 +19,7 @@
   ::selection {
     color: inherit;
   }
-  color: #000;
+  color: #fff;
   border-radius: 10px;
   display: inline-block;
   font-size: 1.8rem;
@@ -27,27 +27,7 @@
   padding: .25rem .75rem;
   margin: .67em 0;
   text-align: center;
-
-  -webkit-margin-before: 0.67em;
-  -webkit-margin-after: 0.67em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  font-weight: 700;
-
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-
-  /* W3C */
-  background: linear-gradient(top, $main-accent-color 0%, $secondary-accent-color 100%);
-  /* Firefox */
-  background: -moz-linear-gradient(top, $main-accent-color 0%, $secondary-accent-color 100%);
-  /* Chrome,Safari4+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $main-accent-color), color-stop(100%, $secondary-accent-color));
-  /* Chrome10+,Safari5.1+ */
-  background: -webkit-linear-gradient(top, $main-accent-color 0%,$secondary-accent-color 100%);
+  background: #e0ffc7 url(https://media.giphy.com/media/Y1OfQ8Yv2KGv6/giphy.gif) no-repeat center center;
 
   a {
     font-family: "Assistant", sans-serif; 
