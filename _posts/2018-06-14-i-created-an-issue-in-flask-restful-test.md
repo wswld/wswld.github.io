@@ -25,7 +25,7 @@ author:
 ---
 
 Two and a half years ago (Dec 4, 2015) I've [written](
-http://wswld.net/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/) 
+http://bardakist.com/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/) 
 about a minor problem in Flask-RESTful, that puzzled and amused me. An issue [was 
 created](https://github.com/flask-restful/flask-restful/issues/545) on the same 
 day. I then went on with my life, hoping for someone to step in and fix this 

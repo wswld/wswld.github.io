@@ -211,6 +211,6 @@ try [BioAid](http://bioaid.org.uk/) for yourself, don't forget to provide your
 may turn out very useful to them.
 
 **Update 14.11.2014**: I've written [another piece on BioAid](
-http://bardakist.com/2014/09/24/update-on-bioaid-and-my-hearing-in-general/) in a 
+http://wswld.net/2014/09/24/update-on-bioaid-and-my-hearing-in-general/) in a 
 year's time, where I've reexamined most of my earlier observations and 
 conclusions.

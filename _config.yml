@@ -2,9 +2,9 @@
 permalink:           pretty
 
 # Setup
-title:               ברדקיסט
+title:               וסוולוד
 tagline:             This plane's going to Miami!
-url:                 http://getpoole.com
+url:                 http://wswld.net
 paginate:            5
 baseurl:             ""
 exlude:              ["ololo/"]
