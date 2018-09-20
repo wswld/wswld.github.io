@@ -21,11 +21,21 @@ author:
   last_name: ''
 ---
 
-This page had more projects, but as they were somewhat abandoned they were 
-moved to private repos. For now I have only one active project that is 
-not under NDA. Gotta do more public work in the future.
+<br />
+
+1. **Maintainer @ [Data-Driven Tests](https://github.com/datadriventests/ddt)**.
+   Django package that allows you to multiply one test case by running it 
+   with different test data, and make it appear as multiple test cases.
+1. **Creator @ [Gradient Daily](https://github.com/wswld/gradient_daily)**. 
+   Small artsy project I made out of curiosity, it generates a gradient image 
+   and uploads it to Instagram every day.
+1. **Contributor @ [Flask-RESTful](https://github.com/wswld/flask-restful)**. 
+   Flask extension that provides the building blocks for creating a great REST 
+   API.
+1. **Contributor @ [django-cities-light](https://github.com/yourlabs/django-cities-light)**.
+   An add-on that provides models and commands to import country, region/state, 
+   and city data in your database.
 
 
-1. [Gradient Daily](https://github.com/wswld/gradient_daily) - small artsy 
-   project I made out of curiosity, it generates a gradient image and uploads 
-   it to Instagram every day.
+
+
