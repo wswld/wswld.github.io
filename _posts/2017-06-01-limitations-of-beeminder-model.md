@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Limitations of the Beeminder Model
+tags:
+- Beeminder
+- productivity
+- model
 ---
 
 I've been having somewhat on and off relationship with Beeminder. I'm not going to waste time explaining 

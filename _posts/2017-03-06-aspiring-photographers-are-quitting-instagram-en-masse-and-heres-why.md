@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+tags:
+- Instagram
+- photography
+- photographers
+- quit
 ---
 
 Full disclaimer: the title is a total clickbait. Still I'm very concerned about 
