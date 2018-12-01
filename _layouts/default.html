@@ -12,16 +12,6 @@
         </h3>
         <div class="subtitle"><small>{{ site.tagline }}</small></div>
       </header>
-
-        <ul class="page-menu">
-        {% for page in site.pages %}
-          {% if page.layout == 'page' %}
-          <li> <a href="{{ page.url }}">{{ page.title }}</a></li>
-          {% endif %}
-       {% endfor %}
-       <li><p><a href="https://goo.gl/rPuvab"><img style='vertical-align:top; display: inline-block; height: 1.5em; margin: 0 0 0 0;' src="/assets/file.png" /> CV</a></p></li style='padding-bottom: 19px'>
-     </ul>
-     <br />
       <main>
       {{ content }}
       </main>

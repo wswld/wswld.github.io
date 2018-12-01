@@ -4,31 +4,43 @@ title: Home
 ---
 <head><meta name="theme-color" content="#000000"></head>
 <!-- <a href="https://github.com/wswld"><img src="http://ghchart.rshah.org/wswld" alt="wswld Github chart" /></a> -->
+<p>
+<strong>My name is Vsevolod.</strong>
+</p></p>
+I’m a web web-developer mostly specializing in web APIs and backend side of 
+things, but I’m always  happy to try myself in different types of engineering 
+tasks including Ops (Kubernetes, Docker, Linux), ETL pipelines, web scraping 
+and interactive frontend. My instruments of choice include various Python 
+frameworks (Django, Flask, Sanic to name a few) various kinds of databases 
+(PostgreSQL, MongoDB) and on occasion - React. I’m also a former technical 
+writer (worked on OpenCV documentation), die-hard Linux fan and FOSS-enthusiast.
+</p>
 
+<h1>Links</h1>
+<li><a href="https://goo.gl/rPuvab"><img style='vertical-align:top; display: inline-block; height: 1.5em; margin: 0 0 0 0;' src="/assets/file.png" /> CV</a></li style='padding-bottom: 19px'>
+<li><a href="https://twitter.com/wswld">Twitter</a></li>
 
+<h1>Current Projects</h1>
+<li><strong>Maintainer @ <a href="https://github.com/datadriventests/ddt">Data-Driven-Tests</a></strong>.
+   Django package that allows you to multiply one test case by running it 
+   with different test data, and make it appear as multiple test cases.</li>
+<li><strong>Creator @ <a href="https://github.com/wswld/gradient_daily">Gradient Daily</a></strong>. 
+   Small artsy project I made out of curiosity, it generates a gradient image 
+   and uploads it to Instagram every day.</li>
+<li><strong>Contributor @ <a href="https://github.com/wswld/flask-restful">Flask-RESTful</a></strong>. 
+   Flask extension that provides the building blocks for creating a great REST 
+   API.</li>
+<li><strong>Contributor @ <a href="https://github.com/yourlabs/django-cities-light">django-cities-light</a></strong>.
+   An add-on that provides models and commands to import country, region/state, 
+   and city data in your database.</li>
+  <h1>Posts</h1>
 <div class="posts">
   {% for post in paginator.posts %}
-  <article class="post">
-    <h1 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
+  <li>
+  <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
       </a>
-    </h1>
-    <br />
-    {{ post.content }}
-  </article>
+</li>
   {% endfor %}
 </div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">←</a>
-  {% else %}
-    <span class="pagination-item older"></span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">→</a>
-  {% else %}
-    <span class="pagination-item newer"></span>
-  {% endif %}
-</div>
+<br />
