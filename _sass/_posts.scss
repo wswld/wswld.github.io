@@ -63,14 +63,14 @@
   li {
     small {
       font-size: 75%;
-      color: #fff;
+      color: $header;
     }
 
     a:hover {
       text-decoration: none;
 
       small {
-        color: #fff;
+        color: $header;
       }
     }
   }
