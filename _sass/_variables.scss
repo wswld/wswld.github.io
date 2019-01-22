@@ -1,9 +1,12 @@
 
-$main-accent-color: #2b57a2;
-$secondary-accent-color: #847996;
+$main-accent-color: #7F00FF;
+$secondary-accent-color: #B185A7;
+
+$selection: #ffe500;
+$selection-alpha: rgba($selection, .7);
 
 $secondary-accent-color-alpha: rgba($secondary-accent-color, .7);
-$main-accent-color-alpha: rgba($main-accent-color, .7);
+$main-accent-color-alpha: rgba($main-accent-color, .5);
 
 $gray-1: #f9f9f9;
 $gray-2: #ccc;
@@ -19,14 +22,14 @@ $cyan: #75b5aa;
 $blue: #268bd2;
 $brown: #8f5536;
 
-$root-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+$root-font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Roboto", Arial, sans-serif;
 $root-font-size: 16px;
-$root-line-height: 1.5;
+$root-line-height: 1.4;
 
 $body-color: #31393C;
 $header: #0F1108;
 $body-bg: #FDFFFC;
-$link-color: #0F1108;
+$link-color: $main-accent-color;
 
 $border-color: #e5e5e5;
 
