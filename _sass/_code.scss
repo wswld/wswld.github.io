@@ -12,7 +12,7 @@ code {
   padding: .1em .1em;
   font-size: 85%;
   color: #0F1108;
-  background-color: #E0E0E2;
+  font-weight: 500;
   border-radius: 1px;
 }
 
@@ -55,26 +55,3 @@ pre code {
             user-select: none;
   }
 }
-
-
-// Gist via GitHub Pages
-// .gist .gist-file {
-//   font-family: Menlo, Monaco, "Courier New", monospace !important;
-// }
-// .gist .markdown-body {
-//   padding: 15px;
-// }
-// .gist pre {
-//   padding: 0;
-//   background-color: transparent;
-// }
-// .gist .gist-file .gist-data {
-//   font-size: .8rem !important;
-//   line-height: 1.4;
-// }
-// .gist code {
-//   padding: 0;
-//   color: inherit;
-//   background-color: transparent;
-//   border-radius: 0;
-// }
