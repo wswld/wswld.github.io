@@ -35,6 +35,9 @@ body {
       -ms-text-size-adjust: 100%;
 }
 
+ul {
+  list-style-position: outside;
+}
 
 ::-moz-selection { /* Code for Firefox */
   background: $selection-alpha; 

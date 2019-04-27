@@ -25,6 +25,7 @@ author:
   display_name: wswld
   first_name: ''
   last_name: ''
+excerpt_separator: <!--more-->
 ---
 
 ### Lifehack 1: Locking the Screen
@@ -33,6 +34,8 @@ This is kinda a nobrainer, but me myself sometimes look for a place, where to
 copy some of the syntax (I'm lazy and don't always keep that in my head), so 
 let's start with this one. i3wm ships with beautiful and robust screen locker 
 `i3lock`, which can be launched like this:
+
+<!--more-->
 
 ``` sh
 i3lock -c 000000

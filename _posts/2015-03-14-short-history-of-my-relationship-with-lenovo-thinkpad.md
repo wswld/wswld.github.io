@@ -31,6 +31,7 @@ author:
   display_name: wswld
   first_name: ''
   last_name: ''
+excerpt_separator: <!--more-->
 ---
 
 ![My own ThinkPad X201]({{ site.baseurl }}/assets/20150315_015224.jpg)
@@ -41,6 +42,8 @@ http://www.notebookreview.com/notebookreview/lenovo-thinkpad-x201-review) is
 the best X-series Thinkpad created yet*. What follows is my attempt at proving 
 this point with my merely anecdotal evidence. I'm funny like that. Here comes a 
 short story of my relationship with Lenovo Thinkpad X series.
+
+<!--more-->
 
 In 2013 I've been working as a technical writer (more *technical* than a 
 *writer* actually) in a medium-sized web-slash-mobile startup and the Macbook, 

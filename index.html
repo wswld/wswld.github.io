@@ -2,43 +2,55 @@
 layout: default
 title: Home
 ---
-<head><meta name="theme-color" content="#000000"></head>
+
+<head>
+   <meta name="theme-color" content="#000000">
+</head>
 <!-- <a href="https://github.com/wswld"><img src="http://ghchart.rshah.org/wswld" alt="wswld Github chart" /></a> -->
 <p>
-<strong>Vsevolod Glumov</strong>
-</p></p>
-Web application developer. Python hacker. 
-<a href="https://github.com/wswld">GitHub activist</a>. Wannabe influencer. 
+   <strong>Vsevolod Glumov</strong>
+</p>
+</p>
+Web application developer. Python hacker.
+<a href="https://github.com/wswld">GitHub activist</a>. Wannabe influencer.
 Coffee addict. Hebrew enthusiast.
 </p>
 
 <a href="https://github.com/wswld"><img src="http://ghchart.rshah.org/wswld" alt="wswld Github chart" /></a>
 
 <h1>Links</h1>
-<li><a href="https://goo.gl/rPuvab"><img style='vertical-align:top; display: inline-block; height: 1.5em; margin: 0 0 0 0;' src="/assets/file.png" /> CV</a></li style='padding-bottom: 19px'>
-<li><a href="https://twitter.com/wswld">Twitter</a></li>
-
+<ul>
+   <li><a href="https://goo.gl/rPuvab"><img
+            style='vertical-align:top; display: inline-block; height: 1.5em; margin: 0 0 0 0;' src="/assets/file.png" />
+         CV</a></li style='padding-bottom: 19px'>
+   <li><a href="https://twitter.com/wswld">Twitter</a></li>
+</ul>
 <h1>Current Projects</h1>
-<li><strong>Maintainer @ <a href="https://github.com/datadriventests/ddt">Data-Driven-Tests</a></strong>.
-   Django package that allows you to multiply one test case by running it 
-   with different test data, and make it appear as multiple test cases.</li>
-<li><strong>Creator @ <a href="https://github.com/wswld/gradient_daily">Gradient Daily</a></strong>. 
-   Small artsy project I made out of curiosity, it generates a gradient image 
-   and <a href="https://www.instagram.com/gradientdaily/">uploads</a> it to Instagram every day.</li>
-<li><strong>Contributor @ <a href="https://github.com/wswld/flask-restful">Flask-RESTful</a></strong>. 
-   Flask extension that provides the building blocks for creating a great REST 
-   API.</li>
-<li><strong>Contributor @ <a href="https://github.com/yourlabs/django-cities-light">django-cities-light</a></strong>.
-   An add-on that provides models and commands to import country, region/state, 
-   and city data in your database.</li>
-  <h1>Posts</h1>
+<ul>
+   <li><strong>Maintainer @ <a href="https://github.com/datadriventests/ddt">Data-Driven-Tests</a></strong>.
+      Django package that allows you to multiply one test case by running it
+      with different test data, and make it appear as multiple test cases.</li>
+   <li><strong>Creator @ <a href="https://github.com/wswld/gradient_daily">Gradient Daily</a></strong>.
+      Small artsy project I made out of curiosity, it generates a gradient image
+      and <a href="https://www.instagram.com/gradientdaily/">uploads</a> it to Instagram every day.</li>
+   <li><strong>Contributor @ <a href="https://github.com/wswld/flask-restful">Flask-RESTful</a></strong>.
+      Flask extension that provides the building blocks for creating a great REST
+      API.</li>
+   <li><strong>Contributor @ <a href="https://github.com/yourlabs/django-cities-light">django-cities-light</a></strong>.
+      An add-on that provides models and commands to import country, region/state,
+      and city data in your database.</li>
+</ul>
+<h1>Posts</h1>
 <div class="posts">
-  {% for post in site.posts %}
-  <li>
-  <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-</li>
-  {% endfor %}
+   <ul>
+      {% for post in site.posts %}
+      <li>
+         <a href="{{ site.baseurl }}{{ post.url }}"><span><time>{{ post.date | date_to_string }}</time></span> |
+            <strong>
+               {{ post.title }}</strong>
+         </a>
+         <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
+      </li>
+      {% endfor %}</ul>
 </div>
 <br />

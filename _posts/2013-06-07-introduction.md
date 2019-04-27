@@ -23,6 +23,7 @@ author:
   display_name: wswld
   first_name: 'Vsevolod'
   last_name: 'Glumov'
+excerpt_separator: <!--more-->
 ---
 
 My name is Vsevolod Glumov.
@@ -31,6 +32,8 @@ I’m working now as a technical writer with strong focus on code references and
 other developer-oriented materials. I’m also an inspired beginner developer, 
 delving into the worlds of Java and Python on my own. You can find links to 
 quite a few of my open-source projects on [this page](/projects).
+
+<!--more-->
 
 I’m not among the people who have recently joined the industry because they 
 heard it may help them to pay their bills. I’m not among the people, constantly 
