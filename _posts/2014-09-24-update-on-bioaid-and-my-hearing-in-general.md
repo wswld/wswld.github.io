@@ -14,6 +14,7 @@ tags:
 - hearing
 - hearing aids
 - Widex
+- popular
 meta:
   _edit_last: '10080708'
   geo_public: '1'

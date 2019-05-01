@@ -26,6 +26,7 @@ tags:
 - template
 - theme
 - writing
+- popular
 meta:
   geo_latitude: '0.000000'
   geo_longitude: '0.000000'

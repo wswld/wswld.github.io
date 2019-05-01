@@ -6,7 +6,6 @@ title: Home
 <head>
    <meta name="theme-color" content="#000000">
 </head>
-<!-- <a href="https://github.com/wswld"><img src="http://ghchart.rshah.org/wswld" alt="wswld Github chart" /></a> -->
 <p>
    <strong>Vsevolod Glumov</strong>
 </p>
@@ -43,14 +42,24 @@ Coffee addict. Hebrew enthusiast.
 <h1>Posts</h1>
 <div class="posts">
    <ul>
-      {% for post in site.posts %}
+      {% for post in site.posts limit:3 %}
       <li>
-         <a href="{{ site.baseurl }}{{ post.url }}"><span><time>{{ post.date | date_to_string }}</time></span> |
+         <a href="{{ site.baseurl }}{{ post.url }}">
             <strong>
-               {{ post.title }}</strong>
-         </a>
+               {{ post.title }}</strong> 
+         </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
+         <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
+      </li>
+      {% endfor %}
+      {% for post in site.tags.popular %}
+      <li>
+         <a href="{{ site.baseurl }}{{ post.url }}">
+            <strong>
+               {{ post.title }}</strong> 
+         </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
          <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
       </li>
       {% endfor %}</ul>
+      <h4 style="text-align:center"><a href="all">Explore all posts</a></h3>
 </div>
 <br />

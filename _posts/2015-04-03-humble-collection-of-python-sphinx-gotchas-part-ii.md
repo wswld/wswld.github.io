@@ -16,6 +16,7 @@ tags:
 - python
 - Sphinx
 - static sites
+- popular
 meta:
   _edit_last: '10080708'
   geo_public: '0'
