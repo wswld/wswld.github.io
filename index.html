@@ -39,7 +39,7 @@ Coffee addict. Hebrew enthusiast.
       An add-on that provides models and commands to import country, region/state,
       and city data in your database.</li>
 </ul>
-<h1>Posts</h1>
+<h1>Latest Posts</h1>
 <div class="posts">
    <ul>
       {% for post in site.posts limit:3 %}
@@ -50,7 +50,8 @@ Coffee addict. Hebrew enthusiast.
          </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
          <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
       </li>
-      {% endfor %}
+      {% endfor %}</ul>
+      <h1>Most Popular Posts</h1><ul>
       {% for post in site.tags.popular %}
       <li>
          <a href="{{ site.baseurl }}{{ post.url }}">
