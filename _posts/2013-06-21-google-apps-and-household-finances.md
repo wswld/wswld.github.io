@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Google Apps and Household Finances
-date: 2013-06-21 01:41:06.000000000 +04:00
+date: 2013-06-21 01:41:06.000000000 +00:00
 type: post
 parent_id: '0'
 published: true
