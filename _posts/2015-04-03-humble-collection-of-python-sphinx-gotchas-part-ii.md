@@ -16,6 +16,7 @@ tags:
 - python
 - Sphinx
 - static sites
+- popular
 meta:
   _edit_last: '10080708'
   geo_public: '0'
@@ -26,11 +27,14 @@ author:
   display_name: wswld
   first_name: ''
   last_name: ''
+excerpt_separator: <!--more-->
 ---
 ### Gotcha 1: Release and Version
 
 Sphinx makes a distinction between the release code and the version of the 
 application. The idea is that it should look this way:
+
+<!--more-->
 
 ``` python
 version = "4.0.4"

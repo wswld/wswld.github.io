@@ -26,6 +26,7 @@ tags:
 - template
 - theme
 - writing
+- popular
 meta:
   geo_latitude: '0.000000'
   geo_longitude: '0.000000'
@@ -52,6 +53,7 @@ author:
   display_name: wswld
   first_name: ''
   last_name: ''
+excerpt_separator: <!--more-->
 ---
 
 ### Gotcha 1: Getting Started with Sphinx Theming
@@ -59,6 +61,8 @@ author:
 **Update 02.10.2014:** It seems absolutely obvious to me, but apparently it is not that obvious to [some](http://stackoverflow.com/questions/25800264/bootstrap-theme-ugly-looking-font-for-inline-literal/25890178): you can't do anything about your Sphinx theme without some basic CSS and HTML skills. You can only change some of the theme parameters, if the developer was kind enough to add some, but it is [well 
 covered](http://sphinx-doc.org/theming.html#using-a-theme) in the official 
 documentation.
+
+<!--more-->
 
 Customizing Sphinx visuals was somewhat upsetting to me at first, since the 
 process is not straightforward and documentation is scarce. It could be a 

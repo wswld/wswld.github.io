@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Limitations of the Beeminder Model
+date: 2018-01-09 17:00:00.000000000 +03:00
 tags:
 - Beeminder
 - productivity

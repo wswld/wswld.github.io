@@ -1,0 +1,22 @@
+---
+layout: default
+title: Home
+---
+
+<head>
+   <meta name="theme-color" content="#000000">
+</head>
+<h1>All Posts</h1>
+<div class="posts">
+   <ul>
+      {% for post in site.posts %}
+      <li>
+         <a href="{{ site.baseurl }}{{ post.url }}">
+            <strong>
+               {{ post.title }}</strong> 
+         </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
+         <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
+      </li>
+      {% endfor %}
+</div>
+<br />
