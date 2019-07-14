@@ -3,7 +3,7 @@ $main-accent-color: #145C9E;
 $secondary-accent-color: #B185A7;
 
 $selection: #ffe500;
-$selection-alpha: rgba($selection, .7);
+$selection-alpha: rgba(#ffe500, .7);
 
 $secondary-accent-color-alpha: rgba($secondary-accent-color, .7);
 $main-accent-color-alpha: rgba($main-accent-color, .5);
@@ -22,8 +22,8 @@ $cyan: #75b5aa;
 $blue: #268bd2;
 $brown: #8f5536;
 
-$root-font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-$root-font-size: 17px;
+$root-font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+$root-font-size: 16px;
 $root-line-height: 1.4;
 
 $body-color: #31393C;
