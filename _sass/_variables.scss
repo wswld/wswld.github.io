@@ -22,13 +22,14 @@ $cyan: #75b5aa;
 $blue: #268bd2;
 $brown: #8f5536;
 
-$root-font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-$root-font-size: 16px;
+$root-font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+$header-font-family: 'Lato', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+$root-font-size: 17px;
 $root-line-height: 1.4;
 
 $body-color: #31393C;
 $header: #0F1108;
-$body-bg: #FDFFFC;
+$body-bg: rgb(236, 236, 236);
 $link-color: $main-accent-color;
 
 $border-color: #e5e5e5;
