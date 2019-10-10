@@ -35,27 +35,16 @@ Coffee addict. Hebrew enthusiast.
 <a class="twitter-timeline" href="https://twitter.com/wswld?ref_src=twsrc%5Etfw"
 data-chrome="nofooter noheader transparent noborders" data-tweet-limit="1"></a> 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<h2>Selected Posts</h2>
+<h2>Featured Writings</h2>
 <div class="posts">
    <ul>
-      {% for post in site.posts limit:1 %}
       <li>
-         <a href="{{ site.baseurl }}{{ post.url }}">
-            <strong>
-               {{ post.title }}</strong> 
-         </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
-         <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
+         <a href="/2018/06/14/i-created-an-issue-in-flask-restful/">Created an Issue in a Flask-RESTful Repository, You Won't Believe What Happened Next</a>
       </li>
-      {% endfor %}
-      {% for post in site.tags.popular limit:2 %}
       <li>
-         <a href="{{ site.baseurl }}{{ post.url }}">
-            <strong>
-               {{ post.title }}</strong> 
-         </a>   <span>(<time>{{ post.date | date_to_string }}</time>)</span>
-         <p>{{ post.excerpt | strip_html | truncatewords:32 }}</p>
+         <a href="/2015/12/07/overriding-default-werkzeug-exceptions-in-flask/">Overriding Default Werkzeug Exceptions in Flask</a>
       </li>
-      {% endfor %}</ul>
+   </ul>
       <h4 style="text-align:center"><a href="all">Explore all posts</a></h3>
 </div>
 <br />
