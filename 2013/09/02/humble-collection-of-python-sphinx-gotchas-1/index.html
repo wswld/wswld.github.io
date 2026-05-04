@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Humble Collection of Python Sphinx Gotchas: Part I &middot; wswld
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="wswld" href="/atom.xml">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85418876-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85418876-1');
+</script>
+
+</head>
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"502e2a7bff313888cdbeb1ef4","lid":"23333674c9","uniqueMethods":true}) })</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">@wswld</a>
+        </h3>
+        <div class="subtitle"><small>Behind the schedule since 1989</small></div>
+      </header>
+      <main>
+      <article class="post">
+  <h1 class="post-title">Humble Collection of Python Sphinx Gotchas: Part I</h1>
+  <p class="metadata"><time datetime="2013-09-02T08:11:05-07:00" class="post-date">02 Sep 2013</time> | 
+  
+    
+    <a>CSS</nobr>&nbsp;</a>
+  
+    
+    <a>customization</nobr>&nbsp;</a>
+  
+    
+    <a>design</nobr>&nbsp;</a>
+  
+    
+    <a>DIY</nobr>&nbsp;</a>
+  
+    
+    <a>documentation</nobr>&nbsp;</a>
+  
+    
+    <a>HTML</nobr>&nbsp;</a>
+  
+    
+    <a>interactive</nobr>&nbsp;</a>
+  
+    
+    <a>JavaScript</nobr>&nbsp;</a>
+  
+    
+    <a>jQuerry</nobr>&nbsp;</a>
+  
+    
+    <a>software</nobr>&nbsp;</a>
+  
+    
+    <a>Sphinx</nobr>&nbsp;</a>
+  
+    
+    <a>static sites</nobr>&nbsp;</a>
+  
+    
+    <a>style</nobr>&nbsp;</a>
+  
+    
+    <a>technology</nobr>&nbsp;</a>
+  
+    
+    <a>template</nobr>&nbsp;</a>
+  
+    
+    <a>theme</nobr>&nbsp;</a>
+  
+    
+    <a>writing</nobr>&nbsp;</a>
+  
+    
+    <a>popular</nobr>&nbsp;</a>
+  </p>
+  <h3 id="gotcha-1-getting-started-with-sphinx-theming">Gotcha 1: Getting Started with Sphinx Theming</h3>
+
+<p><strong>Update 02.10.2014:</strong> It seems absolutely obvious to me, but apparently it is not that obvious to <a href="http://stackoverflow.com/questions/25800264/bootstrap-theme-ugly-looking-font-for-inline-literal/25890178">some</a>: you can’t do anything about your Sphinx theme without some basic CSS and HTML skills. You can only change some of the theme parameters, if the developer was kind enough to add some, but it is <a href="http://sphinx-doc.org/theming.html#using-a-theme">well 
+covered</a> in the official 
+documentation.</p>
+
+<!--more-->
+
+<p>Customizing Sphinx visuals was somewhat upsetting to me at first, since the 
+process is not straightforward and documentation is scarce. It could be a 
+little bit user-friendlier. However, as soon as you get a grip on the basics, 
+it gets pretty smooth and simple. You may have already tried copying over the 
+default theme only to discover, that there is nothing particularly useful in 
+there for an inquisitive scholar. Only one of the standard Sphinx themes is in 
+fact complete, the rest of them simply inherit its properties to add some minor 
+alterations. This theme is called <em>Basic</em> and it’s a minimal sandbox template, 
+the only theme that could be helpful for getting to the very bottom of Sphinx 
+customization. Later you’d be able to inherit it and create a template, 
+consisting only of alterations, but for a start it’s OK to copy the <em>Basic</em> in 
+its entirety.</p>
+
+<p>Hopefully, you’ve already created a folder for your Sphinx project and 
+initiated it by issuing:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>sphinx-quickstart
+</code></pre></div></div>
+
+<p>Or you may have an already existing Sphinx project, you want to theme — it’s up 
+to you. In your project folder create the <code class="language-plaintext highlighter-rouge">_themes</code> directory and then rename 
+and copy the theme folder there. <em>Basic</em> theme, perhaps, should be located in 
+<code class="language-plaintext highlighter-rouge">site_packages</code> folder of your active Python install.</p>
+
+<p>Next step would be to change <code class="language-plaintext highlighter-rouge">conf.py</code> of your project, accordingly. First, we 
+should make sure, that the following line is uncommented and correct:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">_themes</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Don’t forget to check the value of the <code class="language-plaintext highlighter-rouge">html_theme</code> parameter above:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">html_theme</span> <span class="o">=</span> <span class="sh">'</span><span class="s">renamed_basic</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<p><img src="/assets/screen-shot-2013-09-02-at-10-14-52-pm.png" alt="Basic theme without customization looks like vanilla HTML with no stylesheet 
+whatsoever." /></p>
+
+<p>As of now you may start making alterations to the theme. You will find that 
+HTML files in there aren’t really HTML files, but templates (Sphinx uses 
+<a href="http://en.wikipedia.org/wiki/Jinja_(template_engine)">Jinja</a> template engine) 
+with some staff automatically inserted on build. You can combine these 
+automatic tags with basic HTML tags and as soon as you figure out how it works, 
+you could move some of the interactive tags around, or get rid of some of them 
+altogether. Don’t forget to check whether you’re not breaking anything though. 
+Most visual aspects of Sphinx theme are modified through the main CSS file, 
+which is located in the <code class="language-plaintext highlighter-rouge">static</code> folder. For <em>Basic</em> theme it would be 
+<code class="language-plaintext highlighter-rouge">basic.css_t</code>. Notice, that <code class="language-plaintext highlighter-rouge">t</code> in the extension brings to our attention the 
+fact, that this is a template. Other than that it could be viewed and edited as 
+a simple CSS file. If you’re interested in the values, provided by Sphinx 
+templates and how you cam make use of them, consult <a href="http://sphinx-doc.org/templating.html#jinja-sphinx-templating-primer">the official 
+documentation</a>. If you 
+want the main CSS file to have some other name, you can change that in 
+<code class="language-plaintext highlighter-rouge">theme.conf</code>, there are also some other settings, that could be of interest.</p>
+
+<h3 id="gotcha-2-spoiler">Gotcha 2: Spoiler</h3>
+
+<p>If you play with Sphinx templates for some time, you may want to start adding 
+something more interactive. We could easily implement these kinds of things 
+trough plain JavaScript or jQuery.</p>
+
+<p>Let’s go trough a little example project, to recognize, what could be achieved 
+with combined power of Sphinx and JavaScript. You may notice, that as for 
+common elements in HTML themes there is usually a way to address them in 
+JavaScript, it’s not that easy to introduce new classes and wrap some parts of 
+the text into them. There is no custom <code class="language-plaintext highlighter-rouge">div</code> tag in Sphinx, unless you do that 
+as <code class="language-plaintext highlighter-rouge">.. raw</code> directive which is not really a native way, and breaks lots of 
+things. What I needed to do was to wrap some section of text into a <code class="language-plaintext highlighter-rouge">div</code> and 
+make it collapsible on button pressed. You could achieve that by creating your 
+own admonition and assigning it to certain HTML class.</p>
+
+<p>For example:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.. admonition:: Request
+		:class: splr
+ 		Request example and parameters.
+</code></pre></div></div>
+
+<p>You can then easily reference this admonition by its class in your JavaScript. 
+For example you could put this jQuery script to your <code class="language-plaintext highlighter-rouge">page.html</code> template:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.splr</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background-color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#F0F0F0</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.splr</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">box-shadow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">0px 0px 1px 1px #000000</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.splr &gt; .last</span><span class="dl">'</span><span class="p">).</span><span class="nf">hide</span><span class="p">();</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.splr &gt; .expanded + .last</span><span class="dl">'</span><span class="p">).</span><span class="nf">show</span><span class="p">(</span><span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.splr &gt; p</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.last</span><span class="dl">'</span><span class="p">).</span><span class="nf">hide</span><span class="p">();</span>
+    <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">toggleClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">).</span><span class="nf">toggleClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">).</span><span class="nf">next</span><span class="p">(</span><span class="dl">'</span><span class="s1">.last</span><span class="dl">'</span><span class="p">).</span><span class="nf">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>If implemented correctly, this script should turn the <code class="language-plaintext highlighter-rouge">splr</code> admonition into a 
+collapsible drawer. I’ve been actively using this, when documenting HTTP APIs, 
+since it’s very helpful to hide JSON responses by default. Note, that you could 
+also use this method for special CSS effects. Imagine, if aside from usual 
+note, warning and tip you could have yellow, blue and purple boxes for whatever 
+reason you can think of? Well, it couldn’t be any simpler. Admonitions are good 
+default containers for some parts of your text, that should differ in design or 
+function from the rest of the page.</p>
+
+<h3 id="gotcha-3-interactive-toc-in-sidebar">Gotcha 3: Interactive TOC in Sidebar</h3>
+
+<p><img src="/assets/tocs.png" alt="Not the worst case, but still a valid comparison of TOC trees in Default 
+theme and our JavaScript enhanced Basic." /></p>
+
+<p>You may have noticed, that Sphinx often adds TOC to sidebar automatically, if 
+it’s not explicitly placed in the page itself. While this is certainly a very 
+useful feature, sometimes things get out of control. I didn’t use the worst 
+case in the picture on the right, but it could get up to innumerable 1st level 
+sections, each of them could have a number of subsections and so on. Sometimes 
+it is a clear sign, that the page should be reorganized into multiple 
+standalone pages, united by a category, but it’s not always possible or needed. 
+It’s perfectly alright to have a long and deep TOC in some cases and <em>Default</em> 
+Sphinx theme is terrible in that regard (<em>as of 2014 it is fixed and children 
+categories are shown only for the currently selected one</em>).</p>
+
+<p>You could use an updated version of the algorithm from the previous example to 
+collapse some parts of the TOC by default. Note, how this script works with 
+<code class="language-plaintext highlighter-rouge">ul</code> and <code class="language-plaintext highlighter-rouge">li</code> tags of the TOC tree list. Some stuff is applied recursively on 
+the highest level of the list, some — on the subsequent levels. Especially 
+noticeable with different styles applied to different levels of the list, so 
+that you could tell whether it is 1st, 2nd or even 3rd level title. Here is the 
+full script:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebar</span><span class="dl">'</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">position</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">fixed</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebar</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">position</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">fixed</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">h3:contains('Table Of Contents')</span><span class="dl">"</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">border-bottom</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1px</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">h3:contains('Table Of Contents')</span><span class="dl">"</span><span class="p">).</span><span class="nf">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">TOC:</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">background-color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#B8B8B8</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">box-shadow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">0px 0px 1px 1px #000000</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">white</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">border-color</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#000000</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; ul &gt; li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">background</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#D0D0D0</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; ul &gt; li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">box-shadow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">0px 0px 1px 1px #000000</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; ul &gt; li &gt; ul &gt; li</span><span class="dl">'</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">background</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">#F0F0F0</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; ul</span><span class="dl">'</span><span class="p">).</span><span class="nf">hide</span><span class="p">();</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; .expanded + ul</span><span class="dl">'</span><span class="p">).</span><span class="nf">show</span><span class="p">(</span><span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sphinxsidebarwrapper li &gt; a</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//hide everything</span>
+  <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">).</span><span class="nf">hide</span><span class="p">();</span>
+  <span class="c1">//toggle next ul</span>
+  <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">toggleClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">).</span><span class="nf">toggleClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">).</span><span class="nf">next</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul</span><span class="dl">'</span><span class="p">).</span><span class="nf">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">normal</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>Perhaps, it won’t look very well, but it is a very simplified version to 
+illustrate the concept. If you get the idea, you may alter or add <code class="language-plaintext highlighter-rouge">.css</code> 
+methods to achieve more plausible visuals. You could also work on lower title 
+levels, but you will have to figure it all out for yourself. In this version 
+the snippet works best only with three headings levels from <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> to <code class="language-plaintext highlighter-rouge">&lt;h3&gt;</code>, 
+but it could definitely handle more.</p>
+
+<p>That’s it. <del datetime="2014-10-04T14:32:09+00:00">I’ve compiled these 
+examples as a full-featured theme project on GitHub. I’m going to polish it to 
+some extent and perhaps, implement more interactive stuff over time. Feel free 
+to contribute to this little project.</del> (<em>Nope, never happened. Well, it did 
+happened, but it was no good, sorry.</em>) If you come upon any issue with this 
+little gotchas of mine, let me know. Sure, I’ve tested everything myself, but 
+you never know. Also, you’re free to use any of these examples as a building 
+block in your work with no attribution, since they’re rather generic and simple.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2018/06/14/i-created-an-issue-in-flask-restful/">
+          I Created an Issue in a Flask-RESTful Repository, You Won't Believe What Happened Next
+          <small><time datetime="2018-06-14T07:00:00-07:00">14 Jun 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/09/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2018-01-09T06:00:00-08:00">09 Jan 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00-08:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; 2013-<time datetime="2026-05-04T15:14:20-07:00">2026</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

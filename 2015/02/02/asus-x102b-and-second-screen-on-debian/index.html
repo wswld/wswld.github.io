@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      ASUS X102B and second screen on Debian &middot; wswld
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="wswld" href="/atom.xml">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85418876-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85418876-1');
+</script>
+
+</head>
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"502e2a7bff313888cdbeb1ef4","lid":"23333674c9","uniqueMethods":true}) })</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">@wswld</a>
+        </h3>
+        <div class="subtitle"><small>Behind the schedule since 1989</small></div>
+      </header>
+      <main>
+      <article class="post">
+  <h1 class="post-title">ASUS X102B and second screen on Debian</h1>
+  <p class="metadata"><time datetime="2015-02-02T10:17:36-08:00" class="post-date">02 Feb 2015</time> | 
+  
+    
+    <a>apt-get</nobr>&nbsp;</a>
+  
+    
+    <a>ASUS</nobr>&nbsp;</a>
+  
+    
+    <a>deb</nobr>&nbsp;</a>
+  
+    
+    <a>Debian</nobr>&nbsp;</a>
+  
+    
+    <a>firmware-linux-nonfree</nobr>&nbsp;</a>
+  
+    
+    <a>hardware</nobr>&nbsp;</a>
+  
+    
+    <a>how-to</nobr>&nbsp;</a>
+  
+    
+    <a>issue</nobr>&nbsp;</a>
+  
+    
+    <a>second screen</nobr>&nbsp;</a>
+  
+    
+    <a>X102B</nobr>&nbsp;</a>
+  
+    
+    <a>xrandr</nobr>&nbsp;</a>
+  </p>
+  <p>I’ve stumbled upon a very capricious piece of hardware lately, which is ASUS 
+X102B. Basic (very basic) video seems to work out of the box, but there are 
+numerous problems here and there. Especially the second screen, which doesn’t 
+seem to work out of the box. If you run <code class="language-plaintext highlighter-rouge">xrandr</code> it will only recognize the 
+<em>“default”</em> output and even that would look pretty much broken. First thing to 
+do was:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>firmware-linux-nonfree
+</code></pre></div></div>
+
+<p>Actually, it’s a go-to solution (as in first thing to try) to many Debian 
+hardware-related problems, as the distro doesn’t include non-free firmware by 
+default. After that it recognizes most outputs the right way, but it may miss 
+the right modes. If so, you could add your mode manually.</p>
+
+<p>First, retrieve the full information about the mode:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cvt 1920 1080
+</code></pre></div></div>
+
+<p>You will get something like that:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz</span>
+Modeline <span class="s2">"1920x1080_60.00"</span>  173.00  1920 2048 2248 2576  1080 1083 1088 1120 <span class="nt">-hsync</span> +vsync
+</code></pre></div></div>
+
+<p>Now use the info to add the mode to <code class="language-plaintext highlighter-rouge">xrandr</code> and then assign it to the output:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xrandr <span class="nt">--newmode</span> <span class="s2">"1920x1080"</span> 173.00  1920 2048 2248 2576  1080 1083 1088 1120 <span class="nt">-HSync</span> +VSync
+xrandr <span class="nt">--addmode</span> VGA-0 <span class="s2">"1920x1080"</span>
+</code></pre></div></div>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">xrandr</code> command to check the list of availible outputs and modes. You 
+probably know that already, but here is how to use <code class="language-plaintext highlighter-rouge">xrandr</code> with the newly 
+created mode:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xrandr <span class="nt">--output</span> VGA-0 <span class="nt">--mode</span> <span class="s2">"1920x1080"</span>
+</code></pre></div></div>
+
+<p>Well, as this one issue is officially resolved I’m off to fight the rest of a 
+couple hundred problems, that arise, when trying to use this laptop with 
+Debian. Wish me luck and leave a comment if you had some trouble with the 
+machine (when used with Debian that is) — we could try to work it out together.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2018/06/14/i-created-an-issue-in-flask-restful/">
+          I Created an Issue in a Flask-RESTful Repository, You Won't Believe What Happened Next
+          <small><time datetime="2018-06-14T07:00:00-07:00">14 Jun 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/09/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2018-01-09T06:00:00-08:00">09 Jan 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00-08:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; 2013-<time datetime="2026-05-04T15:14:20-07:00">2026</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

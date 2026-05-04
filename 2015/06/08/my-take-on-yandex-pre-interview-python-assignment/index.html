@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      My Take on Yandex Pre-interview Python Assignment &middot; wswld
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="wswld" href="/atom.xml">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85418876-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85418876-1');
+</script>
+
+</head>
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"502e2a7bff313888cdbeb1ef4","lid":"23333674c9","uniqueMethods":true}) })</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">@wswld</a>
+        </h3>
+        <div class="subtitle"><small>Behind the schedule since 1989</small></div>
+      </header>
+      <main>
+      <article class="post">
+  <h1 class="post-title">My Take on Yandex Pre-interview Python Assignment</h1>
+  <p class="metadata"><time datetime="2015-06-08T04:19:12-07:00" class="post-date">08 Jun 2015</time> | 
+  
+    
+    <a>assignment</nobr>&nbsp;</a>
+  
+    
+    <a>code</nobr>&nbsp;</a>
+  
+    
+    <a>python</nobr>&nbsp;</a>
+  
+    
+    <a>test</nobr>&nbsp;</a>
+  
+    
+    <a>Yandex</nobr>&nbsp;</a>
+  </p>
+  <p>I’ve applied for a junior Python position at Russian internet giant Yandex 
+(very similar to Google). And although my application has been rejected, due to 
+lack of experience, I think their little pre-interview test and my take on that 
+may be of interest to any inquisitive pythonista. Note, that this has never 
+been properly translated into English before, so this is probably exclusive in 
+that regard.</p>
+
+<h3 id="assignment-i">Assignment I</h3>
+
+<p>There are two lists of different length. The first one contains keys, the 
+second - values. Write a function, that would create a dict out of these lists. 
+If the key doesn’t have a value - it should equal <code class="language-plaintext highlighter-rouge">None</code>, if the value doesn’t 
+have a key, it should be omitted.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_dict</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">(</span><span class="nf">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
+        <span class="n">ret</span><span class="p">.</span><span class="nf">__delitem__</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div></div>
+
+<h3 id="assignment-ii">Assignment II</h3>
+
+<p>Login should start with latin symbol, contain latin symbols, digits, dots and 
+hyphens, but end only with a latin symbol or a digit. Minimum length is 1 
+symbol, maximum - 20 symbols. Write a function that checks strings for 
+correspondence with these rules. Think of several methods of solving this 
+problem and compare them.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">re</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="k">def</span> <span class="nf">check1</span><span class="p">(</span><span class="n">login</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sh">'</span><span class="s">^[a-zA-Z][a-zA-Z0-9\-\.]{0,19}(?&lt;;![\-\.])$</span><span class="sh">'</span><span class="p">,</span> <span class="n">login</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">ret</span>
+<span class="k">def</span> <span class="nf">check2</span><span class="p">(</span><span class="n">login</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">login</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nf">len</span><span class="p">(</span><span class="n">login</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">;</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="ow">and</span> <span class="n">login</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">isalpha</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">login</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">isdigit</span><span class="p">()):</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">login</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">a</span><span class="p">.</span><span class="nf">isalpha</span><span class="p">()</span> <span class="ow">or</span> <span class="n">a</span><span class="p">.</span><span class="nf">isdigit</span><span class="p">()</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="sh">'</span><span class="s">-</span><span class="sh">'</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="sh">'</span><span class="s">.</span><span class="sh">'</span><span class="p">:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">ret</span>
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">login</span><span class="p">):</span>
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+    <span class="nf">check1</span><span class="p">(</span><span class="n">login</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tm</span><span class="p">)</span>
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+    <span class="nf">check2</span><span class="p">(</span><span class="n">login</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tm</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="assignment-iii">Assignment III</h3>
+
+<p>There are two tables <code class="language-plaintext highlighter-rouge">users</code> and <code class="language-plaintext highlighter-rouge">messages</code> (I changed names and messages to 
+non-Cyrillic):</p>
+
+<table>
+<caption><code>users</code></caption>
+<tr>
+<th>UID</th>
+<th>name</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Greg Laplante</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Luisa Portillo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Austin Hunt</td>
+</tr>
+</table>
+<table>
+<caption><code>messages</code></caption>
+<tr>
+<th>UID</th>
+<th>msg</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Hello, Greg!</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Send me the card, quickly.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>I'm waiting on the corner of 5th and Lafayette</td>
+</tr>
+<tr>
+<td>1</td>
+<td>This is me again. Please message me more often.</td>
+</tr>
+</table>
+
+<p>Create a SQL query, that would return two fields: <em>User name</em> and <em>Total amount 
+of messages</em>.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">users</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="nv">"User name"</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">"Total amount of messages"</span>
+<span class="k">FROM</span> <span class="n">users</span>
+<span class="k">JOIN</span> <span class="n">messages</span> <span class="k">ON</span> <span class="n">users</span><span class="p">.</span><span class="n">uid</span> <span class="o">=</span> <span class="n">messages</span><span class="p">.</span><span class="n">uid</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">users</span><span class="p">.</span><span class="n">uid</span>
+</code></pre></div></div>
+
+<h3 id="assignment-iv">Assignment IV</h3>
+
+<p>Suppose you have a generic <code class="language-plaintext highlighter-rouge">access.log</code>. How to get 10 most frequent 
+IP-addresses using standard terminal tools? How to do that with Python?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># BASH:
+</span><span class="n">grep</span> <span class="o">-</span><span class="n">o</span> <span class="sh">'</span><span class="s">[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}</span><span class="sh">'</span> <span class="n">access</span><span class="p">.</span><span class="n">log</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">r</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="mi">10</span>
+<span class="c1"># PYTHON:
+</span><span class="kn">import</span> <span class="n">sys</span>
+<span class="kn">import</span> <span class="n">re</span>
+<span class="nb">all</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nf">findall</span><span class="p">(</span><span class="sh">"</span><span class="s">[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}</span><span class="sh">"</span><span class="p">,</span> <span class="nf">open</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">).</span><span class="nf">read</span><span class="p">())</span>
+<span class="n">srt</span> <span class="o">=</span> <span class="nf">sorted</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">all</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">unq</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">srt</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">unq</span><span class="p">:</span>
+        <span class="n">unq</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">unq</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>If you can think of a better way to solve any of these, let me know.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2018/06/14/i-created-an-issue-in-flask-restful/">
+          I Created an Issue in a Flask-RESTful Repository, You Won't Believe What Happened Next
+          <small><time datetime="2018-06-14T07:00:00-07:00">14 Jun 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/09/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2018-01-09T06:00:00-08:00">09 Jan 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00-08:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; 2013-<time datetime="2026-05-04T15:14:20-07:00">2026</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

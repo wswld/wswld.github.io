@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Remote Debugging with PyCharm &middot; wswld
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="wswld" href="/atom.xml">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85418876-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85418876-1');
+</script>
+
+</head>
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"502e2a7bff313888cdbeb1ef4","lid":"23333674c9","uniqueMethods":true}) })</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">@wswld</a>
+        </h3>
+        <div class="subtitle"><small>Behind the schedule since 1989</small></div>
+      </header>
+      <main>
+      <article class="post">
+  <h1 class="post-title">Remote Debugging with PyCharm</h1>
+  <p class="metadata"><time datetime="2015-09-17T10:15:19-07:00" class="post-date">17 Sep 2015</time> | 
+  
+    
+    <a>debugging</nobr>&nbsp;</a>
+  
+    
+    <a>development</nobr>&nbsp;</a>
+  
+    
+    <a>how-to</nobr>&nbsp;</a>
+  
+    
+    <a>ide</nobr>&nbsp;</a>
+  
+    
+    <a>pycharm</nobr>&nbsp;</a>
+  
+    
+    <a>python</nobr>&nbsp;</a>
+  
+    
+    <a>remote</nobr>&nbsp;</a>
+  
+    
+    <a>software</nobr>&nbsp;</a>
+  
+    
+    <a>technology</nobr>&nbsp;</a>
+  
+    
+    <a>tutorial</nobr>&nbsp;</a>
+  </p>
+  <p>I’m working in a project now, that requires a certain (server) environment to 
+run, hence it is developed on my local machine and then gets deployed on remote 
+server. I thought I’m gonna say bye bye to my favorite PyCharm feature, namely 
+the debugger, but to my surprise remote debugging has been supported for years 
+now. It took some time to figure out (tutorials online are a bit ambiguous), so 
+here is a short report on my findings.</p>
+
+<p>For the sake of this tutorial let’s assume the following:</p>
+
+<ul>
+  <li><strong>Remote host:</strong> <code class="language-plaintext highlighter-rouge">foo_host.io</code>,</li>
+  <li><strong>Remote user:</strong> <code class="language-plaintext highlighter-rouge">foo_usr</code> (<code class="language-plaintext highlighter-rouge">/home/foo_usr/</code>),</li>
+  <li><strong>Local user:</strong> <code class="language-plaintext highlighter-rouge">bar_usr</code> (<code class="language-plaintext highlighter-rouge">/home/bar_usr/</code>),</li>
+  <li><strong>Path to the project on the local machine:</strong> <code class="language-plaintext highlighter-rouge">/home/bar_usr/proj</code>.</li>
+</ul>
+
+<p>Here goes the step-by-step how-to:</p>
+
+<ol>
+  <li>
+    <p>First we need to set up remote deploy, if you haven’t done so already. Go to 
+<em>Tools</em> → <em>Deployment</em> → <em>Configuration</em>. And set up access to your remote 
+server via SSH. I’d use:</p>
+
+    <ul>
+      <li><strong>Type:</strong> SFTP,</li>
+      <li><strong>SFTP host:</strong> <code class="language-plaintext highlighter-rouge">foo_host.io</code> (don’t forget to test the connection before 
+ applying),</li>
+      <li><strong>Port:</strong> 22 (obvously),</li>
+      <li><strong>Root path:</strong> <code class="language-plaintext highlighter-rouge">/home/foo_usr</code>,</li>
+      <li><strong>User name:</strong> <code class="language-plaintext highlighter-rouge">foo_usr</code>,</li>
+      <li><strong>Auth type:</strong> Key pair (OpenSSH or PyTTY),</li>
+      <li><strong>Private key file:</strong> <code class="language-plaintext highlighter-rouge">/home/bar_usr/.ssh/id_rsa</code> (you’d need to generate 
+the key and <code class="language-plaintext highlighter-rouge">ssh-copy-id</code> it to the remote machine, which is outside of 
+the scope of this tutorial).</li>
+    </ul>
+  </li>
+  <li>Go to <em>Mappings</em> tab and add <em>Deployment path</em> on server (pehaps, the name 
+of your project),</li>
+  <li>Now under <em>Tools</em> → <em>Deployment</em> you have an option to deploy your code to 
+remote server. These first three steps could be replaced with simple 
+Git-repository on the side of the server, however I sometimes prefer this 
+way.</li>
+  <li>Now when you have the deployment set up you can go <em>Tools</em> → <em>Deployment</em> → 
+<em>Upload to …</em>, note however, that it deploys only the file you have opened 
+or the directory you selected in the project view, so if you need to sync 
+the whole project just select your project root.</li>
+  <li>I use <code class="language-plaintext highlighter-rouge">virtualenv</code>, so at this step I need to <code class="language-plaintext highlighter-rouge">ssh</code> into the remote machine 
+and set up <code class="language-plaintext highlighter-rouge">virtualenv</code> in your project directory 
+(<code class="language-plaintext highlighter-rouge">/home/foo_usr/test/.env</code>), which is outside of the scope of this tutorial. 
+If you’re planning on using the global Pyhton interpreter, just skip this 
+step.</li>
+  <li>
+    <p>Now let’s go <em>File</em> → <em>Settings</em> → <em>Project …</em> → <em>Project Interpreter</em>. 
+Using gear button select <em>Add Remote</em>. The following dialog window would let 
+you set up a remote interpreter over SSH (including remote <code class="language-plaintext highlighter-rouge">.env</code>), Vagrant 
+or using deployment configuration you have set up previously. For the sake 
+of this tutorial I’m going to put something like that here (using SSH of 
+course):</p>
+
+    <ul>
+      <li><strong>Host:</strong> <code class="language-plaintext highlighter-rouge">foo_host.io</code>,</li>
+      <li><strong>Port:</strong> 22 (which is there by default),</li>
+      <li><strong>User name:</strong> <code class="language-plaintext highlighter-rouge">foo_usr</code>,</li>
+      <li><strong>Auth type:</strong> Key pair (OpenSSH or PyTTY),</li>
+      <li><strong>Private key file:</strong> <code class="language-plaintext highlighter-rouge">/home/bar_usr/.ssh/id_rsa</code>,</li>
+      <li><strong>Python interpreter path:</strong> <code class="language-plaintext highlighter-rouge">/home/foo_usr/proj/.env/bin/python</code></li>
+    </ul>
+  </li>
+  <li>If you set up everything correctly, it should list all the packages 
+installed in your remote environment (if any) and select this interpreter 
+for your project.</li>
+  <li>
+    <p>Now let’s do the last, but the most important step: configure debugging. Go 
+to <em>Edit Configurations…</em> menu and set things up accordingly. For our 
+hypothetical project I will use the following:</p>
+
+    <ul>
+      <li><strong>Script:</strong> <code class="language-plaintext highlighter-rouge">proj/run.py</code> (or something along these lines),</li>
+      <li><strong>Python interpreter:</strong> just select the remote interpreter you have set up 
+earlier,</li>
+      <li><strong>Working directory:</strong> <code class="language-plaintext highlighter-rouge">/home/bar_usr/proj/</code> (note that this is working 
+directory on local machine),</li>
+      <li><strong>Path mapping:</strong> create a mapping along the lines of 
+<code class="language-plaintext highlighter-rouge">/home/bar_usr/proj = /home/foo_usr/proj</code> (although this seems pretty 
+easy, it may get tricky sometimes, when you forget about mappings and move 
+the projects around, be careful).</li>
+    </ul>
+  </li>
+</ol>
+
+<p>That’s about it. Now we should have a more or less working configuration that 
+you could use both for debugging and running your project. Don’t forget to 
+update/redeploy your project before running as the versions may get async and 
+PyCharm would get all whiny about missing files.</p>
+
+</article>
+
+
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2018/06/14/i-created-an-issue-in-flask-restful/">
+          I Created an Issue in a Flask-RESTful Repository, You Won't Believe What Happened Next
+          <small><time datetime="2018-06-14T07:00:00-07:00">14 Jun 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2018/01/09/limitations-of-beeminder-model/">
+          Limitations of the Beeminder Model
+          <small><time datetime="2018-01-09T06:00:00-08:00">09 Jan 2018</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2017/03/06/aspiring-photographers-are-quitting-instagram-en-masse-and-heres-why/">
+          Aspiring Photographers are Quitting Instagram en Masse and Here's Why
+          <small><time datetime="2017-03-06T00:00:00-08:00">06 Mar 2017</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; 2013-<time datetime="2026-05-04T15:14:20-07:00">2026</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
