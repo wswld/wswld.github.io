@@ -4,19 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your Name</title>
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8vw;
+    }
+    
+    h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .bio {
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 36ch;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+    }
+    
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .links a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    
+    .links a:hover {
+      border-bottom-color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Writer and painter based in Maple Ridge.</p>
-  </header>
   <main>
-    <ul>
-      <li><a href="https://your-other-site.com">Other site</a></li>
-      <li><a href="mailto:you@example.com">Email</a></li>
-      <li><a href="https://instagram.com/...">Instagram</a></li>
-    </ul>
+    <h1>Your Name</h1>
+    <p class="bio">Writer and painter. Short bio sentence here — what you do, where you are, what you're about.</p>
+    <nav class="links">
+      <a href="/archive/">Writing</a>
+      <a href="https://instagram.com/...">Paintings</a>
+      <a href="mailto:you@example.com">Email</a>
+    </nav>
   </main>
 </body>
 </html>
